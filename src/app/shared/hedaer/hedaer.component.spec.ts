@@ -8,8 +8,8 @@ describe('HedaerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HedaerComponent ]
-    })
+    imports: [HedaerComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(HedaerComponent);
