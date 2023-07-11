@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener} from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -9,5 +9,13 @@ import { RouterLink } from '@angular/router';
     imports: [RouterLink]
 })
 export class HedaerComponent {
+    isNavbarFixed!: boolean;
+    @HostListener('window:scroll', ['$event']) onScroll() {
+        if (window.scrollY > 100) {
+          this.isNavbarFixed = true;
+        } else {
+          this.isNavbarFixed = false;
+        }
+      }
 
 }
