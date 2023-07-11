@@ -983,6 +983,9 @@ input:checked + .toggle-bg {
 .fixed {
   position: fixed;
 }
+.notfixed{
+  position: relative;
+}
 
 .absolute {
   position: absolute;

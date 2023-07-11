@@ -1,0 +1,6 @@
+<div class="icon-container">
+    <div class="icon-wrapper" *ngFor="let subCategory of subCategories ">
+      <mat-icon class="icon" color="accent" svgIcon={{subCategory.icon}}></mat-icon>
+      <span class="icon-label">{{subCategory.label}}</span>
+    </div>
+</div>

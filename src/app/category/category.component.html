@@ -1,6 +1,21 @@
 <div class="icon-container">
-    <div class="icon-wrapper">
+    <div class="icon-wrapper" (click)="showSubCategory('Home')">
       <mat-icon class="icon" color="primary">home</mat-icon>
       <span class="icon-label">Home</span>
     </div>
+    <div class="icon-wrapper"(click)="showSubCategory('')">
+      <mat-icon class="icon" color="primary">home</mat-icon>
+      <span class="icon-label">Home</span>
+    </div>
+    <div class="icon-wrapper"(click)="showSubCategory('')">
+      <mat-icon class="icon" color="primary">home</mat-icon>
+      <span class="icon-label">Home</span>
+    </div>
+    <div class="icon-wrapper" (click)="showSubCategory('')">
+      <mat-icon class="icon" color="primary">home</mat-icon>
+      <span class="icon-label">Home</span>
+    </div>
+</div>
+<div *ngIf="display">
+  <app-sub-category [subCategories]="subCategories"></app-sub-category>
 </div>

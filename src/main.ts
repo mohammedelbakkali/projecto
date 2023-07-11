@@ -7,10 +7,11 @@ import { provideAnimations, BrowserAnimationsModule } from '@angular/platform-br
 import { AppRoutingModule } from './app/app-routing.module';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 
+import { HttpClientModule } from "@angular/common/http";
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(BrowserModule, AppRoutingModule, BrowserAnimationsModule),
+        importProvidersFrom(BrowserModule, AppRoutingModule, BrowserAnimationsModule,HttpClientModule ),
         provideAnimations()
     ]
 })
