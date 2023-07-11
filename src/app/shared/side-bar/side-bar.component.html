@@ -1,0 +1,50 @@
+<div class="sidebar"  (click)="toggleSidebar()" [ngClass]="{ 'active': !sidebarVisible , 'inactive': sidebarVisible }">
+  <div class="top">
+      <div class="logo">
+      
+          <span>Projecto</span>
+          
+      </div>
+      <mat-icon id="btn">reorder</mat-icon>
+  </div>
+  <div class="user">
+      <img src="../../../assets/images/imag1.png" alt="" class="user-img">
+      <div class="perso">
+        <p class="bold">Zakariae chelle</p>
+      
+      </div>
+  </div>
+  <ul id="menuList">
+      <li>
+          <a href="#"><mat-icon>home</mat-icon>
+          <span class="nav_item"> Dashboard </span></a>
+          <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+          <a href="#"><mat-icon >dashboard</mat-icon>
+          <span class="nav_item"> categories </span></a>
+          <span class="tooltip">categories</span>
+      </li>
+      <li>
+          <a href="#"><mat-icon >favorite_border</mat-icon>
+          <span class="nav_item"> Favorites </span></a>
+          <span class="tooltip">Favorites</span>
+      </li>
+      <li>
+          <a href="#">	<mat-icon >info</mat-icon>
+          <span class="nav_item"> about </span></a>
+          <span class="tooltip">about</span>
+      </li>
+      <li>
+          <a href="#"><mat-icon >input</mat-icon>
+          <span class="nav_item"> Log out  </span></a>
+          <span class="tooltip">Logout </span>
+      </li>
+  </ul>
+</div>
+<div class="main-content">
+  <div class="container">
+      <h1>Hello world</h1>
+      <h1>Hello world</h1>
+  </div>
+</div>
