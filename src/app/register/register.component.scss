@@ -2,8 +2,14 @@
   /* fallback for old browsers */
   background:#fff;
   }
-.cont{
-  margin-top:3rem;
+@media only screen and (max-width:600px){
+  .titre{
+    margin-top: 20px;
+  }
+}
+.left-side{
+  margin-left: 20px;
+  width: 90%;
 }
 .icon{
  
@@ -13,17 +19,45 @@
 .vide{
   height: 100px;
 }
-
 .titel{
 display: block;
 text-align: center;
 justify-content: center;
 width: 100%;
 color: gray;
+margin: 0;
+padding: 0;
+height: 50px;
 }
 .names{
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+.telephone{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.country{
+  width: 25%;
+  scrollbar-width: thin;
+}
+.number{
+  width: 75%;
+}
+.type-acc{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 15px 10px;
+}
+.typelbl{
+  display: flex;
+  justify-content: space-between;
+  align-items:start; 
+  font-size: 1.2em !important;
+   margin: 15px 0;
 }

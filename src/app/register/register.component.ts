@@ -4,16 +4,19 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormControl } 
 import {MatInputModule} from '@angular/material/input';
 import {  Input, Output, EventEmitter } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
+import { MatButtonModule } from '@angular/material/button';
+import {MatExpansionModule} from '@angular/material/expansion';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule,MatInputModule,MatIconModule,ReactiveFormsModule],
+  imports: [CommonModule,MatExpansionModule,MatInputModule,MatIconModule,ReactiveFormsModule,MatRadioModule,MatSelectModule,MatButtonModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit  {
-  
+  panelOpenState = false;
   @Input()
   myForm!: FormGroup;
   @Output() submitForm: EventEmitter<any> = new EventEmitter();
