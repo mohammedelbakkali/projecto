@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {  Input, Output, EventEmitter } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule,MatInputModule,ReactiveFormsModule],
+  imports: [CommonModule,MatInputModule,MatIconModule,ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
@@ -30,5 +31,15 @@ export class RegisterComponent implements OnInit  {
       // Form submission logic
       console.log(this.myForm.value);
     }
+  }
+
+  email = new FormControl('', [Validators.required, Validators.email]);
+  hide = true;
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 }

@@ -1,18 +1,53 @@
-<div class="container">
-  <h1>Reactive Form Example</h1>
-  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="form-group">
-      <input matInput formControlName="name" placeholder="Enter your name">
-      <mat-error *ngIf="myForm.get('name')?.invalid && myForm.get('name')?.touched">
-        Name is required.
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field class="form-group">
-      <input matInput formControlName="email" type="email" placeholder="Enter your email">
-      <mat-error *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
-        Email is required and must be a valid email address.
-      </mat-error>
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">Submit</button>
-  </form>
-</div>
+<div class="vide"></div>
+
+<aside class="left-side">
+
+  <section class="vh-90  gradient-custom">
+    <div class="titel">
+      <h2 class="fw-bold mb-2 text-uppercase">Welcome to our web site </h2>
+      <p class="text-gray-50 mb-5">Please enter your login and password!</p>
+    </div>
+    <div class="container py-0 h-auto">
+        <div class="row d-flex justify-content-start cont align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+              
+                <div class="card bg-transparent text-white" style="border-radius: 1rem;">
+                  
+                    <div  class="card-body  p-4 text-center">
+  
+                        <div class="mb-md-2 mt-md-4 pb-5">
+                        
+                          <div class="names">
+                            <mat-form-field style="width:48%;">
+                            
+                              <mat-label style="color:black;">First Name</mat-label>
+                              <input matInput>
+                            </mat-form-field>
+  
+                            <mat-form-field style="width:48%;">
+                              <mat-label>Last name </mat-label>
+                              <input matInput>
+                            </mat-form-field>
+                          </div>
+                        
+                         
+  
+                            <div class="example-container">
+                                <mat-form-field style="width: 100%;  " >
+                                  <mat-label>Enter your email</mat-label>
+                                  <input  matInput  class="input" placeholder="pat@example.com" [formControl]="email" required>
+                                  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                                </mat-form-field>
+                              </div>
+                            <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign Up</button>
+                        </div>
+  
+                        
+  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+</aside>

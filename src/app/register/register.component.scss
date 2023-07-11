@@ -1,15 +1,29 @@
-.container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
+.gradient-custom {
+  /* fallback for old browsers */
+  background:#fff;
   }
-  
-  .form-group {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  button {
-    margin-top: 10px;
-  }
-  
+.cont{
+  margin-top:3rem;
+}
+.icon{
+ 
+  color: gray;
+  border: #fff 1px solid;
+}
+.vide{
+  height: 100px;
+}
+
+.titel{
+display: block;
+text-align: center;
+justify-content: center;
+width: 100%;
+color: gray;
+}
+.names{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
