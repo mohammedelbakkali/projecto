@@ -1,8 +1,11 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginRegisterComponent } from './login-register/login-register.component';
+import { RegisterComponent } from './register/register.component';
+
 
 const routes: Routes = [
      {
@@ -17,10 +20,20 @@ const routes: Routes = [
         path:"dash",
         component:DashboardComponent
       },
+      //Login and Register Pages
+      {
+        path:"log",
+        component:LoginRegisterComponent
+      },
+      { path:"reg",
+        component:RegisterComponent
+      },
       {
         path:"**",
         component:PageNotFoundComponent
-      }
+      },
+     
+    
 ];
 
 @NgModule({

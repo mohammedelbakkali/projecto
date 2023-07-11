@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Reactive Form Example</h1>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form-group">
+      <input matInput formControlName="name" placeholder="Enter your name">
+      <mat-error *ngIf="myForm.get('name')?.invalid && myForm.get('name')?.touched">
+        Name is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-group">
+      <input matInput formControlName="email" type="email" placeholder="Enter your email">
+      <mat-error *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
+        Email is required and must be a valid email address.
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">Submit</button>
+  </form>
+</div>
