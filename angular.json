@@ -32,14 +32,12 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss",
-              "node_modules/slick-carousel/slick/slick.css",
-              "src/styles.css"
+              "src/styles.scss"
+
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/slick-carousel/slick/slick.min.js"
+
             ]
           },
           "configurations": {
