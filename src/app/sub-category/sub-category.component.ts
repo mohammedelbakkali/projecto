@@ -4,11 +4,12 @@ import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import { Category } from '../shared/models/category.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sub-category',
   standalone: true,
-  imports: [CommonModule,MatIconModule],
+  imports: [CommonModule,MatIconModule,RouterLink],
   templateUrl: './sub-category.component.html',
   styleUrls: ['./sub-category.component.scss']
 })
