@@ -17,6 +17,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 })
 export class RegisterComponent implements OnInit  {
   panelOpenState = false;
+ 
   @Input()
   myForm!: FormGroup;
   @Output() submitForm: EventEmitter<any> = new EventEmitter();
