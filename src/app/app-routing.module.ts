@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import { RegisterComponent } from './register/register.component';
 import { CategoryPageComponent } from './category-page/category-page.component';
+import { ShowpageComponent } from './showpage/showpage.component';
 
 
 const routes: Routes = [
