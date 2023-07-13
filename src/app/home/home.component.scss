@@ -1,2 +1,14 @@
 
+section.recommended{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+section.recommended > *{
+   margin-left: 15px;
+
+}
+.recommended-arrows{
+margin-top: 33px;
+}
 
