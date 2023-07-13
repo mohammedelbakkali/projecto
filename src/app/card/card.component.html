@@ -32,8 +32,8 @@
    -->
    
    <div class="card shadow-sm">
-    <div style="z-index: 3;position: absolute; right: 0; margin: 3px;">
-      <mat-icon color="accent">favorite</mat-icon>
+    <div style="z-index: 3;position: absolute; right: 0; margin: 3px;"  (click)="changeState()">
+      <mat-icon color="accent">{{liked?'favorite':'favorite_border'}}</mat-icon>
     </div>
     <mdb-carousel [controls]="true" [indicators]="false">
       <mdb-carousel-item [interval]="100000">

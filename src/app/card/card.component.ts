@@ -14,4 +14,10 @@ import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 })
 export class CardComponent {
 
+  liked=false;
+
+  changeState(){
+    this.liked=!this.liked;
+  }
+
 }

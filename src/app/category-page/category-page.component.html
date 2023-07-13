@@ -1,14 +1,12 @@
-<p> works!</p>
-<div class="container">
+<div class="container mt-3">
 
-<div class="bg-image" style="background-image: url('../../assets/images/category/immobilier.png')">
+    <div class="bg-image" style="background-image: url('../../assets/images/category/immobilier.png')">
         <div class="row">
-            <div class="category-wallpaper">  
+            <div class="category-wallpaper">
                 <section class="py-5 text-center container">
                     <div class="row py-lg-5">
                         <div class="col-lg-6 col-md-8 mx-auto">
-                            <p class="fw-light text-white display-4 my-3" style="font-family: Papyrus;
-                            ">{{cat}}</p>
+                            <p class="fw-light text-white display-4 my-3" style="font-family: Papyrus;">{{cat}}</p>
                         </div>
                     </div>
                 </section>
@@ -16,50 +14,200 @@
         </div>
     </div>
 
-        <div class="row mt-3">
-            <div class="filter-section col-lg-2 col-sm-3 col-3">  
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>Region</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-            <div class="filter-section col-lg-2 col-sm-3 col-3">  
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>Prix</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-            <div class="filter-section col-lg-2 col-sm-3 col-3">  
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>Secteur</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Library</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+    </nav>
+
+    <div class="row mt-4">
+        <div class="col-md-12 col-lg-3 col-sm-12 d-block d-md-block d-lg-none float r-0">
+            <button type="button" class="btn" data-toggle="modal" data-target="#myModal" mdbRipple>
+                <mat-icon>filter_list</mat-icon>
+            </button>
         </div>
-        <div class="row row-cols-2 row-cols-sm-2 row-cols-lg-4 row-cols-md-3 g-3 mt-4">
-            <div class="col">
-                <app-card></app-card>
-            </div>
-            <div class="col">
-                <app-card></app-card>
-            </div>
-            <div class="col">
-                <app-card></app-card>
-            </div>
-            <div class="col">
-                <app-card></app-card>
-            </div>
-            <div class="col">
-                <app-card></app-card>
-            </div>
-            <div class="col">
-                <app-card></app-card>
+        <div class="col-md-12 col-lg-3 col-sm-12 d-none d-md-none d-lg-block">
+            <mdb-accordion [multiple]="true">
+                <mdb-accordion-item>
+                    <ng-template mdbAccordionItemHeader>
+                        <p class="title h6 text-center mt-2">Brands</p>
+                    </ng-template>
+                    <ng-template mdbAccordionItemBody>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <form>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="">
+                                        <span class="form-check-label">
+                                            Mersedes Benz
+                                        </span>
+                                    </label>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="">
+                                        <span class="form-check-label">
+                                            Nissan Altima
+                                        </span>
+                                    </label>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="">
+                                        <span class="form-check-label">
+                                            Another Brand
+                                        </span>
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
+                    </ng-template>
+                </mdb-accordion-item>
+                <mdb-accordion-item>
+                    <ng-template mdbAccordionItemHeader>
+                        <p class="title h6 text-center mt-2">Type</p>
+                    </ng-template>
+                    <ng-template mdbAccordionItemBody>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadio" value="">
+                                    <span class="form-check-label">
+                                        First hand items
+                                    </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadio" value="">
+                                    <span class="form-check-label">
+                                        Brand new items
+                                    </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadio" value="">
+                                    <span class="form-check-label">
+                                        Some other option
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </ng-template>
+                </mdb-accordion-item>
+                <mdb-accordion-item>
+                    <ng-template mdbAccordionItemHeader>
+                        <p class="title h6 text-center mt-2">Range</p>
+                    </ng-template>
+                    <ng-template mdbAccordionItemBody>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Min</label>
+                                        <input type="number" class="form-control" id="inputEmail4" placeholder="$0">
+                                    </div>
+                                    <div class="form-group col-md-6 text-right">
+                                        <label>Max</label>
+                                        <input type="number" class="form-control" placeholder="$1,0000">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </mdb-accordion-item>
+                <mdb-accordion-item>
+                    <ng-template mdbAccordionItemHeader>
+                        <p class="title h6 text-center mt-2">Selection</p>
+                    </ng-template>
+                    <ng-template mdbAccordionItemBody>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <label for="customRange1" class="form-label">Example range</label>
+                                    <input type="range" class="form-range color-primary" id="customRange1">
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </mdb-accordion-item>
+                <mdb-accordion-item>
+                    <ng-template mdbAccordionItemHeader>
+                        <p class="title h6 text-center mt-2">Stars</p>
+                    </ng-template>
+                    <ng-template mdbAccordionItemBody>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="">
+                                        <span>
+                                            <mat-icon color="primary">star</mat-icon>
+                                            <mat-icon color="primary">star</mat-icon>
+                                            <mat-icon color="primary">star</mat-icon>
+                                            <mat-icon color="primary">star</mat-icon>
+                                            <mat-icon color="primary">star_border</mat-icon>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="">
+                                        <span>
+                                            <mat-icon color="primary">star</mat-icon>
+                                            <mat-icon color="primary">star</mat-icon>
+                                            <mat-icon color="primary">star</mat-icon>
+                                            <mat-icon color="primary">star_border</mat-icon>
+                                            <mat-icon color="primary">star_border</mat-icon>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="">
+                                        <span>
+                                            <mat-icon color="primary">star</mat-icon>
+                                            <mat-icon color="primary">star</mat-icon>
+                                            <mat-icon color="primary">star_border</mat-icon>
+                                            <mat-icon color="primary">star_border</mat-icon>
+                                            <mat-icon color="primary">star_border</mat-icon>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="">
+                                        <span>
+                                            <mat-icon color="primary">star</mat-icon>
+                                            <mat-icon color="primary">star_border</mat-icon>
+                                            <mat-icon color="primary">star_border</mat-icon>
+                                            <mat-icon color="primary">star_border</mat-icon>
+                                            <mat-icon color="primary">star_border</mat-icon>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </mdb-accordion-item>
+            </mdb-accordion>
+        </div>
+        <div class="col -md-12 col-xs-12 col-sm-12 mt-3 col-lg-9 mt-lg-0">
+            <div class="row row-cols-2 row-cols-sm-2 row-cols-lg-3 row-cols-md-3 g-3">
+
+                <div class="col">
+                    <app-card></app-card>
+                </div>
+                <div class="col">
+                    <app-card></app-card>
+                </div>
+                <div class="col">
+                    <app-card></app-card>
+                </div>
+                <div class="col">
+                    <app-card></app-card>
+                </div>
+                <div class="col">
+                    <app-card></app-card>
+                </div>
+                <div class="col">
+                    <app-card></app-card>
+                </div>
             </div>
         </div>
     </div>
