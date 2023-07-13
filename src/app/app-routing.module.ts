@@ -5,7 +5,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import { RegisterComponent } from './register/register.component';
-import { ShowpageComponent } from './showpage/showpage.component';
+import { CategoryPageComponent } from './category-page/category-page.component';
 
 
 const routes: Routes = [
@@ -34,9 +34,14 @@ const routes: Routes = [
         component:ShowpageComponent
       },
       {
+        path:'category/:cat',
+        component:CategoryPageComponent
+      },
+      {
         path:"**",
         component:PageNotFoundComponent
       },
+    
      
     
 ];
