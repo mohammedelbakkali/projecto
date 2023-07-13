@@ -8,16 +8,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterLink } from '@angular/router';
-
+import {MatTabsModule} from '@angular/material/tabs';
 @Component({
   selector: 'app-showpage',
   standalone: true,
-  imports: [CommonModule,RouterLink,MatExpansionModule,MatInputModule,MatIconModule,ReactiveFormsModule,MatRadioModule,MatSelectModule,MatButtonModule],
+  imports: [CommonModule,RouterLink,MatTabsModule,MatExpansionModule,MatInputModule,MatIconModule,ReactiveFormsModule,MatRadioModule,MatSelectModule,MatButtonModule],
   templateUrl: './showpage.component.html',
   styleUrls: ['./showpage.component.scss']
 })
 export class ShowpageComponent {
-
+  panelOpenState = false;
   mainImageUrl: String | undefined;
   imageUrls: string[] = ['../../assets/images/test.jpg', '../../assets/images/paragliding-in-pokhara.jpg', '../../assets/images/sos.png','../../assets/images/t1.jpg'];
   currentIndex: number = 0;

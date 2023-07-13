@@ -42,7 +42,11 @@
       flex-direction: column;
       align-items: flex-start;
     }
-  
+
+    .infos{
+      display: none;
+    }
+
     .image-section {
       align-self: flex-start;
       margin-top: 0;
@@ -100,4 +104,19 @@
     font-size: 1rem;
    
   }
-  
+  .context{
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+  li:nth-child(n){
+    padding: 5px 0;
+  }
+
+ .btn{
+  justify-self: center;
+
+  margin-bottom: 0.8rem;
+ }
+ .costs-list{
+  list-style-type: none;
+ }
