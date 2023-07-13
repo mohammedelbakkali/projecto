@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
+
 import { CardComponent } from '../card/card.component';
 import { MdbRangeModule } from 'mdb-angular-ui-kit/range';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';

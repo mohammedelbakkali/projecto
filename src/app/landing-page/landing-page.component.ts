@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { CardComponent } from "../card/card.component";
 
 import {CdkDragDrop, moveItemInArray, CdkDrag, CdkDropList} from '@angular/cdk/drag-drop';
@@ -17,9 +18,7 @@ export interface Vegetable {
     templateUrl: './landing-page.component.html',
     styleUrls: ['./landing-page.component.scss'],
     standalone: true,
-
-    imports: [MatChipsModule, CdkDropList, NgFor, CdkDrag,MatMenuModule,CategoryOfmodelComponent]
-
+    imports: [MatChipsModule, CdkDropList, NgFor, CdkDrag, MatMenuModule, CategoryOfmodelComponent]
 })
 export class LandingPageComponent {
     vegetables: Vegetable[] = [
