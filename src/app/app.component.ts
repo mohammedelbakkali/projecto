@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NgSwitch, NgSwitchDefault, NgSwitchCase } from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import { ToolbarComponent } from "./toolbar/toolbar.component";
-import { CategoryComponent } from "./category/category.component";
 import { FooterComponent } from './shared/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { HedaerComponent } from './shared/hedaer/hedaer.component';
@@ -15,7 +14,7 @@ import { HomeComponent } from "./home/home.component";
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
-    imports: [NgSwitch, NgSwitchDefault, NgSwitchCase, RouterOutlet, HedaerComponent, FooterComponent, SideBarComponent, CategoryComponent, LoginRegisterComponent, HomeComponent]
+    imports: [NgSwitch, NgSwitchDefault, NgSwitchCase, RouterOutlet, HedaerComponent, FooterComponent, SideBarComponent,LoginRegisterComponent]
 })
 export class AppComponent {
   title = 'projecto';

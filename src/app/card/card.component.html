@@ -1,4 +1,4 @@
-<mat-card class="custom-card">
+<!-- <mat-card class="custom-card">
     <mat-card-header>
       <div mat-card-avatar class="user-avatar"></div>
       <div class="header-content">
@@ -29,4 +29,39 @@
     </button>
     </mat-card-actions>
   </mat-card>
-  
+   -->
+   
+   <div class="card shadow-sm">
+    <div style="z-index: 3;position: absolute; right: 0; margin: 3px;"  (click)="changeState()">
+      <mat-icon color="accent">{{liked?'favorite':'favorite_border'}}</mat-icon>
+    </div>
+    <mdb-carousel [controls]="true" [indicators]="false">
+      <mdb-carousel-item [interval]="100000">
+        <img class="d-block w-100"
+        src="../../assets/images/category/immobilier/img1.png" style="border-radius: 5px 5px 0 0; height: 150px;" alt="">
+      </mdb-carousel-item>
+      <mdb-carousel-item [interval]="100000">
+        <img class="d-block w-100"
+        src="../../assets/images/category/immobilier/img2.jpg" style="border-radius: 5px 5px 0 0; height: 150px;" alt="">
+      </mdb-carousel-item>
+    </mdb-carousel>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <img src="../../assets/images/category/profile/user.jpg" class="mr-2" style="width: 30px; border-radius: 50%;" alt="">
+        </div>
+        <div class="col-7 mt-2">
+          <p><strong>Mohcine Boudenjal</strong></p>
+        </div>
+      </div>
+      <p class="card-text">I will build you a house.</p>
+      <div class="row">
+        <div class="col-1">
+          <mat-icon>star</mat-icon>
+        </div>
+        <div class="col-3 mt-1 mx-2">
+          <p class="">5.9</p>
+        </div>
+      </div>
+    </div>
+  </div>
