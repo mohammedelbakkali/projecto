@@ -1,4 +1,4 @@
-<div class="container-fluid" style=" box-shadow: 0px 0px 2px 2px rgb(201, 201, 201);">
+<div class="container-fluid" style="box-shadow: 0px 0px 2px 2px rgb(201, 201, 201);">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3  border-bottom">
 
 
@@ -8,8 +8,8 @@
         </a>
       </div>
 
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2" >Home</a></li>
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" *ngIf="!isRegisterRoute() && !isLoginRoute() ">
+        <li><a href="#" class="nav-link px-2">Home</a></li>
         <li><a href="#" class="nav-link px-2">Features</a></li>
         <li><a href="#" class="nav-link px-2">Pricing</a></li>
         <li><a href="#" class="nav-link px-2">FAQs</a></li>
@@ -17,10 +17,16 @@
         <li><a href="#" class="nav-link px-2">About</a></li>
       </ul>
 
-      <div class="col-md-3 text-end">
+      <div *ngIf="!isRegisterRoute() && !isLoginRoute() " class="col-md-3 text-end">
         <button type="button" class="btn btn-outline-primary me-2">Login</button>
         <button type="button" class="btn btn-primary">Sign-up</button>
       </div>
+      <div *ngIf="isRegisterRoute()" class="col-md-3 text-end">
+       <p class="text-black h6">Already member ? <a href="#" routerLink="/log">Login</a></p>
+      </div>
+      <div *ngIf="isLoginRoute()" class="col-md-3 text-end">
+        <p class="text-black h6">Not member ? <a href="#" routerLink="/reg">Register</a></p>
+       </div>
     </header>
   </div>
 
