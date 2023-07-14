@@ -13,7 +13,9 @@ import { MatButtonModule } from '@angular/material/button';
     imports: [CommonModule, CardComponent, MiniProjectCardComponent,MatIconModule,MatButtonModule,SideBarComponent]
 })
 export class DashboardComponent implements AfterViewInit{
-    @ViewChild('sideBarRef', { read: ElementRef }) sideBarRef: ElementRef | undefined;
+    constructor(private elementRef: ElementRef) {}
+
+  /**   @ViewChild('sideBarRef', { read: ElementRef }) sideBarRef: ElementRef | undefined;
 
     ngAfterViewInit() {
       const sideBarElement: HTMLElement = this.sideBarRef!.nativeElement;
@@ -21,6 +23,11 @@ export class DashboardComponent implements AfterViewInit{
       console.log('Child component width:', width);
     }
    
-
+*/
+ngAfterViewInit() {
+    const childElement: HTMLElement = this.elementRef.nativeElement.querySelector('#sideBarRef');
+    const width: number = childElement.offsetWidth;
+    console.log('Child component width:', width);
+  }
 
 }
