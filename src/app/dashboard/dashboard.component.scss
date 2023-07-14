@@ -1,0 +1,26 @@
+section.recommended{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+section.recommended > *{
+   margin-left: 15px;
+
+}
+.recommended-arrows{
+margin-top: 33px;
+}
+
+
+section.recent{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+section.recent > *{
+   margin-left: 15px;
+
+}
+.recommended-arrows{
+margin-top: 33px;
+}
