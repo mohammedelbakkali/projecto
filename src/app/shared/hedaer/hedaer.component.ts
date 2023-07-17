@@ -1,5 +1,6 @@
 import { Component, HostListener} from '@angular/core';
-import { RouterLink, Router} from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { SideBarComponent } from "../side-bar/side-bar.component";
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -7,7 +8,7 @@ import { NgIf } from '@angular/common';
     templateUrl: './hedaer.component.html',
     styleUrls: ['./hedaer.component.scss'],
     standalone: true,
-    imports: [RouterLink,NgIf]
+    imports: [RouterLink, SideBarComponent,NgIf]
 })
 export class HedaerComponent {
     isNavbarFixed!: boolean;
