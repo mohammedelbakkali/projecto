@@ -9,6 +9,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterLink } from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
+import { CategoryOfmodelComponent } from '../category-ofmodel/category-ofmodel.component';
 @Component({
   selector: 'app-showpage',
   standalone: true,
