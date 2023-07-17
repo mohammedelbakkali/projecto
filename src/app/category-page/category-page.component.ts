@@ -16,6 +16,37 @@ import {MatIconModule} from '@angular/material/icon';
 })
 export class CategoryPageComponent {
   cat ?: string|null
+  selectedStars: number = 0;
+  hoveredStar: number = 0;
+  rangeValue: number = 0;
+
+  onRangeInput(event: any) {
+    this.rangeValue = event.target.value;
+  }
+
+  onStarHovered(starNumber: number) {
+    this.hoveredStar = starNumber;
+  }
+
+  onStarUnhovered() {
+    this.hoveredStar = 0;
+  }
+
+  onStarClicked(starNumber: number) {
+    this.selectedStars = starNumber;
+  }
+
+  getStarIcon(starNumber: number): string {
+    if (starNumber <= this.selectedStars) {
+      return 'star';
+    } else if (starNumber <= this.hoveredStar) {
+      return 'star';
+    } else {
+      return 'star_border';
+    }
+  }
+
+  
   constructor(private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.cat = this.route.snapshot.paramMap.get('cat')

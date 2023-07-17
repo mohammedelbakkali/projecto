@@ -29,7 +29,7 @@
             </button>
         </div>
         <div class="col-md-12 col-lg-3 col-sm-12 d-none d-md-none d-lg-block">
-            <mdb-accordion [multiple]="true">
+            <mdb-accordion [flush]="true">
                 <mdb-accordion-item>
                     <ng-template mdbAccordionItemHeader>
                         <p class="title h6 text-center mt-2">Brands</p>
@@ -118,12 +118,16 @@
                     <ng-template mdbAccordionItemBody>
                         <div class="filter-content">
                             <div class="card-body">
-                                <div class="form-row">
-                                    <label for="customRange1" class="form-label">Example range</label>
-                                    <input type="range" class="form-range color-primary" id="customRange1">
+                              <div class="form-row">
+                                <label for="customRange1" class="form-label">Example range</label>
+                                <input type="range" class="form-range color-primary" id="customRange1" (input)="onRangeInput($event)">
+                                <div class="form-group col-md-6">
+                                  <label>Value</label>
+                                  <input type="number" class="form-control" id="inputEmail4" placeholder="$0" [value]="rangeValue">
                                 </div>
+                              </div>
                             </div>
-                        </div>
+                          </div>   
                     </ng-template>
                 </mdb-accordion-item>
                 <mdb-accordion-item>
@@ -135,51 +139,14 @@
                             <div class="card-body">
                                 <div class="form-row">
                                     <label class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="">
                                         <span>
-                                            <mat-icon color="primary">star</mat-icon>
-                                            <mat-icon color="primary">star</mat-icon>
-                                            <mat-icon color="primary">star</mat-icon>
-                                            <mat-icon color="primary">star</mat-icon>
-                                            <mat-icon color="primary">star_border</mat-icon>
-                                        </span>
-                                    </label>
-                                </div>
-                                <div class="form-row">
-                                    <label class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="">
-                                        <span>
-                                            <mat-icon color="primary">star</mat-icon>
-                                            <mat-icon color="primary">star</mat-icon>
-                                            <mat-icon color="primary">star</mat-icon>
-                                            <mat-icon color="primary">star_border</mat-icon>
-                                            <mat-icon color="primary">star_border</mat-icon>
-                                        </span>
-                                    </label>
-                                </div>
-                                <div class="form-row">
-                                    <label class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="">
-                                        <span>
-                                            <mat-icon color="primary">star</mat-icon>
-                                            <mat-icon color="primary">star</mat-icon>
-                                            <mat-icon color="primary">star_border</mat-icon>
-                                            <mat-icon color="primary">star_border</mat-icon>
-                                            <mat-icon color="primary">star_border</mat-icon>
-                                        </span>
-                                    </label>
-                                </div>
-                                <div class="form-row">
-                                    <label class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="">
-                                        <span>
-                                            <mat-icon color="primary">star</mat-icon>
-                                            <mat-icon color="primary">star_border</mat-icon>
-                                            <mat-icon color="primary">star_border</mat-icon>
-                                            <mat-icon color="primary">star_border</mat-icon>
-                                            <mat-icon color="primary">star_border</mat-icon>
-                                        </span>
-                                    </label>
+                                            <mat-icon (mouseover)="onStarHovered(1)" (mouseout)="onStarUnhovered()" (click)="onStarClicked(1)">{{ getStarIcon(1) }}</mat-icon>
+                                            <mat-icon (mouseover)="onStarHovered(2)" (mouseout)="onStarUnhovered()" (click)="onStarClicked(2)">{{ getStarIcon(2) }}</mat-icon>
+                                            <mat-icon (mouseover)="onStarHovered(3)" (mouseout)="onStarUnhovered()" (click)="onStarClicked(3)">{{ getStarIcon(3) }}</mat-icon>
+                                            <mat-icon (mouseover)="onStarHovered(4)" (mouseout)="onStarUnhovered()" (click)="onStarClicked(4)">{{ getStarIcon(4) }}</mat-icon>
+                                            <mat-icon (mouseover)="onStarHovered(5)" (mouseout)="onStarUnhovered()" (click)="onStarClicked(5)">{{ getStarIcon(5) }}</mat-icon>
+                                          </span>
+                                      </label>                               
                                 </div>
                             </div>
                         </div>

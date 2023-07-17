@@ -12,7 +12,8 @@ import { ShowpageComponent } from './showpage/showpage.component';
 const routes: Routes = [
      {
         path:"",
-        component:LandingPageComponent,       
+        component:LandingPageComponent,
+               
      },
      {
         path:"project",
