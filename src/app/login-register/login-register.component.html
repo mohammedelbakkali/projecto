@@ -1,43 +1,39 @@
 <section class="vh-60  ">
-    <div class="container py-5 h-100">
+    <div class="container py-1 h-100">
         <div class="row d-flex justify-content-center cont align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card bg-light text-black" style="border-radius: 1rem;">
-                    <div class="card-body p-5 text-center">
-
+                <div class="bg-transparent text-black" style="border-radius: 1rem;">
+                    <div class="card-body p-4 text-center">
                         <div class="mb-md-2 mt-md-4 pb-5">
-
-                            <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                            <p class="text-dark-50 mb-5">Please enter your login and password!</p>
-
+                            <p class="mb-2 display-6" style="color:#b267fd">Welcome to <strong>Projecto</strong></p>
+                            <p class="text-dark-50 mb-5 h6" style="color:#b267fd">Please enter your login and password! </p>
                             <div class="example-container">
-                                <mat-form-field style="width: 100%; " >
-                                  <mat-label>Enter your email</mat-label>
-                                  <input  matInput  class="input" placeholder="pat@example.com" [formControl]="email" required>
-                                  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                                <mat-form-field style="width: 100%; " appearance="outline">
+                                    <mat-label>Enter your email</mat-label>
+                                    <input matInput class="input" placeholder="pat@example.com" [formControl]="email"
+                                        required>
+                                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                                 </mat-form-field>
-                              </div>
-                              
-                              <mat-form-field style="width: 100%;">
+                            </div>
+
+                            <mat-form-field style="width: 100%;" appearance="outline">
                                 <mat-label>Enter your password</mat-label>
-                                <input matInput  class="input" [type]="hide ? 'password' : 'text'">
-                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                  <mat-icon class="icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <input matInput class="input" [type]="hide ? 'password' : 'text'">
+                                <button mat-icon-button matSuffix (click)="hide = !hide"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon class="icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>
-                              </mat-form-field>
-                           
-
+                            </mat-form-field>
                             <p class="small  pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
-
-                            <button mat-raised-button color="primary" style="font-size: 17px; width:170px; border-radius:10px;">Login</button>
+                            <button mat-raised-button color="primary"
+                                style="font-size: 17px; width:170px;height: 50px; border-radius:10px;">Login</button>
                         </div>
-
                         <div>
-                            <p class="mb-0">Don't have an account? <a href="#" routerLink="/reg"  class="text-black-50 fw-bold">Sign
+                            <p class="mb-0">Don't have an account? <a href="#" routerLink="/reg"
+                                    class="text-black-50 fw-bold">Sign
                                     Up</a>
                             </p>
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -8,12 +8,24 @@ import { RegisterComponent } from './register/register.component';
 import { CategoryPageComponent } from './category-page/category-page.component';
 import { ShowpageComponent } from './showpage/showpage.component';
 import { FaqComponent } from './faq/faq.component';
+import { LayoutComponent } from './shared/layout/layout.component';
+import { ChartsOfprojectsComponent } from './dashboard/charts-ofprojects/charts-ofprojects.component';
+import { ProjectsComponent } from './dashboard/projects/projects.component';
 
 
 const routes: Routes = [
      {
         path:"",
-        component:LandingPageComponent,
+        component:LayoutComponent,
+        children:[
+           {
+             path:"",
+             component:LandingPageComponent
+           }, {
+            path:"show",
+            component:ShowpageComponent
+          }
+        ]
                
      },
      {
@@ -22,7 +34,14 @@ const routes: Routes = [
       },
       {
         path:"dash",
-        component:DashboardComponent
+        component:DashboardComponent,
+        children:[{
+          path:"charts",
+          component:ChartsOfprojectsComponent
+        },{
+          path:"projects",
+          component:ProjectsComponent
+        }]
       },
       //Login and Register Pages
       {
@@ -32,10 +51,7 @@ const routes: Routes = [
       { path:"reg",
          component:RegisterComponent
       },
-      {
-        path:"show",
-        component:ShowpageComponent
-      },
+     
       {
         path:'category/:cat',
         component:CategoryPageComponent
@@ -43,6 +59,7 @@ const routes: Routes = [
         path:'faq',
         component:FaqComponent
       },
+
       {
         path:"**",
         component:PageNotFoundComponent

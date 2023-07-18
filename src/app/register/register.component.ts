@@ -8,16 +8,22 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { DialogInfoCompteComponent } from '../dialog-info-compte/dialog-info-compte.component';
+import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { DialogFaqMessageComponent } from '../dialog-faq-message/dialog-faq-message.component';
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule,MatExpansionModule,MatInputModule,MatIconModule,ReactiveFormsModule,MatRadioModule,MatSelectModule,MatButtonModule],
+  imports: [MdbFormsModule, FormsModule,ReactiveFormsModule,CommonModule,MatExpansionModule,MatInputModule,MatIconModule,ReactiveFormsModule,MatRadioModule,MatSelectModule,MatButtonModule,DialogInfoCompteComponent,DialogFaqMessageComponent],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit  {
   panelOpenState = false;
- 
+  selectedOption: string = 'personel';
+  
   @Input()
   myForm!: FormGroup;
   @Output() submitForm: EventEmitter<any> = new EventEmitter();
