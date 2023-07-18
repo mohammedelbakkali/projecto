@@ -5,12 +5,13 @@ import { CardComponent } from '../card/card.component';
 import { MdbRangeModule } from 'mdb-angular-ui-kit/range';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import {MatIconModule} from '@angular/material/icon';
+import { CategoryOfmodelComponent } from '../category-ofmodel/category-ofmodel.component';
 
 
 @Component({
   selector: 'app-category-page',
   standalone: true,
-  imports: [CommonModule,MatIconModule,CardComponent,MdbRangeModule,MdbAccordionModule],
+  imports: [CategoryOfmodelComponent,CommonModule,MatIconModule,CardComponent,MdbRangeModule,MdbAccordionModule],
   templateUrl: './category-page.component.html',
   styleUrls: ['./category-page.component.scss']
 })

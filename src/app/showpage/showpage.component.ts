@@ -9,6 +9,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterLink } from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
+import { CategoryOfmodelComponent } from '../category-ofmodel/category-ofmodel.component';
+
 
 export interface Projecto{
   titel_project : string ;
@@ -24,6 +26,7 @@ export interface Projecto{
   ppl_targeted: string [] ;
   rating : string;
 }
+
 
 
 @Component({
