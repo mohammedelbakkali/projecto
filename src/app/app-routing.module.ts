@@ -7,6 +7,7 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
 import { RegisterComponent } from './register/register.component';
 import { CategoryPageComponent } from './category-page/category-page.component';
 import { ShowpageComponent } from './showpage/showpage.component';
+import { FaqComponent } from './faq/faq.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,9 @@ const routes: Routes = [
       {
         path:'category/:cat',
         component:CategoryPageComponent
+      },{
+        path:'faq',
+        component:FaqComponent
       },
       {
         path:"**",
