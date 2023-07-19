@@ -106,8 +106,6 @@ export class CalendarComponent {
   }
 
   handleEventClick(clickInfo: EventClickArg) {
-  template :  = 
-  this.dialog.open('<button mat-raised-button>Open dialog without animation</button>' )
     if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
       clickInfo.event.remove();
     }
