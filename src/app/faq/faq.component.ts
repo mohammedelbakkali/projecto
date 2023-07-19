@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ScrollSpyModule } from 'ngx-scrollspy';
+//import { ScrollSpyModule } from 'ngx-scrollspy';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 @Component({
   selector: 'app-faq',
   standalone: true,
-  imports: [CommonModule,MatExpansionModule,MatIconModule,MatButtonModule,ScrollSpyModule],
+  imports: [CommonModule,MatExpansionModule,MatIconModule,MatButtonModule/** ,ScrollSpyModule*/],
   templateUrl: './faq.component.html',
   styleUrls: ['./faq.component.scss']
 })
