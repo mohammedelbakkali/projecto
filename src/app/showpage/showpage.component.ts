@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, Renderer2, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -39,7 +39,7 @@ export interface Projecto{
 export class ShowpageComponent {
   panelOpenState = false;
   mainImageUrl: String | undefined;
-  imageUrls: string[] = ['../../assets/images/test.jpg', '../../assets/images/paragliding-in-pokhara.jpg', '../../assets/images/sos.png','../../assets/images/t1.jpg'];
+  imageUrls: string [] = ['../../assets/images/test.jpg', '../../assets/images/paragliding-in-pokhara.jpg', '../../assets/images/sos.png','../../assets/images/t1.jpg'];
   currentIndex: number = 0;
   private timer: any;
 
@@ -82,42 +82,40 @@ export class ShowpageComponent {
       this.nextImage();
     }, 5000);
   } 
-  
-    @HostListener('window:scroll', [])
-  onWindowScroll() {
-  
-    if ( this.vide) {
-      const triggerOffset = this.vide.offsetTop; /* Offset from the top to trigger the change */
 
-      if (window.scrollY >= triggerOffset) {
-        this.vide.classList.add('.Mydive');
-      } else {
-        this.vide.classList.remove('.vide');
-      }
+ 
+
+   isClass2Enabled = false;
+
+ 
+
+  @HostListener('window:scroll', [])
+  onScroll() {
+    const scrollPosition = window.scrollY;
+    const threshold = 120; // Adjust this value to your preference
+
+    this.isClass2Enabled = scrollPosition >= threshold;
+    if (scrollPosition >= 530) {
+      this.isClass2Enabled = !this.isClass2Enabled;
     }
   }
+ 
   
 
-  // to variabels
-
-
-
-  
+ 
 
   proj !: Projecto ;
 
 // ==   RATING ==
 
-selectedRating: string ='';
+selectedRating: string = '5'; // Default value, change it based on your requirement
 
-updateRating(target: EventTarget | null): string {
+updateRating(target: EventTarget | null): void {
   if (target instanceof HTMLInputElement) {
     this.selectedRating = target.value;
     console.log(this.selectedRating)
   }
-  return this.selectedRating;
 }
-
 
 
 
