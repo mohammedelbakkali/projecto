@@ -12,11 +12,44 @@ import { DialogInfoCompteComponent } from '../dialog-info-compte/dialog-info-com
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { DialogFaqMessageComponent } from '../dialog-faq-message/dialog-faq-message.component';
 import { FormsModule } from '@angular/forms';
+import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
+import { MatFormField } from '@angular/material/form-field';
+
+@Component({
+  selector: 'faq-form',
+  templateUrl: 'faq-form.html',
+  styleUrls: ['./register.component.scss'],
+  standalone: true,
+  imports: [MatInputModule,MatButtonModule],
+})
+export class FaqForm {
+  constructor() {}
+}
+@Component({
+  selector: 'faq-list',
+  templateUrl: 'faq-list.html',
+  styleUrls: ['./register.component.scss'],
+  standalone: true,
+  imports: [MdbAccordionModule],
+})
+export class FaqList {
+  constructor() {}
+}
+@Component({
+  selector: 'oauth',
+  templateUrl: 'oauth.html',
+  styleUrls: ['./register.component.scss'],
+  standalone: true,
+  imports: [MatButtonModule],
+})
+export class OAuth {
+  constructor() {}
+}
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule,ReactiveFormsModule,CommonModule,MatExpansionModule,MatInputModule,MatIconModule,ReactiveFormsModule,MatRadioModule,MatSelectModule,MatButtonModule,DialogInfoCompteComponent,DialogFaqMessageComponent],
+  imports: [OAuth,FaqList,FaqForm,MdbFormsModule, FormsModule,ReactiveFormsModule,CommonModule,MatExpansionModule,MatInputModule,MatIconModule,ReactiveFormsModule,MatRadioModule,MatSelectModule,MatButtonModule,DialogInfoCompteComponent,DialogFaqMessageComponent],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
@@ -53,3 +86,5 @@ export class RegisterComponent implements OnInit  {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 }
+
+
