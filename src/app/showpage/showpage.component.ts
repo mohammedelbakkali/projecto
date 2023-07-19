@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy,HostListener } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +10,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { RouterLink } from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { CategoryOfmodelComponent } from '../category-ofmodel/category-ofmodel.component';
+
 
 export interface Projecto{
   titel_project : string ;
@@ -23,7 +25,9 @@ export interface Projecto{
   prjt_hdrs: string [];
   description: string;
   ppl_targeted: string [] ;
+  rating : string;
 }
+
 
 
 @Component({
@@ -44,7 +48,7 @@ export interface Projecto{
 export class ShowpageComponent implements OnInit, OnDestroy {
   panelOpenState = false;
   mainImageUrl: String | undefined;
-  imageUrls: string[] = ['../../assets/images/test.jpg', '../../assets/images/paragliding-in-pokhara.jpg', '../../assets/images/sos.png','../../assets/images/t1.jpg'];
+  imageUrls: string [] = ['../../assets/images/test.jpg', '../../assets/images/paragliding-in-pokhara.jpg', '../../assets/images/sos.png','../../assets/images/t1.jpg'];
   currentIndex: number = 0;
   currentImageIndex: number = 0;
   interval: any;
@@ -83,24 +87,61 @@ export class ShowpageComponent implements OnInit, OnDestroy {
   onWindowScroll() {
   
     if ( this.vide) {
-      const triggerOffset = this.vide.offsetTop; /* Offset from the top to trigger the change */
+      const triggerOffset = this.vide.offsetTop; 
+    }/* Offset from the top to trigger the change */
+  }
 
-      if (window.scrollY >= triggerOffset) {
-        this.vide.classList.add('.Mydive');
-      } else {
-        this.vide.classList.remove('.vide');
-      }
+ 
+
+   isClass2Enabled = false;
+
+ 
+
+  @HostListener('window:scroll', [])
+  onScroll() {
+    const scrollPosition = window.scrollY;
+    const threshold = 120; // Adjust this value to your preference
+
+    this.isClass2Enabled = scrollPosition >= threshold;
+    if (scrollPosition >= 530) {
+      this.isClass2Enabled = !this.isClass2Enabled;
     }
   }
+ 
   
 
-  // to variabels
-
-
-
-  
+ 
 
   proj !: Projecto ;
+
+// ==   RATING ==
+
+selectedRating: string = '5'; // Default value, change it based on your requirement
+
+updateRating(target: EventTarget | null): void {
+  if (target instanceof HTMLInputElement) {
+    this.selectedRating = target.value;
+    console.log(this.selectedRating)
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   ngOnInit() {
     console.log('Component initialized.');
@@ -122,7 +163,9 @@ export class ShowpageComponent implements OnInit, OnDestroy {
 
   description :"If you're an office worker, student, administrator, or just want to become more productive with your computer, programming will allow you write code that can automate tedious tasks. This course follows the popular (and free!) book, Automate the Boring Stuff with Python. Automate the Boring Stuff with Python was written for people who want to get up to speed writing small programs that do practical tasks as soon as possible. You don't need to know sorting algorithms or object-oriented programming, so this course skips all the computer science and concentrates on writing code that gets stuff done. This course is for complete beginners and covers the popular Python programming language. You'll learn basic concepts as well as:Web scrapingParsing PDFs and Excel spreadsheetsAutomating the keyboard and mouse Sending emails and texts And several other practical topics By the end of this course, you'll be able to write code that not only dramatically increases your productivity, but also be able to list this fun and creative skill on your resume.",
 
-  ppl_targeted :['Office workers, students, small/home business workers, and administrators would want to improve their productivity.','Aspiring software engineers who want to add skills to their programming toolbelt.','Computer users who have heard the "learn to code" message, but want practical reasons to learn programming.','Experienced Python software engineers can skip the first half of the course, but may find the later parts that cover various third-party modules helpful.',"While this course doesn't cover specific devops tools, this course would be useful for QA, devops, and admins who want to learn scripting in Python"]
+  ppl_targeted :['Office workers, students, small/home business workers, and administrators would want to improve their productivity.','Aspiring software engineers who want to add skills to their programming toolbelt.','Computer users who have heard the "learn to code" message, but want practical reasons to learn programming.','Experienced Python software engineers can skip the first half of the course, but may find the later parts that cover various third-party modules helpful.',"While this course doesn't cover specific devops tools, this course would be useful for QA, devops, and admins who want to learn scripting in Python"],
+
+  rating : this.selectedRating
 
     }
   }
