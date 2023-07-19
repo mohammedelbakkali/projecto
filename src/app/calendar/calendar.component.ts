@@ -1,4 +1,4 @@
-import { Component , ChangeDetectorRef} from '@angular/core';
+import { Component , ChangeDetectorRef, TemplateRef} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -6,6 +6,9 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { CalendarOptions, DateSelectArg, EventClickArg, EventApi,EventInput } from '@fullcalendar/core';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
+import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import { Dialog } from '@angular/cdk/dialog';
 
 let eventGuid = 0;
 const TODAY_STR = new Date().toISOString().replace(/T.*$/, ''); // YYYY-MM-DD of today
@@ -37,7 +40,7 @@ export function createEventId() {
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [CommonModule,FullCalendarModule],
+  imports: [CommonModule,FullCalendarModule,MatButtonModule,MatDialogModule],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
@@ -73,7 +76,7 @@ export class CalendarComponent {
   };
   currentEvents: EventApi[] = [];
 
-  constructor(private changeDetector: ChangeDetectorRef) {
+  constructor(private changeDetector: ChangeDetectorRef, private dialog: MatDialog) {
   }
 
   handleCalendarToggle() {
@@ -103,6 +106,8 @@ export class CalendarComponent {
   }
 
   handleEventClick(clickInfo: EventClickArg) {
+  template :  = 
+  this.dialog.open('<button mat-raised-button>Open dialog without animation</button>' )
     if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
       clickInfo.event.remove();
     }
