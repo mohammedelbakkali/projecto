@@ -11,6 +11,7 @@ import { LayoutComponent } from './shared/layout/layout.component';
 import { ChartsOfprojectsComponent } from './dashboard/charts-ofprojects/charts-ofprojects.component';
 import { ProjectsComponent } from './dashboard/projects/projects.component';
 import { ForumComponent } from './forum/forum.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 const routes: Routes = [
@@ -59,12 +60,16 @@ const routes: Routes = [
         path:'forum',
         component:ForumComponent
       },
+      {
+       path:'cal',
+        component:CalendarComponent
+      },
 
 
       {
         path:"**",
         component:PageNotFoundComponent
-      },
+      }
     
      
     
