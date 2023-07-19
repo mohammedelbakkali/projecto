@@ -39,7 +39,7 @@
             </div>
           </div>
           <div class="image-section  col-md-5  order-md-2">
-            <img [src]="proj.image_src" alt="Image">
+            <img [@imageChange]="imageState" [src]="mainImageUrl" alt="Image">
           </div>
         </div>
        
@@ -51,7 +51,7 @@
      
         <div class="card  col-md-4   order-md-2" >
           <div class="card-image   ">
-            <img [src]="proj.image_src" alt="Image">
+            <img [@imageChange]="imageState" [src]="mainImageUrl" alt="Image">
           </div>
          
           <div class="button d-flex  justify-content-center py-3 align-content-center">
