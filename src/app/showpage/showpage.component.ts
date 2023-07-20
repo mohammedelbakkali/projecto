@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { RouterLink } from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CategoryOfmodelComponent } from '../category-ofmodel/category-ofmodel.component';
+import { CalendarComponent } from "../calendar/calendar.component";
 
 
 export interface Projecto{
@@ -30,11 +31,11 @@ export interface Projecto{
 
 
 @Component({
-  selector: 'app-showpage',
-  standalone: true,
-  imports: [CommonModule,RouterLink,MatTabsModule,MatExpansionModule,MatInputModule,MatIconModule,ReactiveFormsModule,MatRadioModule,MatSelectModule,MatButtonModule],
-  templateUrl: './showpage.component.html',
-  styleUrls: ['./showpage.component.scss'],
+    selector: 'app-showpage',
+    standalone: true,
+    templateUrl: './showpage.component.html',
+    styleUrls: ['./showpage.component.scss'],
+    imports: [CommonModule, RouterLink, MatTabsModule, MatExpansionModule, MatInputModule, MatIconModule, ReactiveFormsModule, MatRadioModule, MatSelectModule, MatButtonModule, CalendarComponent]
 })
 export class ShowpageComponent {
   panelOpenState = false;
