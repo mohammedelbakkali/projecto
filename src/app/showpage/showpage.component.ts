@@ -10,8 +10,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { RouterLink } from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { CategoryOfmodelComponent } from '../category-ofmodel/category-ofmodel.component';
+import {  ViewEncapsulation } from '@angular/core';
 import { CalendarComponent } from "../calendar/calendar.component";
+import { GanttComponent } from "../gantt/gantt.component";
 
 
 export interface Projecto{
@@ -43,7 +44,8 @@ export interface Projecto{
             transition('visible <=> hidden', animate('0.3s ease-out')),
         ]),
     ],
-    imports: [CommonModule, RouterLink, MatTabsModule, MatExpansionModule, MatInputModule, MatIconModule, ReactiveFormsModule, MatRadioModule, MatSelectModule, MatButtonModule, CalendarComponent]
+    encapsulation: ViewEncapsulation.None,
+    imports: [CommonModule, RouterLink, MatTabsModule, MatExpansionModule, MatInputModule, MatIconModule, ReactiveFormsModule, MatRadioModule, MatSelectModule, MatButtonModule, CalendarComponent, GanttComponent]
 })
 export class ShowpageComponent implements OnInit, OnDestroy {
   panelOpenState = false;
@@ -92,9 +94,9 @@ export class ShowpageComponent implements OnInit, OnDestroy {
   }
 
  
-
-   isClass2Enabled = false;
-
+  card = true;
+  card_1 = false;
+    card_2 = false;
  
 
   @HostListener('window:scroll', [])
@@ -102,9 +104,24 @@ export class ShowpageComponent implements OnInit, OnDestroy {
     const scrollPosition = window.scrollY;
     const threshold = 120; // Adjust this value to your preference
 
-    this.isClass2Enabled = scrollPosition >= threshold;
-    if (scrollPosition >= 530) {
-      this.isClass2Enabled = !this.isClass2Enabled;
+    if(scrollPosition <= 120){
+
+  this.card = true;
+  this.card_1 = false;
+    this.card_2 = false;
+
+    }
+
+    if( scrollPosition >= threshold){
+      this.card = false;
+      this.card_1 = true ;
+      this.card_2 = false;
+    }
+    if (scrollPosition >= 1300) {
+      this.card = false;
+      this.card_1 = true ;
+      this.card_2 = true
+    
     }
   }
  

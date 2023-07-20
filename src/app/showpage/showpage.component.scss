@@ -1,6 +1,6 @@
 .cont-head{
     width: 100vw;
-    height: auto;
+    height: 22rem;
 }
 
 .head-content {
@@ -38,36 +38,55 @@
     height: 100%;
   }
   
-  @media (max-width: 1100px) {
-    .head-content {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .card  {
-      display: none;
-    }
-    .card-1{
-      display: none;
-    }
 
-    .image-section {
-      display: block;
-      align-self: flex-start;
-      margin-top: 0;
-      margin-bottom: 10px;
-      padding: 15px 0;
-      background: none;
-      border: none;
-    }
-  
-    .order-md-1 {
-      order: 2;
-    }
-  
-    .order-md-2 {
-      order: 1;
-    }
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.head-content {
+  order: 1; /* Set the initial order to 1 (image-section has order 2) */
+}
+
+.image-section {
+  order: 2; /* Set the initial order to 2 (head-content has order 1) */
+}
+
+/* Add a media query for small screens (adjust the max-width as needed) */
+@media screen and (max-width: 1100px) {
+  .row {
+    flex-direction: column;
   }
+  .cont-head{
+    height: auto;
+  }
+  .order-md-1{
+    order: 2;
+  }
+  .order-md-2{
+    order: 1;
+  }
+
+
+  .image-section  {
+    display: flex;
+    max-width: 100%; /* Ensure the image scales down on small screens */
+    height: auto;
+       margin-bottom: 1rem;   /* Maintain the aspect ratio of the image */
+  }
+
+  .button {
+    order: 3; /* Place the button at the bottom */
+    text-align: center; /* Center the button on small screens */
+  }
+.card ,.card-1,.card_2{
+  display: none;
+}
+
+}
+
+
+
   
   .rating {
     display: flex;
@@ -115,26 +134,31 @@
 
 
 
+ .card-1 {
+   position:fixed;
+   top: 0;
+   right: 7rem;
+   background-color: #fff;
+   box-shadow: -10px 10px 30px -15px #000;
+   height: 100vh;
+    opacity: 1;
+ }
+ .card_2{
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
 
 .card {
   position: absolute;
   top: 9rem;
   right: 7rem;
   height: 100vh;
-    
-
-  transition: all 1s ease;
+  transition: 3s;
+  
+  transition: opacity 0.5s ease-out;
 }
 
-.card-1 {
-  position:fixed;
-  top: 1rem;
-  right: 7rem;
-  background-color: #fff;
-  box-shadow: -10px 10px 30px -15px #000;
-  opacity: 1;
-  transition: all 1s ease;
-}
+
 
 
 
@@ -174,4 +198,7 @@ li{
 .rating label:hover ~ label {
   color: #6f00ff;
   transition: color 0.3s;
+}
+.Chronogramme{
+  padding-top: 2rem;
 }

@@ -13,64 +13,19 @@
                 <h1>{{proj.titel_project}}</h1>
                 <p> {{proj.short_description}}</p>
               </div>
-              <div class="rating d-flex align-items-start">
-                <span class="mr-2">Rating</span>
-                <span class="d-flex align-content-center justify-content-center">
-                  <mat-icon>stars</mat-icon>
-                  <mat-icon>stars</mat-icon>
-                  <mat-icon>stars</mat-icon>
-                  <mat-icon>stars</mat-icon>
-                  <mat-icon>stars</mat-icon>
-                </span>
-                <span><a class="mx-2" routerLink="/show" href="#">({{proj.nbr_rate}} ratings)</a></span>
-              </div>
-              <div class="creators my-4">
-                <span class="">Created By: {{proj.creator}}</span>
-              </div>
-              <div class="more-info">
-                <span class="d-flex align-content-center my-1">
-                  <mat-icon>error_outline</mat-icon> {{proj.last_update}}
-                </span>
-                <span class="d-flex align-content-center my-1">
-                  <mat-icon>language</mat-icon> {{proj.language}}
-                </span>
-                <span class="d-flex align-content-center my-1">
-                  <mat-icon>subtitles</mat-icon>   <li *ngFor="let item of proj.sub_titels">{{ item }}</li>
-                </span>
-              </div>
             </div>
           </div>
           <div class="image-section  col-md-5  order-md-2">
             <img [@imageChange]="imageState" [src]="mainImageUrl" alt="Image">
           </div>
         </div>
-       
+      <div class="button  order-md-3  d-flex d-md-flex d-lg-none justify-content-center align-content-center">
+        <button type="button" style="width:60%;  font-size:1.1rem;" class="btn btn-primary">Use This Model</button>
       </div>
-      <div class="button   d-flex d-md-flex d-lg-none justify-content-center align-content-center">
-        <button type="button" style="width:60%;  font-size:1.1rem;"   class="btn btn-primary">Use This Model</button>
       </div>
+      
     
-     
-        <div class="card  col-md-4   order-md-2" >
-
-         
-          <div class="button d-flex  justify-content-center py-3 align-content-center">
-            <button type="button" style="width:70%;  font-size:1.1rem;"   class="btn btn-primary">Use This Model</button>
-          
-          </div>
-        
-        
-          <div class="costs">
-            <h1 style="padding: 5px 10px 0 10px; Font-size:1.2rem;">This course includes:</h1>
-            <ul class="costs-list d-block align-content-center">
-              <li class="d-flex align-content-center"> 	<mat-icon>play_circle_outline</mat-icon>   9.5 hours on-demand video</li>
-              <li> 	<mat-icon>play_for_work</mat-icon> 95 downloadable resources</li>
-              <li> 	<mat-icon>smartphone</mat-icon> Access on mobile and TV </li>
-              <li> <mat-icon>hourglass_empty</mat-icon> Full lifetime access</li>
-            </ul>
-          </div>   
-        </div> 
-    <div class="card col-md-4" [ngClass]="{'card-1': isClass2Enabled, 'card': !isClass2Enabled}"
+    <div class="card col-md-4" [ngClass]="{'card-1': card_1, 'card':card,'card_2':card_2}"
       (window:scroll)="onScroll()">
       <div class="card-image">
         <img [@imageChange]="imageState" [src]="mainImageUrl" alt="Image">
@@ -80,15 +35,35 @@
         <button type="button" style="width: 70%; font-size: 1.1rem;" class="btn btn-primary">Use This Model</button>
       </div>
     
-      <div class="costs">
-        <h1 style="padding: 5px 10px 0 10px; font-size: 1.2rem;">This course includes:</h1>
-        <ul class="costs-list d-block align-content-center">
-          <li class="d-flex align-content-center"><mat-icon>play_circle_outline</mat-icon> 9.5 hours on-demand video</li>
-          <li><mat-icon>play_for_work</mat-icon> 95 downloadable resources</li>
-          <li><mat-icon>smartphone</mat-icon> Access on mobile and TV</li>
-          <li><mat-icon>hourglass_empty</mat-icon> Full lifetime access</li>
-        </ul>
+      <div class="card-cont">
+        <div class="creators my-4">
+          <span class="">Created By: {{proj.creator}}</span>
+        </div>
+<div class="rating-sec">
+  <div class="rating">
+    <input [checked]="selectedRating === '5'" name="rating" id="star5" type="radio" value="5"
+      (change)="updateRating($event.target)">
+    <label for="star5"></label>
+    <input [checked]="selectedRating === '4'" name="rating" id="star4" type="radio" value="4"
+      (change)="updateRating($event.target)">
+    <label for="star4"></label>
+    <input [checked]="selectedRating === '3'" name="rating" id="star3" type="radio" value="3"
+      (change)="updateRating($event.target)">
+    <label for="star3"></label>
+    <input [checked]="selectedRating === '2'" name="rating" id="star2" type="radio" value="2"
+      (change)="updateRating($event.target)">
+    <label for="star2"></label>
+    <input [checked]="selectedRating === '1'" name="rating" id="star1" type="radio" value="1"
+      (change)="updateRating($event.target)">
+    <label for="star1"></label>
+  </div>
+</div>
       </div>
+
+
+
+
+
     </div>
 
      
@@ -134,20 +109,7 @@
    
   </div>
 </div>
-<div class="rating-sec">
-  <div class="rating" >
-    <input [checked]="selectedRating === '5'" name="rating" id="star5" type="radio" value="5" (change)="updateRating($event.target)">
-    <label for="star5"></label>
-    <input [checked]="selectedRating === '4'" name="rating" id="star4" type="radio" value="4" (change)="updateRating($event.target)">
-    <label for="star4"></label>
-    <input [checked]="selectedRating === '3'" name="rating" id="star3" type="radio" value="3" (change)="updateRating($event.target)">
-    <label for="star3"></label>
-    <input [checked]="selectedRating === '2'" name="rating" id="star2" type="radio" value="2" (change)="updateRating($event.target)">
-    <label for="star2"></label>
-    <input [checked]="selectedRating === '1'" name="rating" id="star1" type="radio" value="1" (change)="updateRating($event.target)">
-    <label for="star1"></label>
-  </div>
-</div>
+
 
 
 
@@ -155,7 +117,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="   col-md-12 border border-danger">
+    <div class="enjeux col-md-7">
       <h1>Enjeux</h1>
       <mat-accordion>
         <mat-expansion-panel  (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -229,11 +191,11 @@
     </div>
   </div>
 </div>
-<div class="container">
-
+<div class="container Chronogramme">
+<h1>Chronogramme</h1>
   <div class="row">
-    <div class="calendar col-md-12">
-      <app-calendar></app-calendar>
+    <div class="chronogram  col-md-6" id="chronogram">
+   <app-gantt></app-gantt>
     </div>
   </div>
 
