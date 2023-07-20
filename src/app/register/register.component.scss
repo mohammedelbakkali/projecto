@@ -24,7 +24,7 @@ display: block;
 text-align: center;
 justify-content: center;
 width: 100%;
-color: #b267fd;
+color: #6301e1;
 margin: 0;
 padding: 0;
 height: 50px;
@@ -65,9 +65,7 @@ height: 50px;
   background-color: white;
 }
 
-.text-divider{margin: 2em 0; line-height: 0; text-align: center;}
-.text-divider span{background-color: #ffffff; padding: 1em;}
-.text-divider:before{ content: " "; display: block; border-top: 1px solid #e3e3e3; border-bottom: 1px solid #f7f7f7;}
+
 
 .social-login-buttons {
   display: flex;
@@ -77,4 +75,17 @@ height: 50px;
 
 .social-login-buttons button {
   margin-bottom: 10px;
+}
+
+.fixed-form {
+  position: sticky;
+  top: 40px; /* Adjust this value to set the distance from the top */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a box shadow for the form */
+  padding: 20px;
+  top: 200px; 
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
