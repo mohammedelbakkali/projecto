@@ -7,7 +7,6 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
 import { RegisterComponent } from './register/register.component';
 import { CategoryPageComponent } from './category-page/category-page.component';
 import { ShowpageComponent } from './showpage/showpage.component';
-
 import { LayoutComponent } from './shared/layout/layout.component';
 import { ChartsOfprojectsComponent } from './dashboard/charts-ofprojects/charts-ofprojects.component';
 import { ProjectsComponent } from './dashboard/projects/projects.component';
