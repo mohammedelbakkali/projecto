@@ -41,7 +41,7 @@
             </div>
           </div>
           <div class="image-section  col-md-5  order-md-2">
-            <img [src]="proj.image_src" alt="Image">
+            <img [@imageChange]="imageState" [src]="mainImageUrl" alt="Image">
           </div>
         </div>
        
@@ -50,10 +50,30 @@
         <button type="button" style="width:60%;  font-size:1.1rem;"   class="btn btn-primary">Use This Model</button>
       </div>
     
+     
+        <div class="card  col-md-4   order-md-2" >
+
+         
+          <div class="button d-flex  justify-content-center py-3 align-content-center">
+            <button type="button" style="width:70%;  font-size:1.1rem;"   class="btn btn-primary">Use This Model</button>
+          
+          </div>
+        
+        
+          <div class="costs">
+            <h1 style="padding: 5px 10px 0 10px; Font-size:1.2rem;">This course includes:</h1>
+            <ul class="costs-list d-block align-content-center">
+              <li class="d-flex align-content-center"> 	<mat-icon>play_circle_outline</mat-icon>   9.5 hours on-demand video</li>
+              <li> 	<mat-icon>play_for_work</mat-icon> 95 downloadable resources</li>
+              <li> 	<mat-icon>smartphone</mat-icon> Access on mobile and TV </li>
+              <li> <mat-icon>hourglass_empty</mat-icon> Full lifetime access</li>
+            </ul>
+          </div>   
+        </div> 
     <div class="card col-md-4" [ngClass]="{'card-1': isClass2Enabled, 'card': !isClass2Enabled}"
       (window:scroll)="onScroll()">
       <div class="card-image">
-        <img [src]="proj.image_src" alt="Image">
+        <img [@imageChange]="imageState" [src]="mainImageUrl" alt="Image">
       </div>
     
       <div class="button d-flex justify-content-center py-3 align-content-center">
