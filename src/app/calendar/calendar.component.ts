@@ -26,6 +26,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { Dialog } from '@angular/cdk/dialog';
 import { CalDialogComponent } from './cal-dialog/cal-dialog.component';
+import { CalDialogDeleteComponent } from './cal-dialog-delete/cal-dialog-delete.component';
 
 export interface DialogData {
   name: string;
@@ -140,13 +141,18 @@ export class CalendarComponent {
   }
 
   handleEventClick(clickInfo: EventClickArg) {
-    if (
-      confirm(
-        `Are you sure you want to delete the event '${clickInfo.event.title}'`
-      )
-    ) {
-      clickInfo.event.remove();
-    }
+    const dialogRef= this.dialog.open(CalDialogDeleteComponent, {
+      width: '250px',
+      enterAnimationDuration:'25ms',
+      exitAnimationDuration:'25ms',
+      data:{
+        title:clickInfo.event.title
+      }
+    });
+    dialogRef.afterClosed().subscribe((result)=>{
+      if(result)
+ clickInfo.event.remove();
+    });
   }
 
   handleEvents(events: EventApi[]) {
