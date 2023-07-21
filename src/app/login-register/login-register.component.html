@@ -6,7 +6,7 @@
                     <div class="card-body p-4 text-center">
                         <div class="mb-md-2 mt-md-5 pb-5">
                             <p class="mb-2 display-6" style="color:#6301e1">Welcome to <strong>Projecto</strong></p>
-                            <p class="text-dark-50 mb-5 h6" style="color:#b267fd">Please enter your login and password! </p>
+                            <p class="text-dark-50 mb-5 h6" style="color:#6301e1">Please enter your login and password! </p>
                             <div class="example-container">
                                 <mat-form-field style="width: 80%; " appearance="outline">
                                     <mat-label>Enter your email</mat-label>
@@ -23,7 +23,8 @@
                                     <mat-icon class="icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>
                             </mat-form-field>
-                            <p class="small  pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+                            <p class="my-3"><a class="text-black-50 h6" href="#!" routerLink="/password-reset">
+                                <mat-icon style="padding-top: 3px">lock_open</mat-icon>Forgot password?</a></p>
                             <button mat-raised-button color="primary"
                                 style="font-size: 17px; width: 80%;height: 50px;">Login</button>
                         </div>
