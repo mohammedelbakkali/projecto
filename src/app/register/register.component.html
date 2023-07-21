@@ -1,10 +1,13 @@
 <div class="titel mt-5 d-block justify-content-center">
-  <p class="mb-3 display-6"><strong>Create your account</strong></p>
-  <mat-radio-group [(ngModel)]="selectedOption" aria-label="Type de compte" class="d-flex justify-content-center">
+  <p class="mb-3 display-6 text-primary"><strong>Create your account</strong></p>
+  <mat-radio-group [(ngModel)]="selectedOption" aria-label="Type de compte" class="d-flex justify-content-center  text-primary">
     <p class="mt-2 h5">Type of account : </p>
     <mat-radio-button color="primary" value="personel" checked="true">Personel</mat-radio-button>
     <mat-radio-button color="primary" value="entreprise">Entreprise</mat-radio-button>
     <app-dialog-info-compte></app-dialog-info-compte>
+    <button type="button" class="btn" (click)="scrollToTarget()">
+      <mat-icon color="primary">question_answer</mat-icon>
+    </button>
   </mat-radio-group>
 </div>
 <div class="container mt-5" style="margin-top: 6%;">
@@ -64,7 +67,7 @@
           </div>
         </section>
         <div class="titre d-flex justify-content-center mt-5">
-          <p class="mb-3 display-6" style="color: #b267fd;"><strong>FAQs</strong></p>
+          <p class="mb-3 display-6 text-primary"><strong>FAQs</strong></p>
         </div>
         <faq-list></faq-list>
       </aside>
@@ -75,7 +78,7 @@
     </div>
     <div class="col-md-5 border-left mt-5">
       <oauth></oauth>
-      <faq-form></faq-form>
+      <faq-form id="scrollTarget"></faq-form>
     </div>
   </div>
 </div>

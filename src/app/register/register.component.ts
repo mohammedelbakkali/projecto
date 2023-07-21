@@ -83,6 +83,13 @@ export class RegisterComponent implements OnInit  {
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
+
+  scrollToTarget() {
+    const targetElement = document.getElementById('scrollTarget');
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }
 
 
