@@ -10,6 +10,10 @@ import { ShowpageComponent } from './showpage/showpage.component';
 import { LayoutComponent } from './shared/layout/layout.component';
 import { ChartsOfprojectsComponent } from './dashboard/charts-ofprojects/charts-ofprojects.component';
 import { ProjectsComponent } from './dashboard/projects/projects.component';
+import { PageRecentOfdashComponent } from './dashboard/page-recent-ofdash/page-recent-ofdash.component';
+import { GanttChartComponent } from './gantt/gantt.component';
+import { InstanceOfprojectComponent } from './dashboard/instance-ofproject/instance-ofproject.component';
+import { SideBar2Component } from './shared/side-bar2/side-bar2.component';
 
 
 const routes: Routes = [
@@ -23,6 +27,9 @@ const routes: Routes = [
            }, {
             path:"show",
             component:ShowpageComponent
+          },{
+            path:"gantt",
+            component:GanttChartComponent
           }
         ]
                
@@ -34,13 +41,31 @@ const routes: Routes = [
       {
         path:"dash",
         component:DashboardComponent,
-        children:[{
+        children:[
+          {
+            path:"",
+            component:PageRecentOfdashComponent
+          },
+          {
           path:"charts",
           component:ChartsOfprojectsComponent
         },{
           path:"projects",
-          component:ProjectsComponent
-        }]
+          component:ProjectsComponent,
+          
+        },
+
+        {
+           path:"projects/:id",
+           component:InstanceOfprojectComponent,
+           children:[{
+            path:"",
+            component:ChartsOfprojectsComponent
+         }]
+   
+        }
+       
+      ]
       },
       //Login and Register Pages
       {
@@ -54,6 +79,9 @@ const routes: Routes = [
       {
         path:'category/:cat',
         component:CategoryPageComponent
+      },{
+        path:"side",
+        component:SideBar2Component
       },
 
       {
