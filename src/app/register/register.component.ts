@@ -28,9 +28,10 @@ export class FaqForm {
   templateUrl: 'faq-list.html',
   styleUrls: ['./register.component.scss'],
   standalone: true,
-  imports: [MdbAccordionModule],
+  imports: [MdbAccordionModule,MatExpansionModule],
 })
 export class FaqList {
+  panelOpenState = false;
   constructor() {}
 }
 @Component({

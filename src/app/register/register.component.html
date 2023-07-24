@@ -1,7 +1,7 @@
 <div class="titel mt-5 d-block justify-content-center">
   <p class="mb-3 display-6 text-primary"><strong>Create your account</strong></p>
   <mat-radio-group [(ngModel)]="selectedOption" aria-label="Type de compte" class="d-flex justify-content-center  text-primary">
-    <p class="mt-2 h5">Type of account : </p>
+    <p class="mt-2 h5 ">Type of account : </p>
     <mat-radio-button color="primary" value="personel" checked="true">Personel</mat-radio-button>
     <mat-radio-button color="primary" value="entreprise">Entreprise</mat-radio-button>
     <app-dialog-info-compte></app-dialog-info-compte>
@@ -12,7 +12,7 @@
 </div>
 <div class="container mt-5" style="margin-top: 6%;">
   <div class="row mb-5">
-    <div class="col-md-5">
+    <div class="col-md-6">
       <aside class="left-side">
         <section class=" ">
           <div class=" ">
@@ -66,21 +66,31 @@
             </div>
           </div>
         </section>
-        <div class="titre d-flex justify-content-center mt-5">
-          <p class="mb-3 display-6 text-primary"><strong>FAQs</strong></p>
-        </div>
-        <faq-list></faq-list>
       </aside>
     </div>
+    <div class="col-1 d-flex vh-80 mt-5">
+      <div class="vr"></div>
+    </div>
+    <div class="col-md-5 mt-5">
+      <oauth></oauth>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="titre d-flex justify-content-center mt-5">
+      <p class="mb-5 display-6 text-primary"><strong>FAQs</strong></p>
+    </div>
+    <div class="col-md-6">
     <!-- <h2 class="text-divider px-5"><span>Ou</span></h2> -->
+    <faq-list></faq-list>
+    </div>
     <div class="col-1 d-flex vh-80">
       <div class="vr"></div>
     </div>
-    <div class="col-md-5 border-left mt-5">
-      <oauth></oauth>
+    <div class="col-md-5">
       <faq-form id="scrollTarget"></faq-form>
     </div>
   </div>
+
 </div>
 
 
