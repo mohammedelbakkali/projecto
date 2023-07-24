@@ -13,6 +13,7 @@ import { ProjectsComponent } from './dashboard/projects/projects.component';
 import { ForumComponent } from './forum/forum.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { GanttComponent } from './gantt/gantt.component';
+import { TreeComponent } from './tree/tree.component';
 
 
 const routes: Routes = [
@@ -66,8 +67,13 @@ const routes: Routes = [
         component:CalendarComponent
       },
       {
+
       path:'gant',
       component:GanttComponent
+      },
+{
+       path:'tree',
+        component:TreeComponent      
       },
 
       {
