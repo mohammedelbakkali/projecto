@@ -19,16 +19,9 @@ export class TreeComponent implements OnInit{
 
   drawChart(): void {
     const data = new google.visualization.DataTable();
-    data.addColumn('string', 'Node'); // Updated column label to 'Node'
-    data.addColumn('string', 'Parent'); // Updated column label to 'Parent'
-    data.addColumn({type: 'string', role: 'tooltip'});
-    data.addColumn('string', 'Title'); // New column for 'Title'
-    data.addColumn('string', 'Description'); // New column for 'Description'
-    data.addColumn('string', 'Niveau'); // New column for 'Niveau'
-    data.addColumn('string', 'Indice'); // New column for 'Indice'
-    data.addColumn('string', 'Causes'); // New column for 'Causes'
-    data.addColumn('string', 'Consequences'); // New column for 'Consequences'
-    data.addColumn('string', 'Solution'); // New column for 'Solution'
+    data.addColumn('string', 'Node'); 
+    data.addColumn('string', 'Parent'); 
+    data.addColumn('string', 'Tooltip');
 
     const hikingTripProblems = {
       name: 'Hiking Trip',
@@ -160,33 +153,30 @@ export class TreeComponent implements OnInit{
     const flattenedTreeData = this.flattenTreeData(hikingTripProblems, null);
 
     for (const node of flattenedTreeData) {
-      const tooltipContent = `
-      <div style="font-weight:bold">${node.name}</div>
-      <div>${node.title}</div>
-      <div>Description: ${node.description}</div>
-      <div>Niveau: ${node.niveau}</div>
-      <div>Indice: ${node.indice}</div>
-      <div>Causes: ${node.causes}</div>
-      <div>Consequences: ${node.consequences}</div>
-      <div>Solution: ${node.solution}</div>
-    `;
+
       data.addRow([
         { v: node.name, f: `${node.name}<div style="color:red; font-style:italic">${node.title}</div>` },
         node.parent || '',
-        tooltipContent,
-        node.title, // Adding the 'Title' value to the DataTable row
-        node.description, // Adding the 'Description' value to the DataTable row
-        node.niveau, // Adding the 'Niveau' value to the DataTable row
-        node.indice, // Adding the 'Indice' value to the DataTable row
-        node.causes, // Adding the 'Causes' value to the DataTable row
-        node.consequences, // Adding the 'Consequences' value to the DataTable row
-        node.solution, // Adding the 'Solution' value to the DataTable row
+        `
+    <ul>
+    <li style="font-weight:bold">${node.name}</li>
+    <li>${node.title}</li>
+    <li>Description: ${node.description}</li>
+    <li>Niveau: ${node.niveau}</li>
+    <li>Indice: ${node.indice}</li>
+    <li>Causes: ${node.causes}</li>
+    <li>Consequences: ${node.consequences}</li>
+    <li>Solution: ${node.solution}</li>
+    </ul>
+  `
       ]);
     }
 
     const chart = new google.visualization.OrgChart(document.getElementById('orgChart'));
 
-    chart.draw(data, { 'allowHtml': true , 'allowCollapse': true ,'nodeClass': 'google-visualization-orgchart-node'});
+    chart.draw(data, {  tooltip: { isHtml: true},'allowHtml': true , 'allowCollapse': true ,'nodeClass': 'google-visualization-orgchart-node',theme: 'material',
+   
+  });
   }
 
   flattenTreeData(node: any, parent: string | null): any[] {
@@ -199,8 +189,7 @@ export class TreeComponent implements OnInit{
         flattenedData.push(...subProblemsData);
       }
     }
-    const tooltip = 'tooltip should show on hover'
-    flattenedData.push({ name, title, description, niveau, indice, causes, consequences, solution, parent, tooltip });
+    flattenedData.push({ name,parent, title, description, niveau, indice, causes, consequences, solution});
     return flattenedData;
   }
 }
