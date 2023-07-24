@@ -21,7 +21,7 @@ export class TreeComponent implements OnInit{
     const data = new google.visualization.DataTable();
     data.addColumn('string', 'Node'); // Updated column label to 'Node'
     data.addColumn('string', 'Parent'); // Updated column label to 'Parent'
-    data.addColumn('string', 'Tooltip'); // Updated column label to 'Tooltip'
+    data.addColumn({type: 'string', role: 'tooltip'});
     data.addColumn('string', 'Title'); // New column for 'Title'
     data.addColumn('string', 'Description'); // New column for 'Description'
     data.addColumn('string', 'Niveau'); // New column for 'Niveau'
@@ -160,10 +160,20 @@ export class TreeComponent implements OnInit{
     const flattenedTreeData = this.flattenTreeData(hikingTripProblems, null);
 
     for (const node of flattenedTreeData) {
+      const tooltipContent = `
+      <div style="font-weight:bold">${node.name}</div>
+      <div>${node.title}</div>
+      <div>Description: ${node.description}</div>
+      <div>Niveau: ${node.niveau}</div>
+      <div>Indice: ${node.indice}</div>
+      <div>Causes: ${node.causes}</div>
+      <div>Consequences: ${node.consequences}</div>
+      <div>Solution: ${node.solution}</div>
+    `;
       data.addRow([
         { v: node.name, f: `${node.name}<div style="color:red; font-style:italic">${node.title}</div>` },
         node.parent || '',
-        node.tooltip,
+        tooltipContent,
         node.title, // Adding the 'Title' value to the DataTable row
         node.description, // Adding the 'Description' value to the DataTable row
         node.niveau, // Adding the 'Niveau' value to the DataTable row
@@ -175,14 +185,13 @@ export class TreeComponent implements OnInit{
     }
 
     const chart = new google.visualization.OrgChart(document.getElementById('orgChart'));
-    chart.draw(data, { 'allowHtml': true });
+
+    chart.draw(data, { 'allowHtml': true , 'allowCollapse': true ,'nodeClass': 'google-visualization-orgchart-node'});
   }
 
   flattenTreeData(node: any, parent: string | null): any[] {
     const flattenedData: any[] = [];
     const { name, title, description, niveau, indice, causes, consequences, solution, subProblems } = node;
-    const tooltip = subProblems && subProblems.length > 0 ? 'Click to see sub-problems' : 'No sub-problems';
-    flattenedData.push({ name, title, description, niveau, indice, causes, consequences, solution, parent, tooltip });
 
     if (subProblems && subProblems.length > 0) {
       for (const subProblem of subProblems) {
@@ -190,7 +199,8 @@ export class TreeComponent implements OnInit{
         flattenedData.push(...subProblemsData);
       }
     }
-
+    const tooltip = 'tooltip should show on hover'
+    flattenedData.push({ name, title, description, niveau, indice, causes, consequences, solution, parent, tooltip });
     return flattenedData;
   }
 }
