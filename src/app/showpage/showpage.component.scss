@@ -53,7 +53,7 @@
 }
 
 /* Add a media query for small screens (adjust the max-width as needed) */
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1000px) {
   .row {
     flex-direction: column;
   }
@@ -67,6 +67,13 @@
     order: 1;
   }
 
+ .chronogram{
+    overflow-x: scroll;
+    overflow-y: scroll;
+    width :auto ;
+    max-height: 1000;
+    
+  }
 
   .image-section  {
     display: flex;
@@ -135,43 +142,84 @@
 
 
  .card-1 {
+ 
    position:fixed;
    top: 0;
    right: 7rem;
    background-color: #fff;
    box-shadow: -10px 10px 30px -15px #000;
-   height: 100vh;
+   height: auto;
+    width: 30%;
     opacity: 1;
+    border-radius: 0 0 1.3rem 1.3rem;
  }
+
  .card_2{
   opacity: 0;
   transition: opacity 0.5s ease-out;
 }
 
 .card {
+  
   position: absolute;
-  top: 9rem;
+  top: 10rem;
   right: 7rem;
   height: 100vh;
   transition: 3s;
-  
+  margin: top 1rem;
+  width: 30%;
   transition: opacity 0.5s ease-out;
+
+}
+.card-image {
+  height: 19rem; /* Set the fixed height for the card image container */
+  overflow: hidden; /* Hide any overflow from the image */
+}
+
+.image-card {
+  width: 100%; /* Ensure the image takes the full width of the container */
+  height: 100%; /* Ensure the image takes the full height of the container */
+  object-fit: fill; /* Maintain the aspect ratio while covering the container */
+}
+
+/* Optional: If you want to center the images horizontally, you can add the following CSS */
+.card-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-cont {
+  display: block; /* Set to block display */
+  text-align: center; /* Center the elements horizontally */
+  padding: 1rem;
+}
+
+/* Optionally, you can center the elements vertically within the card-cont */
+.card-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 
 
 
+.stat{
+  font-size: 1rem;
+  font-weight: 600;
+}
+.stats{
+  font-size: 1rem;
+  font-weight: 400;
 
-
-
-
+}
 
 
 li{
   list-style: none;
   margin-left: 3px;
 }
-
 
 .rating {
   display: inline-block;
@@ -182,7 +230,7 @@ li{
 }
 
 .rating label {
-  float: right;
+  float: right; /* Change 'float: right;' to 'float: left;' */
   cursor: pointer;
   color: #ccc;
   transition: color 0.3s;
@@ -199,6 +247,57 @@ li{
   color: #6f00ff;
   transition: color 0.3s;
 }
-.Chronogramme{
-  padding-top: 2rem;
-}
+
+
+
+
+  .card-image {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .card-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .button button {
+    width: 70%;
+    font-size: 1.1rem;
+  }
+
+ 
+
+  .creators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .creator-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+ 
+
+
+
+  .views,
+  .likes,
+  .usage,
+  .reviews {
+    margin-bottom: 5px;
+  }
