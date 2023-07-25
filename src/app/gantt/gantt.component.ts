@@ -42,7 +42,7 @@ export class GanttComponent {
 
 
     data.addRows([
-  ['2014Spring', 'abray', 'spring', new Date(2023, 2, 1), new Date(2023, 2, 4), null, 100, null],
+    ['2014Spring', 'abray', 'spring', new Date(2023, 2, 1), new Date(2023, 2, 4), null, 100, null],
     ['2014Summer', 'Summer 2014', 'summer', new Date(2023, 2, 5), new Date(2023, 2, 8), null, 100, null],
     ['2014Autumn', 'Autumn 2014', 'autumn', new Date(2023, 2, 9), new Date(2023, 2, 10), null, 100, null],
     ['2014Winter', 'Winter 2014', 'winter', new Date(2023, 2, 11), new Date(2023, 2, 16), null, 100, null],

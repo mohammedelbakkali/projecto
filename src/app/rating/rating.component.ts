@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+  import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,16 +9,11 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./rating.component.scss']
 })
 export class RatingComponent {
-     @Input() isReadOnly: boolean = false;
+  @Input() isReadOnly: boolean = false;
   @Input() totalRatings: number = 0;
-  @Input() currentRating: number ; // Set the default rating to 3
+  @Input() currentRating: number = 3; // Set the default rating to 3
   @Output() rated = new EventEmitter<number>();
   userSelectedRating: number = 0;
-  constructor(){
-    
-  }
-  
-
 
   updateRating(rating: number): void {
     if (!this.isReadOnly) {
@@ -38,6 +33,4 @@ export class RatingComponent {
   private calculateAverageRating(totalRatings: number, currentRating: number, newRating: number): number {
     return (totalRatings * currentRating + newRating) / (totalRatings + 1);
   }
-
-
 }
