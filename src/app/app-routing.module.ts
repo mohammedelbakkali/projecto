@@ -12,6 +12,7 @@ import { ChartsOfprojectsComponent } from './dashboard/charts-ofprojects/charts-
 import { ProjectsComponent } from './dashboard/projects/projects.component';
 import { ForumComponent } from './forum/forum.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { ObjectifResultComponent } from './objectif-result/objectif-result.component';
 
 
 const routes: Routes = [
@@ -63,9 +64,10 @@ const routes: Routes = [
       {
        path:'cal',
         component:CalendarComponent
+      },{
+        path: 'objectif',
+        component:ObjectifResultComponent
       },
-
-
       {
         path:"**",
         component:PageNotFoundComponent
