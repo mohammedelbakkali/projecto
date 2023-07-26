@@ -1,20 +1,28 @@
-<div class="rating-sec d-flex justify-content-start align-content-start">
-    <div class="rating p-1">
-        <span class="">Rating :</span>
-        <input [checked]="isReadOnly ? currentRating === 5 : userSelectedRating === 5" name="rating" id="star5"
-            type="radio" value="5" (click)="updateRating(5)">
-        <label for="star5"></label>
-        <input [checked]="isReadOnly ? currentRating === 4 : userSelectedRating === 4" name="rating" id="star4"
-            type="radio" value="4" (click)="updateRating(4)">
-        <label for="star4"></label>
-        <input [checked]="isReadOnly ? currentRating === 3 : userSelectedRating === 3" name="rating" id="star3"
-            type="radio" value="3" (click)="updateRating(3)">
-        <label for="star3"></label>
-        <input [checked]="isReadOnly ? currentRating === 2 : userSelectedRating === 2" name="rating" id="star2"
-            type="radio" value="2" (click)="updateRating(2)">
-        <label for="star2"></label>
-        <input [checked]="isReadOnly ? currentRating === 1 : userSelectedRating === 1" name="rating" id="star1"
-            type="radio" value="1" (click)="updateRating(1)">
-        <label for="star1"></label>
-    </div>
-</div>
+
+      <ng-container *ngIf="isReadOnly; else Reactive">
+                <ng-container *ngTemplateOutlet="readOnly"> </ng-container>
+      </ng-container>
+
+
+<ng-template #Reactive  >
+    <ng-container *ngTemplateOutlet="item ; context: { eta:'ractive' }"> </ng-container>
+</ng-template>
+
+<ng-template #readOnly  >
+    <ng-container *ngTemplateOutlet="item ; context: { eta:'readOnly' }"> </ng-container>
+</ng-template>
+
+
+
+
+<ng-template #item let-eta='eta'>
+        <div class="rating-sec d-flex justify-content-start  align-content-start">
+            <div class="rating  {{eta}}  p-1">
+                <span class=" ">Rating :</span>
+                <ng-container *ngFor="let o of Array.from({length:starToShwo});index as i ">
+                    <input (checked)="currentRating =  (i+1) " name="rating" id="star{{i+1}}"  (click)=" eta == 'ractive' ? updateRating(i+1): 1+1 " type="radio" [value]="i+1">
+                    <label for="star{{i+1}}"></label>
+                </ng-container>
+            </div>
+        </div>
+</ng-template>

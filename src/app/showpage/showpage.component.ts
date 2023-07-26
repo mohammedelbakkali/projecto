@@ -14,7 +14,8 @@ import {  ViewEncapsulation } from '@angular/core';
 import { CalendarComponent } from "../calendar/calendar.component";
 import { GanttComponent } from "../gantt/gantt.component";
 import {RatingComponent}  from "../rating/rating.component"
-
+import { TreeComponent } from '../tree/tree.component';
+import {MatTreeModule} from '@angular/material/tree';
 export interface Projecto{
   titel_project : string ;
   short_description : string;
@@ -55,7 +56,7 @@ export interface Projecto{
         ]),
     ],
     encapsulation: ViewEncapsulation.None,
-    imports: [CommonModule, RouterLink, MatTabsModule, MatExpansionModule, MatInputModule, MatIconModule, ReactiveFormsModule, MatRadioModule, MatSelectModule, MatButtonModule, CalendarComponent, GanttComponent, RatingComponent]
+    imports: [CommonModule,MatTreeModule, RouterLink, MatTabsModule, MatExpansionModule, MatInputModule, MatIconModule, ReactiveFormsModule, MatRadioModule, MatSelectModule, MatButtonModule, CalendarComponent, GanttComponent, RatingComponent,TreeComponent]
 })
 export class ShowpageComponent implements OnInit, OnDestroy {
   panelOpenState = false;
@@ -67,7 +68,7 @@ export class ShowpageComponent implements OnInit, OnDestroy {
   vide!: HTMLElement | null;
   imageState: 'visible' | 'hidden' = 'visible'; // Set the initial state to 'visible'
 
-
+ 
 
   ngOnDestroy() {
     this.stopImageSlider();
@@ -127,7 +128,7 @@ export class ShowpageComponent implements OnInit, OnDestroy {
       this.card_1 = true ;
       this.card_2 = false;
     }
-    if (scrollPosition >= 1500) {
+    if (scrollPosition >= 2800) {
       this.card = false;
       this.card_1 = true ;
       this.card_2 = true
@@ -187,7 +188,7 @@ export class ShowpageComponent implements OnInit, OnDestroy {
 
   ppl_targeted :['Office workers, students, small/home business workers, and administrators would want to improve their productivity.','Aspiring software engineers who want to add skills to their programming toolbelt.','Computer users who have heard the "learn to code" message, but want practical reasons to learn programming.','Experienced Python software engineers can skip the first half of the course, but may find the later parts that cover various third-party modules helpful.',"While this course doesn't cover specific devops tools, this course would be useful for QA, devops, and admins who want to learn scripting in Python"],
 
-  rating: 5,
+  rating: 3,
   views : 2999,
   likes:7000,
   usage : 3000,

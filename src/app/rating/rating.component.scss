@@ -19,12 +19,18 @@
   font-size: 30px;
 }
 
-.rating input:checked ~ label,
-.rating label:hover,
-.rating label:hover ~ label {
+.ractive input:checked ~ label,
+.ractive label:hover,
+.ractive label:hover ~ label {
   color: #6f00ff;
   transition: color 0.3s;
 }
+.readOnly input:checked ~ label {
+  color: #6f00ff;
+  transition: color 0.3s;
+}
+
+
 
 
 

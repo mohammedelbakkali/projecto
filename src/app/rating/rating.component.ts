@@ -11,7 +11,9 @@ import { CommonModule } from '@angular/common';
 export class RatingComponent {
   @Input() isReadOnly: boolean = false;
   @Input() totalRatings: number = 0;
-  @Input() currentRating: number = 3; // Set the default rating to 3
+    @Input() starToShwo: number = 5;
+   Array=Array
+  @Input() currentRating: number = 0; // Set the default rating to 3
   @Output() rated = new EventEmitter<number>();
   userSelectedRating: number = 0;
 
@@ -33,4 +35,10 @@ export class RatingComponent {
   private calculateAverageRating(totalRatings: number, currentRating: number, newRating: number): number {
     return (totalRatings * currentRating + newRating) / (totalRatings + 1);
   }
+
+
+ngOnInit() : void{
+    !this.isReadOnly ? this.currentRating =  0 : '';
+  
+}
 }

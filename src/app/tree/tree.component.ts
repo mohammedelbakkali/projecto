@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit,Renderer2, ElementRef  } from '@angular/core';
+import { Component, AfterViewInit,Renderer2, ElementRef, Input  } from '@angular/core';
 declare var google: any;
 @Component({
   selector: 'app-tree',
@@ -9,6 +9,7 @@ declare var google: any;
   styleUrls: ['./tree.component.scss']
 })
 export class TreeComponent implements AfterViewInit {
+  @Input() id_cont : any;
   ngOnInit(): void {
     google.charts.load('current', { packages: ['orgchart'] });
     google.charts.setOnLoadCallback(this.drawChart.bind(this));
@@ -23,7 +24,7 @@ export class TreeComponent implements AfterViewInit {
     data.addColumn('string', 'Parent');
     data.addColumn('string', 'Tooltip');
 
-    const hikingTripProblems = {
+ const hikingTripProblems = {
       name: 'Hiking Trip',
       title: 'Main Trip Problem',
       description: 'The main problem that occurred during the hiking trip.',
@@ -33,8 +34,121 @@ export class TreeComponent implements AfterViewInit {
       consequences: 'Lost direction, running low on supplies, and risk of injury.',
       solution: 'Use GPS devices, carry sufficient supplies, and follow trail markers.',
       subProblems: [
-    
-      ],
+        {
+          name: 'Lost Trail',
+          title: 'Lost the hiking trail',
+          description: 'Got off the designated trail and unable to find the way back.',
+          niveau: 'Moderate',
+          indice: '3',
+          causes: 'Confusing trail junctions and lack of visible markers.',
+          consequences: 'Potential delay in the trip and frustration.',
+          solution: 'Refer to the map and ask fellow hikers for directions.',
+          subProblems: [
+            {
+              name: 'No GPS Signal',
+              title: 'No GPS signal on the device',
+              description: 'GPS signal was unavailable on the navigation device.',
+              niveau: 'Low',
+              indice: '1',
+              causes: 'Obstacles like dense trees blocking satellite signals.',
+              consequences: 'Inability to rely on GPS navigation.',
+              solution: 'Move to an open area to regain GPS signal.',
+            },
+            {
+              name: 'No Trail Markers',
+              title: 'Missing trail markers',
+              description: 'Trail markers were not visible or missing along the route.',
+              niveau: 'High',
+              indice: '4',
+              causes: 'Vandalism or natural elements damaging markers.',
+              consequences: 'Difficulty in following the correct route.',
+              solution: 'Look for natural landmarks or use a compass to navigate.',
+            },
+            {
+              name: 'Confusing Trail Junctions',
+              title: 'Confusing trail junctions',
+              description: 'Encountered confusing intersections on the trail.',
+              niveau: 'Medium',
+              indice: '2',
+              causes: 'Poorly marked trail junctions and unclear directions.',
+              consequences: 'Taking the wrong path and getting off the route.',
+              solution: 'Review trail maps in advance and consult with experienced hikers.',
+            },
+          ]
+        },
+        {
+          name: 'Rainstorm',
+          title: 'Caught in a heavy rainstorm',
+          description: 'Encountered heavy rain and thunderstorm during the hike.',
+          niveau: 'High',
+          indice: '4',
+          causes: 'Unpredictable weather and lack of weather forecast.',
+          consequences: 'Wet gear, slippery trails, and increased risk of hypothermia.',
+          solution: 'Carry waterproof gear and check weather forecast before the hike.',
+        },
+        {
+          name: 'Injured',
+          title: 'Suffered a minor injury',
+          description: 'Experienced a minor injury like sprained ankle or cuts and scrapes.',
+          niveau: 'Moderate',
+          indice: '3',
+          causes: 'Uneven terrain and accidental slips.',
+          consequences: 'Pain and difficulty in continuing the hike.',
+          solution: 'Carry a first-aid kit and apply immediate treatment.',
+          subProblems: [
+            {
+              name: 'Sprained Ankle',
+              title: 'Sprained ankle',
+              description: 'Ankle sprain due to uneven terrain or misstep.',
+              niveau: 'Medium',
+              indice: '2',
+              causes: 'Stepping on uneven rocks or slippery surfaces.',
+              consequences: 'Swelling and inability to put weight on the ankle.',
+              solution: 'R.I.C.E (Rest, Ice, Compression, Elevation) and seek medical help if severe.',
+            },
+            {
+              name: 'Minor Cuts and Scrapes',
+              title: 'Minor cuts and scrapes',
+              description: 'Sustained minor cuts and scrapes from bushes or rocks.',
+              niveau: 'Low',
+              indice: '1',
+              causes: 'Brushing against sharp objects during the hike.',
+              consequences: 'Minor bleeding and discomfort.',
+              solution: 'Clean the wound and apply antiseptic cream or bandage.',
+            },
+          ]
+        },
+        {
+          name: 'Exhausted',
+          title: 'Feeling exhausted and fatigued',
+          description: 'Feeling extremely tired and fatigued during the hike.',
+          niveau: 'Medium',
+          indice: '2',
+          causes: 'Strenuous hiking activities and lack of adequate rest.',
+          consequences: 'Reduced energy levels and slower pace.',
+          solution: 'Take short breaks, stay hydrated, and eat nutritious snacks.',
+        },
+        {
+          name: 'Running Low on Water',
+          title: 'Running low on water supply',
+          description: 'Started to run out of drinking water during the hike.',
+          niveau: 'High',
+          indice: '4',
+          causes: 'Inadequate water supply and hot weather conditions.',
+          consequences: 'Dehydration and risk of heat-related illnesses.',
+          solution: 'Carry enough water and ration the supply during the hike.',
+        },
+        {
+          name: 'Unpredictable Weather',
+          title: 'Unpredictable weather conditions',
+          description: 'Weather conditions changed unexpectedly during the hike.',
+          niveau: 'Moderate',
+          indice: '3',
+          causes: 'Changing weather patterns and lack of real-time forecast.',
+          consequences: 'Difficulty in adapting to sudden weather changes.',
+          solution: 'Stay informed about weather updates and prepare for different conditions.',
+        },
+      ]
     };
 
 const flattenedTreeData = this.flattenTreeData(hikingTripProblems, null);
@@ -43,28 +157,13 @@ const flattenedTreeData = this.flattenTreeData(hikingTripProblems, null);
 
       data.addRow([
         { v: node.name, f: `${node.name}<div style="color:red; font-style:italic">${node.title}</div>` },
-        node.parent || '',
-        
-    this.renderer.createElement('div').innerHTML = `
-      <div style="color:red; font-style:italic">${node.title}</div>
-      <ul>
-        <li style="font-weight:bold">${node.name}</li>
-        <li>${node.title}</li>
-        <li>Description: ${node.description}</li>
-        <li>Niveau: ${node.niveau}</li>
-        <li>Indice: ${node.indice}</li>
-        <li>Causes: ${node.causes}</li>
-        <li>Consequences: ${node.consequences}</li>
-        <li>Solution: ${node.solution}</li>
-      </ul>
-    `
-  
+        node.parent || '',"Description"
 ]);
 }
   
     
 
-    const chart = new google.visualization.OrgChart(document.getElementById('orgChart'));
+    const chart = new google.visualization.OrgChart(document.getElementById(this.id_cont));
 
     chart.draw(data, {
       tooltip: { isHtml: true },

@@ -53,7 +53,7 @@
 }
 
 /* Add a media query for small screens (adjust the max-width as needed) */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1050px) {
   .row {
     flex-direction: column;
   }
@@ -66,8 +66,14 @@
   .order-md-2{
     order: 1;
   }
-
- .chronogram{
+ .chronogram {
+    overflow-x: scroll;
+    overflow-y: scroll;
+    width :auto ;
+    max-height: 1000;
+    
+  }
+  .arbre-prob{
     overflow-x: scroll;
     overflow-y: scroll;
     width :auto ;
@@ -92,9 +98,6 @@
 
 }
 
-
-
-  
   .rating {
     display: flex;
     align-items: start;

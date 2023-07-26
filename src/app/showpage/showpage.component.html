@@ -45,6 +45,7 @@
 <div class="rating-sec d-flex justify-content-start  align-content-start">
   <div class="rating p-1">
  <app-rating [currentRating]='proj.rating' [isReadOnly]="true"></app-rating>
+ 
   </div>
 </div>
 
@@ -192,16 +193,69 @@
       </mat-accordion>
 
     </div>
-  </div>
-  <div class="container Chronogramme my-4">
-    <h1>Chronogramme</h1>
-    <div class="row">
-      <div class="chronogram  col-md-7" id="chronogram">
-        <app-gantt class="chronogram"></app-gantt>
-      </div>
+    <div class="Chronogramme my-4 col-md-7">
+      <h1>Chronogramme</h1>
+     
+        <div class="chronogram  " id="chronogram">
+          <app-gantt class="chronogram"></app-gantt>
+        </div>
+      
+    
     </div>
-  
+ 
+
   </div>
 </div>
 
-<app-rating></app-rating>
+<div class="container arbres ">
+  <h1>Les arbres Problem/Solution</h1>
+
+  <div class="row">
+    <div class="col-md-7">
+      
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              arbre des Problems
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-tab-group>
+            <mat-tab label="First"> 
+              <div class="arbre-prob orgChart m-0 p-0 ">
+              <app-tree [id_cont]="'org2'"></app-tree>
+            </div>
+               </mat-tab>
+            <mat-tab label="Second"> 
+                
+               </mat-tab>
+            <mat-tab label="Third"> Content 3 </mat-tab>
+          </mat-tab-group>
+
+          <div class="arbre-prob orgChart m-0 p-0 ">
+            <app-tree [id_cont]="'org2'"></app-tree>
+          </div>
+          
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+
+    <div class="arbre-solution  col-md-7">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              arbre des Solutions
+            </mat-panel-title>
+           
+          </mat-expansion-panel-header>
+          <app-tree [id_cont]="'org1'"></app-tree>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+    </div>
+
+  </div>
+
+</div>
