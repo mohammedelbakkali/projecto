@@ -1,7 +1,7 @@
 export interface ActivityTask {
     RefTask: string;
     PhaseActivite:string;
-    Periode
+    TypePeriode:string; // avant pendant aprés
     PeriodePhaseMin:string;
     PeriodePhaseMax:string;
     PeriodeDemaragePreferientielleInf:number;
