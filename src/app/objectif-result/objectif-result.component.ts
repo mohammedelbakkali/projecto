@@ -23,6 +23,6 @@ export class ObjectifResultComponent {
   }
 
   hasResultAssocie= (_: number, node: ObjectifResult) => !!node.ResultatAssocie && node.ResultatAssocie.length > 0;
-  hasDescriptif = (_: number, node: ObjectifResult) => !!node.Descriptif ;
+
 }
 

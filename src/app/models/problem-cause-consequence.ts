@@ -12,5 +12,4 @@ export interface ProblemCauseConsequence {
     SousProbleme:ProblemCauseConsequence[];
     Consequence: ProblemCauseConsequence;
     Impact:ProblemCauseConsequence[];
-    Project:Project;
 }
