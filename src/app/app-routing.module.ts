@@ -12,11 +12,15 @@ import { ChartsOfprojectsComponent } from './dashboard/charts-ofprojects/charts-
 import { ProjectsComponent } from './dashboard/projects/projects.component';
 import { ForumComponent } from './forum/forum.component';
 import { CalendarComponent } from './calendar/calendar.component';
+
 import { GanttComponent } from './gantt/gantt.component';
 import { TreeComponent } from './tree/tree.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ConfirmationResetPasswordComponent } from './confirmation-reset-password/confirmation-reset-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+
+import { ObjectifResultComponent } from './objectif-result/objectif-result.component';
+
 
 
 const routes: Routes = [
@@ -68,7 +72,11 @@ const routes: Routes = [
       {
        path:'cal',
         component:CalendarComponent
+      },{
+        path: 'objectif',
+        component:ObjectifResultComponent
       },
+
       {
       path:'gant',
       component:GanttComponent
@@ -91,6 +99,7 @@ const routes: Routes = [
         path:'change-password',
          component:ChangePasswordComponent
        },
+
       {
         path:"**",
         component:PageNotFoundComponent
