@@ -25,7 +25,7 @@ body{
   overflow-x: hidden;
 }
 
-//========================================================================
+//===============================Scrolle=========================================
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -146,7 +146,7 @@ body{
   pointer-events: none;
 }
 .sidebar .nav-links li .sub-menu{
-  padding: 10px 6px 14px 80px;
+  padding: 10px 6px 14px 50px;
   margin-top: -4px;
   background: #1d1b31;
   display: none;
@@ -157,8 +157,7 @@ body{
 .sidebar .nav-links li .sub-menu a{
   color: #fff;
   font-size: 15px;
-
-  padding: 5px 0;
+  padding: 7px 0;
   white-space: nowrap;
   opacity: 0.6;
   transition: all 0.3s ease;
