@@ -2,27 +2,68 @@
   <!-- This is the tree node template for leaf nodes -->
   <!-- There is inline padding applied to this node using styles.
     This padding value depends on the mat-icon-button width. -->
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle [ngClass]="{ 'objectif': node.ObjectifOuResultat == 'Objectif', 'resultat': node.ObjectifOuResultat == 'Resultat'  }">
-      {{node.Titre}}<i style="margin-left: 15px;">{{node. GlobalOuSpecifique}}</i>
+  <mat-tree-node
+    *matTreeNodeDef="let node"
+    matTreeNodeToggle
+    [ngClass]="{
+      objectif: node.ObjectifOuResultat == 'Objectif',
+      resultat: node.ObjectifOuResultat == 'Resultat'
+    }"
+  >
+    <div class="node">
+      <!--in here is the top of the node title and details button-->
+      <div class="top-node">
+        {{ node.Titre
+        }}<i style="margin-left: 15px">{{ node.GlobalOuSpecifique }}</i>
+        <button mat-button color="primary" (click)="toggleDescription(node)">
+          Details
+        </button>
+      </div>
+
+        <div *ngIf="node.toggled" class="bottom-node">
+          {{ node.Descriptif }}
+        </div>
       
+    </div>
   </mat-tree-node>
   <!-- This is the tree node template for expandable nodes -->
   <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-      <div class="mat-tree-node" [ngClass]="{ 'objectif': node.ObjectifOuResultat == 'Objectif', 'resultat': node.ObjectifOuResultat == 'Resultat'  }">
-        <button mat-icon-button matTreeNodeToggle
-                [attr.aria-label]="'Toggle ' + node.Titre">
-          <mat-icon class="mat-icon-rtl-mirror">
-            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-          </mat-icon>
-        </button>
-        {{node.Titre}}<i style="margin-left: 15px;">{{node. GlobalOuSpecifique}}</i>
+    <div
+      class="mat-tree-node"
+      [ngClass]="{
+        objectif: node.ObjectifOuResultat == 'Objectif',
+        resultat: node.ObjectifOuResultat == 'Resultat'
+      }"
+    >
+      <button
+        mat-icon-button
+        matTreeNodeToggle
+        [attr.aria-label]="'Toggle ' + node.Titre"
+      >
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
+        </mat-icon>
+      </button>
+      <div class="node">
+        <!--in here is the top of the node title and details button-->
+        <div class="top-node">
+          {{ node.Titre
+          }}<i style="margin-left: 15px">{{ node.GlobalOuSpecifique }}</i>
+          <button mat-button color="primary" (click)="toggleDescription(node)">
+            Details
+          </button>
+        </div>
+  
+          <div *ngIf="node.toggled" class="bottom-node">
+            {{ node.Descriptif }}
+          </div>
+        
       </div>
-      <!-- There is inline padding applied to this div using styles.
+    </div>
+    <!-- There is inline padding applied to this div using styles.
           This padding value depends on the mat-icon-button width.  -->
-      <div [class.tree-invisible]="!treeControl.isExpanded(node)"
-          role="group">
-        <ng-container matTreeNodeOutlet></ng-container>
+    <div [class.tree-invisible]="!treeControl.isExpanded(node)" role="group">
+      <ng-container matTreeNodeOutlet></ng-container>
     </div>
   </mat-nested-tree-node>
 </mat-tree>
-

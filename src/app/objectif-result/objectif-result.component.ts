@@ -15,13 +15,17 @@ import {CdkAccordionModule} from '@angular/cdk/accordion';
   styleUrls: ['./objectif-result.component.scss']
 })
 export class ObjectifResultComponent {
+toggleDescription(node : any) {
+  node.toggled = !node.toggled;
+
+}
   @Input() data : ObjectifResult[]= this.ObjectifResultService.fetchData();
   @Input() child: string = "ResultatAssocie";
   treeControl = new NestedTreeControl<ObjectifResult>(node => node[this.child]);
   dataSource = new MatTreeNestedDataSource<ObjectifResult>();
 
   constructor(private ObjectifResultService : ObjectifResultService) {
-    this.dataSource.data =this.data;
+    this.dataSource.data =this.data.map((node) => ({ ...node, toggled: false }));
   }
 
   hasChild= (_: number, node: ObjectifResult) => !!node[this.child] && node[this.child].length > 0;
