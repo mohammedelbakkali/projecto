@@ -1,5 +1,3 @@
-import { Project } from "./project";
-
 export interface ProblemCauseConsequence {
     Type:string;
     Titre:string;

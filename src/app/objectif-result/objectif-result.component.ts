@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import { CommonModule } from '@angular/common';
 import {MatTreeNestedDataSource, MatTreeModule} from '@angular/material/tree';
@@ -15,14 +15,16 @@ import {CdkAccordionModule} from '@angular/cdk/accordion';
   styleUrls: ['./objectif-result.component.scss']
 })
 export class ObjectifResultComponent {
-  treeControl = new NestedTreeControl<ObjectifResult>(node => node.ResultatAssocie);
+  @Input() data : ObjectifResult[]= this.ObjectifResultService.fetchData();
+  @Input() child: string = "ResultatAssocie";
+  treeControl = new NestedTreeControl<ObjectifResult>(node => node[this.child]);
   dataSource = new MatTreeNestedDataSource<ObjectifResult>();
 
   constructor(private ObjectifResultService : ObjectifResultService) {
-    this.dataSource.data =this.ObjectifResultService.fetchData();
+    this.dataSource.data =this.data;
   }
 
-  hasResultAssocie= (_: number, node: ObjectifResult) => !!node.ResultatAssocie && node.ResultatAssocie.length > 0;
+  hasChild= (_: number, node: ObjectifResult) => !!node[this.child] && node[this.child].length > 0;
 
 }
 
