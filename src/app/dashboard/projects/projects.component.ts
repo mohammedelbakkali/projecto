@@ -19,6 +19,26 @@ interface Project {
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent {
+
+    
+  obj:any[]=[
+   {
+     label:"test2",
+     icone:"icone for test2",
+     url:"http://"
+  },{
+   label:"test2",
+   icone:"icone for test2",
+   url:"http://"
+},{
+ label:"test2",
+ icone:"icone for test275755757757575",
+ url:"http://"
+}
+ ]
+
+
+
    TABLE_OF_PROJECT :Project[] = [
      {  
      titre:"Best model of Marketing",
