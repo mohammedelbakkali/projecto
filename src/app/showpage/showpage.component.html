@@ -41,7 +41,7 @@
             </div>
           </div>
           <div class="image-section  col-md-5  order-md-2">
-            <img [src]="proj.image_src" alt="Image">
+            <img [@imageChange]="imageState" [src]="mainImageUrl" alt="Image">
           </div>
         </div>
        
@@ -52,9 +52,7 @@
     
      
         <div class="card  col-md-4   order-md-2" >
-          <div class="card-image   ">
-            <img [src]="proj.image_src" alt="Image">
-          </div>
+
          
           <div class="button d-flex  justify-content-center py-3 align-content-center">
             <button type="button" style="width:70%;  font-size:1.1rem;"   class="btn btn-primary">Use This Model</button>
@@ -72,6 +70,27 @@
             </ul>
           </div>   
         </div> 
+    <div class="card col-md-4" [ngClass]="{'card-1': isClass2Enabled, 'card': !isClass2Enabled}"
+      (window:scroll)="onScroll()">
+      <div class="card-image">
+        <img [@imageChange]="imageState" [src]="mainImageUrl" alt="Image">
+      </div>
+    
+      <div class="button d-flex justify-content-center py-3 align-content-center">
+        <button type="button" style="width: 70%; font-size: 1.1rem;" class="btn btn-primary">Use This Model</button>
+      </div>
+    
+      <div class="costs">
+        <h1 style="padding: 5px 10px 0 10px; font-size: 1.2rem;">This course includes:</h1>
+        <ul class="costs-list d-block align-content-center">
+          <li class="d-flex align-content-center"><mat-icon>play_circle_outline</mat-icon> 9.5 hours on-demand video</li>
+          <li><mat-icon>play_for_work</mat-icon> 95 downloadable resources</li>
+          <li><mat-icon>smartphone</mat-icon> Access on mobile and TV</li>
+          <li><mat-icon>hourglass_empty</mat-icon> Full lifetime access</li>
+        </ul>
+      </div>
+    </div>
+
      
 </div>
 <div class="container">
@@ -117,18 +136,96 @@
 </div>
 <div class="rating-sec">
   <div class="rating" >
-    <input [value]="5" name="rating" id="star5" type="radio" (change)="updateRating($event.target)">
+    <input [checked]="selectedRating === '5'" name="rating" id="star5" type="radio" value="5" (change)="updateRating($event.target)">
     <label for="star5"></label>
-    <input [value]="4" name="rating" id="star4" type="radio" (change)="updateRating($event.target)">
+    <input [checked]="selectedRating === '4'" name="rating" id="star4" type="radio" value="4" (change)="updateRating($event.target)">
     <label for="star4"></label>
-    <input [value]="3" name="rating" id="star3" type="radio" (change)="updateRating($event.target)">
+    <input [checked]="selectedRating === '3'" name="rating" id="star3" type="radio" value="3" (change)="updateRating($event.target)">
     <label for="star3"></label>
-    <input [value]="2" name="rating" id="star2" type="radio" (change)="updateRating($event.target)">
+    <input [checked]="selectedRating === '2'" name="rating" id="star2" type="radio" value="2" (change)="updateRating($event.target)">
     <label for="star2"></label>
-    <input [value]="1" name="rating" id="star1" type="radio" (change)="updateRating($event.target)">
+    <input [checked]="selectedRating === '1'" name="rating" id="star1" type="radio" value="1" (change)="updateRating($event.target)">
     <label for="star1"></label>
   </div>
 </div>
 
 
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="   col-md-12 border border-danger">
+      <h1>Enjeux</h1>
+      <mat-accordion>
+        <mat-expansion-panel  (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              This is the expansion title
+            </mat-panel-title>
+            <mat-panel-description>
+              This is a summary of the content
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>This is the primary content of the panel.</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Self aware panel
+            </mat-panel-title>
+            <mat-panel-description>
+              Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>I'm visible because I am open</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel  (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              This is the expansion title
+            </mat-panel-title>
+            <mat-panel-description>
+              This is a summary of the content
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>This is the primary content of the panel.</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Self aware panel
+            </mat-panel-title>
+            <mat-panel-description>
+              Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>I'm visible because I am open</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel  (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              This is the expansion title
+            </mat-panel-title>
+            <mat-panel-description>
+              This is a summary of the content
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>This is the primary content of the panel.</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Self aware panel
+            </mat-panel-title>
+            <mat-panel-description>
+              Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>I'm visible because I am open</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+    </div>
+  </div>
 </div>

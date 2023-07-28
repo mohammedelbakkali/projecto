@@ -9,8 +9,8 @@ import { CategoryPageComponent } from './category-page/category-page.component';
 import { ShowpageComponent } from './showpage/showpage.component';
 import { LayoutComponent } from './shared/layout/layout.component';
 import { ProjectsComponent } from './dashboard/projects/projects.component';
+
 import { PageRecentOfdashComponent } from './dashboard/page-recent-ofdash/page-recent-ofdash.component';
-import { GanttChartComponent } from './gantt/gantt.component';
 import { InstanceOfprojectComponent } from './dashboard/instance-ofproject/instance-ofproject.component';
 import { SideBar2Component } from './shared/side-bar2/side-bar2.component';
 import { ChartsOfprojectsComponent } from './dashboard/contentOfProject/charts-ofprojects/charts-ofprojects.component';
@@ -21,6 +21,10 @@ import { TasksComponent } from './dashboard/gestions/activites/tasks/tasks.compo
 import { FinanciereComponent } from './dashboard/gestions/activites/financiere/financiere.component';
 import { RisquesComponent } from './dashboard/gestions/activites/risques/risques.component';
 import { ActiviteComponent } from './dashboard/gestions/activites/activite/activite.component';
+
+import { ForumComponent } from './forum/forum.component';
+import { CalendarComponent } from './calendar/calendar.component';
+
 
 
 const routes: Routes = [
@@ -34,9 +38,6 @@ const routes: Routes = [
            }, {
             path:"show",
             component:ShowpageComponent
-          },{
-            path:"gantt",
-            component:GanttChartComponent
           }
         ]
                
@@ -79,9 +80,22 @@ const routes: Routes = [
         path:'category/:cat',
         component:CategoryPageComponent
       },{
+
         path:"side",
         component:SideBar2Component
+
+      
+      },{
+
+        path:'forum',
+        component:ForumComponent
+
       },
+      {
+       path:'cal',
+        component:CalendarComponent
+      },
+
 
       {
         path:"dash/projects/:id",
@@ -121,7 +135,7 @@ const routes: Routes = [
       {
         path:"**",
         component:PageNotFoundComponent
-      },
+      }
     
      
     

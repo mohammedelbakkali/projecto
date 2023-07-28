@@ -6,7 +6,6 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ChartsComponent } from "../shared/charts/charts.component";
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { GanttChartComponent } from "../gantt/gantt.component";
 import {MatTabsModule} from '@angular/material/tabs';
 import { SideOfDashboardComponent } from "./side-of-dashboard/side-of-dashboard.component";
 import { HeaderOfDashboardComponent } from "./header-of-dashboard/header-of-dashboard.component";
@@ -16,7 +15,7 @@ import { HeaderOfDashboardComponent } from "./header-of-dashboard/header-of-dash
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
     standalone: true,
-    imports: [RouterOutlet, MatTabsModule, CommonModule, CardComponent, MatIconModule, MatButtonModule, SideBarComponent, ChartsComponent, RouterLink, GanttChartComponent, SideOfDashboardComponent, HeaderOfDashboardComponent]
+    imports: [RouterOutlet, MatTabsModule, CommonModule, CardComponent, MatIconModule, MatButtonModule, SideBarComponent, ChartsComponent, RouterLink, SideOfDashboardComponent, HeaderOfDashboardComponent]
 })
 export class DashboardComponent  implements AfterViewInit {
 

@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,6 +9,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterLink } from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CategoryOfmodelComponent } from '../category-ofmodel/category-ofmodel.component';
 
 
@@ -35,87 +36,93 @@ export interface Projecto{
   imports: [CommonModule,RouterLink,MatTabsModule,MatExpansionModule,MatInputModule,MatIconModule,ReactiveFormsModule,MatRadioModule,MatSelectModule,MatButtonModule],
   templateUrl: './showpage.component.html',
   styleUrls: ['./showpage.component.scss'],
+  animations: [
+    trigger('imageChange', [
+      state('visible', style({ transform: 'scale(1)', opacity: 1 })),
+      state('hidden', style({ transform: 'scale(0.8)', opacity: 0 })),
+      transition('visible <=> hidden', animate('0.3s ease-out')),
+    ]),
+  ],
+  
 })
-export class ShowpageComponent {
+export class ShowpageComponent implements OnInit, OnDestroy {
   panelOpenState = false;
   mainImageUrl: String | undefined;
-  imageUrls: string[] = ['../../assets/images/test.jpg', '../../assets/images/paragliding-in-pokhara.jpg', '../../assets/images/sos.png','../../assets/images/t1.jpg'];
+  imageUrls: string [] = ['../../assets/images/test.jpg', '../../assets/images/paragliding-in-pokhara.jpg', '../../assets/images/sos.png','../../assets/images/t1.jpg'];
   currentIndex: number = 0;
-  private timer: any;
-
- 
+  currentImageIndex: number = 0;
+  interval: any;
   vide!: HTMLElement | null;
+  imageState: 'visible' | 'hidden' = 'visible'; // Set the initial state to 'visible'
 
 
-
-  displayImage(imageUrl: string) {
-    this.mainImageUrl = imageUrl;
-    this.currentIndex = this.imageUrls.indexOf(imageUrl);
-  }
-
-  previousImage() {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-    } else {
-      this.currentIndex = this.imageUrls.length - 1;
-    }
-    this.mainImageUrl = this.imageUrls[this.currentIndex];
-  }
-
-  nextImage() {
-    if (this.currentIndex < this.imageUrls.length - 1) {
-      this.currentIndex++;
-    } else {
-      this.currentIndex = 0;
-    }
-    this.mainImageUrl = this.imageUrls[this.currentIndex];
-  }
-
- 
 
   ngOnDestroy() {
-    clearInterval(this.timer);
+    this.stopImageSlider();
+
+  }
+  startImageSlider() {
+    this.mainImageUrl = this.imageUrls[this.currentImageIndex];
+    setInterval(() => {
+      this.showNextImage();
+    }, 6000);
   }
 
-  startAutoSlide() {
-    this.timer = setInterval(() => {
-      this.nextImage();
-    }, 5000);
-  } 
+
+  stopImageSlider() {
+    clearInterval(this.interval);
+  }
+
+  showNextImage() {
+    this.currentIndex = (this.currentIndex + 1) % this.imageUrls.length;
+    this.mainImageUrl = this.imageUrls[this.currentIndex];
+    this.imageState = 'hidden'; 
+    setTimeout(() => {
+      this.imageState = 'visible'; 
+    }, 100); 
+  }
+
   
     @HostListener('window:scroll', [])
   onWindowScroll() {
   
     if ( this.vide) {
-      const triggerOffset = this.vide.offsetTop; /* Offset from the top to trigger the change */
+      const triggerOffset = this.vide.offsetTop; 
+    }/* Offset from the top to trigger the change */
+  }
 
-      if (window.scrollY >= triggerOffset) {
-        this.vide.classList.add('.Mydive');
-      } else {
-        this.vide.classList.remove('.vide');
-      }
+ 
+
+   isClass2Enabled = false;
+
+ 
+
+  @HostListener('window:scroll', [])
+  onScroll() {
+    const scrollPosition = window.scrollY;
+    const threshold = 120; // Adjust this value to your preference
+
+    this.isClass2Enabled = scrollPosition >= threshold;
+    if (scrollPosition >= 530) {
+      this.isClass2Enabled = !this.isClass2Enabled;
     }
   }
+ 
   
 
-  // to variabels
-
-
-
-  
+ 
 
   proj !: Projecto ;
 
 // ==   RATING ==
 
-selectedRating: string ='';
+selectedRating: string = '5'; // Default value, change it based on your requirement
 
-updateRating(target: EventTarget | null): string {
+updateRating(target: EventTarget | null): void {
   if (target instanceof HTMLInputElement) {
     this.selectedRating = target.value;
     console.log(this.selectedRating)
   }
-  return this.selectedRating;
 }
 
 
@@ -136,12 +143,12 @@ updateRating(target: EventTarget | null): string {
 
 
 
-
   ngOnInit() {
+    console.log('Component initialized.');
+
     // Set a default image URL here if needed
     this.vide = document.querySelector('.vide') as HTMLElement;
-    this.mainImageUrl = '../../assets/images/paragliding_mountains_sport_parachute_paraglider_adventure_freedom_summer-571285.jpg';
-    this.startAutoSlide();
+    this.startImageSlider();
 
     this.proj ={
       titel_project :"Machine Learning A-Z™: AI, Python & R + ChatGPT Bonus [2023]Machine Learning A-Z™: AI, Python & R + ChatGPT Bonus [2023]",
@@ -151,7 +158,7 @@ updateRating(target: EventTarget | null): string {
   last_update :"7/23",
   language:"English",
   sub_titels : ['English ' , ' Arabic'],
-  image_src : "../../assets/images/sos.png",
+  image_src : this.imageUrls[0],
   prjt_hdrs : ["Automate tasks on their computer by writing simple Python programs","Programmatically generate and update Excel spreadsheets","Crawl web sites and pull information from online sources","Write programs that can do text pattern recognition with 'regular expressions'","Parse PDFs and Word documents","Write programs that send out email notifications","Programmatically control the mouse and keyboard to click and type for you."],
 
   description :"If you're an office worker, student, administrator, or just want to become more productive with your computer, programming will allow you write code that can automate tedious tasks. This course follows the popular (and free!) book, Automate the Boring Stuff with Python. Automate the Boring Stuff with Python was written for people who want to get up to speed writing small programs that do practical tasks as soon as possible. You don't need to know sorting algorithms or object-oriented programming, so this course skips all the computer science and concentrates on writing code that gets stuff done. This course is for complete beginners and covers the popular Python programming language. You'll learn basic concepts as well as:Web scrapingParsing PDFs and Excel spreadsheetsAutomating the keyboard and mouse Sending emails and texts And several other practical topics By the end of this course, you'll be able to write code that not only dramatically increases your productivity, but also be able to list this fun and creative skill on your resume.",
