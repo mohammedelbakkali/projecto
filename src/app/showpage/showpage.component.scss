@@ -73,7 +73,14 @@
     max-height: 1000;
     
   }
-  .arbre-prob{
+    .arbre-prob{
+    overflow-x: scroll;
+    overflow-y: scroll;
+    width :auto ;
+    max-height: 1000;
+    
+  }
+  .arbre-solution{
     overflow-x: scroll;
     overflow-y: scroll;
     width :auto ;
@@ -304,3 +311,6 @@ li{
   .reviews {
     margin-bottom: 5px;
   }
+
+  //causes 
+  

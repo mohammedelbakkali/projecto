@@ -1,25 +1,21 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatListModule } from '@angular/material/list';
 import { TreeComponent } from '../tree/tree.component';
-import {NestedTreeControl} from '@angular/cdk/tree';
 import { MatButtonModule } from '@angular/material/button';
-
-import {MatTreeModule, MatTreeNestedDataSource} from '@angular/material/tree';
+import { MatTreeModule, MatTreeNestedDataSource } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { ProblemCauseConsequenceService } from '../services/problem-cause-consequence.service';
 import { ProblemCauseConsequence } from '../models/problem-cause-consequence';
-import {MatListModule} from '@angular/material/list';
-
-
+import { NestedTreeControl } from '@angular/cdk/tree';
 @Component({
-  selector: 'app-activity-task',
+  selector: 'app-sequence',
   standalone: true,
   imports: [CommonModule,MatListModule,TreeComponent,MatTreeModule,MatButtonModule,MatIconModule],
-  templateUrl: './activity-task.component.html',
-  styleUrls: ['./activity-task.component.scss']
+  templateUrl: './sequence.component.html',
+  styleUrls: ['./sequence.component.scss']
 })
-export class ActivityTaskComponent {
-
+export class SequenceComponent {
 
 treeControl = new NestedTreeControl<ProblemCauseConsequence>(node => node.Causes);
   dataSource = new MatTreeNestedDataSource<ProblemCauseConsequence>();
@@ -31,27 +27,16 @@ listCause :any = [];
    this.listCause = this.filterCause();
   }
   
-  filterCause() {
-    const lengthOfCause = this.objOfcause[0].Causes.length;
-     for(let i = 0 ; i<= lengthOfCause;i++){
-   //  this.listCause.push(this.objOfcause[0].Causes[i].Titre) ;
-   if(this.objOfcause[0].Causes[i].Type == 'Cause'){
+ filterCause(): ProblemCauseConsequence[] {
+  const causes = this.objOfcause[0].Causes;
+  const consequences: ProblemCauseConsequence[] = [];
 
-   return this.objOfcause[0].Causes;
-   }
-     }
-    
-
+  for (const cause of causes) {
+    if (cause.Consequence && cause.Consequence.Type === 'Consequence') {
+      consequences.push(cause.Consequence);
+    }
   }
 
- 
-
-
-
-
-
-
-
-
-
+  return consequences;
+}
 }

@@ -15,7 +15,13 @@ import { CalendarComponent } from "../calendar/calendar.component";
 import { GanttComponent } from "../gantt/gantt.component";
 import {RatingComponent}  from "../rating/rating.component"
 import { TreeComponent } from '../tree/tree.component';
-import {MatTreeModule} from '@angular/material/tree';
+import {NestedTreeControl} from '@angular/cdk/tree';
+
+import {MatTreeModule, MatTreeNestedDataSource} from '@angular/material/tree';
+import { ActivityTaskComponent } from "../activity-task/activity-task.component";
+import { SequenceComponent } from '../sequence/sequence.component';
+import { HypotheseComponent } from '../hypothese/hypothese.component';
+
 export interface Projecto{
   titel_project : string ;
   short_description : string;
@@ -41,8 +47,6 @@ export interface Projecto{
   
 }
 
-
-
 @Component({
     selector: 'app-showpage',
     standalone: true,
@@ -56,7 +60,7 @@ export interface Projecto{
         ]),
     ],
     encapsulation: ViewEncapsulation.None,
-    imports: [CommonModule,MatTreeModule, RouterLink, MatTabsModule, MatExpansionModule, MatInputModule, MatIconModule, ReactiveFormsModule, MatRadioModule, MatSelectModule, MatButtonModule, CalendarComponent, GanttComponent, RatingComponent,TreeComponent]
+    imports: [CommonModule,HypotheseComponent, MatTreeModule,SequenceComponent, RouterLink, MatTabsModule, MatExpansionModule, MatInputModule, MatIconModule, ReactiveFormsModule, MatRadioModule, MatSelectModule, MatButtonModule, CalendarComponent, GanttComponent, RatingComponent, TreeComponent, ActivityTaskComponent]
 })
 export class ShowpageComponent implements OnInit, OnDestroy {
   panelOpenState = false;
@@ -68,7 +72,38 @@ export class ShowpageComponent implements OnInit, OnDestroy {
   vide!: HTMLElement | null;
   imageState: 'visible' | 'hidden' = 'visible'; // Set the initial state to 'visible'
 
- 
+ //causes-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   ngOnDestroy() {
     this.stopImageSlider();

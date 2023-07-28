@@ -50,8 +50,8 @@ export class GanttComponent {
     ['2015Summer', 'Summer 2015', 'summer', new Date(2023, 3, 1), new Date(2023, 3, 10), null, 75, null],
     ['2015Autumn', 'Autumn 2015', 'autumn', new Date(2023, 3, 11), new Date(2023, 3, 20), null, 80, null],
     ['2015Winter', 'Winter 2015', 'winter', new Date(2023, 3, 21), new Date(2023, 3, 30), null, 90, null],
-
     ]);
+    
  const rowCount = this.getRowCount(data);
    
   const options = {
