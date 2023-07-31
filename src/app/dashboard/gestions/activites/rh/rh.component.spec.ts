@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GanttComponent } from './gantt.component';
+import { RHComponent } from './rh.component';
 
-describe('GanttComponent', () => {
-  let component: GanttComponent;
-  let fixture: ComponentFixture<GanttComponent>;
+describe('RHComponent', () => {
+  let component: RHComponent;
+  let fixture: ComponentFixture<RHComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ GanttComponent ]
+      imports: [ RHComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GanttComponent);
+    fixture = TestBed.createComponent(RHComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

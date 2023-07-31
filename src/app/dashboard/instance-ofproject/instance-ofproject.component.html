@@ -1,0 +1,229 @@
+
+<!-- <app-side-of-dashboard [getData]="obj"></app-side-of-dashboard> -->
+
+<div class="sidebar close">
+  <div class="logo-details">
+    <i class='bx bx-menu'></i>
+    
+  </div>
+
+
+
+  <ul class="nav-links">
+    <li>
+      <a href="/dash/projects/5">
+        <i class='bx bx-grid-alt' ></i>
+        <span class="link_name">Info general</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Chart</a></li>
+      </ul>
+    </li>
+    <li>
+
+      <div class="iocn-link">
+        <a routerLink="gestion-activite">
+      
+          <i class="bi bi-clipboard2-data-fill"></i>
+          <span class="link_name">Gestion d'activités</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow' ></i>
+      </div>
+      <ul class="sub-menu" >
+        <li><a class="link_name" routerLink="gestion-activite"><span class="bi bi-clipboard2-data-fill mx-2"></span>Gestion d'activités</a></li>
+        <li><a routerLink="gestion-activite/tasks"><span class="bi bi-hourglass-split mx-2"></span>Gestion des tâches </a></li>
+        <li><a routerLink="gestion-activite/rh"><span class="bi bi-people-fill mx-2"></span>Gestion des RH</a></li>
+        <li><a routerLink="gestion-activite/financiere"><span class="bi bi-cash-coin mx-2"></span> Gestion financière</a></li>
+        <li><a routerLink="gestion-activite/financiere"><span class="bi bi-box-seam-fill mx-2"></span> Gestion des livrables</a></li>
+        <li><a routerLink="gestion-activite/financiere"><span class="bi bi-repeat mx-2"></span> Gestion suivi et pilotage</a></li>
+        <li><a routerLink="gestion-activite/risques"><span class="bi bi-browser-safari mx-2"></span>Gestion des risques</a></li>
+      </ul>
+    </li>
+
+
+    <li>
+      <div class="iocn-link">
+        <a routerLink="gestion-activite">
+      
+          <i class="bi bi-file-earmark-check-fill"></i>
+          <span class="link_name">Bilan et rapports</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow' ></i>
+      </div>
+      <ul class="sub-menu" >
+
+        <li><a class="link_name" routerLink="gestion-activite"><span class="bi bi-clipboard2-data-fill mx-2">Bilan et rapports</span></a></li>
+        <li><a routerLink="gestion-activite/tasks"><span class="bi bi-hourglass-split mx-2"> Réalisation et livrables</span></a></li>
+        <li><a routerLink="gestion-activite/rh"><span class="bi bi-file-earmark-medical mx-2"></span>Rapports</a></li>
+        <li><a routerLink="gestion-activite/financiere"><span class="bi bi-journal-bookmark-fill mx-2"></span>Bilan</a></li>
+
+      </ul>
+    </li>
+
+
+
+
+    <li>
+      <div class="iocn-link">
+        <a routerLink="/dash/projects">
+          <i class='bx bx-book-alt' ></i>
+          <span class="link_name">Administration</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow' ></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a class="link_name" href="#">Administration
+        </a></li>
+
+        <li><a href="#"><span class="bi bi-people mx-2"></span> Gestion des compte</a></li>
+
+      </ul>
+    </li>
+    <li>
+      <a href="#">
+        <i class='bx bx-pie-chart-alt-2' ></i>
+        <span class="link_name">Analytics</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Analytics</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">
+        <i class='bx bx-line-chart' ></i>
+        <span class="link_name">Chart</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Chart</a></li>
+      </ul>
+    </li>
+   
+
+<!-- ==================================== -->
+  
+<!-- ==================================== -->
+
+
+    <li>
+      <a href="#">
+        <i class='bx bx-history'></i>
+        <span class="link_name">History</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">History</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">
+        <i class='bx bx-cog' ></i>
+        <span class="link_name">Setting</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Setting</a></li>
+      </ul>
+    </li>
+    <li>
+  <div class="profile-details">
+    <div class="profile-content">
+      <img src="image/profile.jpg" alt="profileImg">
+    </div>
+    <div class="name-job">
+      <div class="profile_name">Prem Shahi</div>
+      <div class="job">Web Desginer</div>
+    </div>
+    <i class='bx bx-log-out' ></i>
+  </div>
+</li>
+</ul>
+</div>
+
+
+
+
+
+<section class="home-section home-section-container" >
+  <div class="home-content">
+    <nav class="navBarStyle">
+     
+        <div class="navbar">
+          <i class='bx bx-menu'></i>
+          <div class="logo"><a href="#">Projecto</a></div>
+          <div class="nav-links">
+            <div class="sidebar-logo">
+              <span class="logo-name">CodingLab</span>
+              <i class='bx bx-x' ></i>
+            </div>
+            <ul class="links">
+              <li><a href="#">HOME</a></li>
+              <li>
+                <a href="#">HTML & CSS</a>
+                <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+                <ul class="htmlCss-sub-menu sub-menu">
+                  <li><a href="#">Web Design</a></li>
+                  <li><a href="#">Login Forms</a></li>
+                  <li><a href="#">Card Design</a></li>
+                  <li class="more">
+                    <span><a href="#">More</a>
+                    <i class='bx bxs-chevron-right arrow more-arrow'></i>
+                  </span>
+                    <ul class="more-sub-menu sub-menu">
+                      <li><a href="#">Neumorphism</a></li>
+                      <li><a href="#">Pre-loader</a></li>
+                      <li><a href="#">Glassmorphism</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">JAVASCRIPT</a>
+                <i class='bx bxs-chevron-down js-arrow arrow '></i>
+                <ul class="js-sub-menu sub-menu">
+                  <li><a href="#">Dynamic Clock</a></li>
+                  <li><a href="#">Form Validation</a></li>
+                  <li><a href="#">Card Slider</a></li>
+                  <li><a href="#">Complete Website</a></li>
+                </ul>
+              </li>
+              <li><a href="#">ABOUT US</a></li>
+              <li><a href="#">CONTACT US</a></li>
+            </ul>
+          </div>
+          <div class="search-box">
+            <i class='bx bx-search'></i>
+            <div class="input-box">
+              <input type="text" placeholder="Search...">
+            </div>
+          </div>
+        </div>
+      
+    </nav>
+
+
+
+
+
+    <div class="scrollable-content" style="width: 100%;">
+      
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="house-door-fill" viewBox="0 0 16 16">
+    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+  </symbol>
+</svg>
+
+
+
+
+<div class="container-fluid mt-5">
+
+    
+  <router-outlet></router-outlet>
+</div>
+
+
+    </div>
+  </div>
+</section>
+
+
+

@@ -1,0 +1,59 @@
+<div class="container-fluid ">
+  <header class="pb-3 mb-4 border-bottom">
+      <i class="bi bi-hourglass-split mx-3" style="font-size: 25px;"></i>
+      <span class="fs-4">Gestion des tâches </span>
+    
+  </header>
+
+<div style="font-family: Verdana, Geneva, Tahoma, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;color: black;">
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" color="accent">
+<!-- //////////////////////////////////////////// -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <i class="bi bi-clipboard2 mx-3"></i>
+        Vision générale
+      </ng-template>
+    
+       
+      <div class="container-fluid "><div class="row">
+           <div class="col-md-6">
+            <app-timeline-chart></app-timeline-chart>
+           </div>
+          
+           <div class="col-md-6">
+            <app-column-chart></app-column-chart>
+           </div>
+      </div></div>
+
+
+
+    </mat-tab>
+<!-- //////////////////////////////////////////// -->
+
+    
+    <mat-tab>
+    <ng-template mat-tab-label>
+      <i class="bi bi-clock-history mx-3"></i>
+      liste des tâches
+    </ng-template>
+
+    <app-list-task></app-list-task>
+
+</mat-tab>
+
+
+<mat-tab>
+  <ng-template mat-tab-label>
+    <i class="bi bi-clipboard2 mx-3"></i>
+    les tâches actuelles
+  </ng-template>
+  Content 1
+</mat-tab>
+
+
+    <mat-tab label="les tâches actuelles">Content 2</mat-tab>
+    <mat-tab label="Third">Content 3</mat-tab>
+  </mat-tab-group>
+</div>
+
+</div>

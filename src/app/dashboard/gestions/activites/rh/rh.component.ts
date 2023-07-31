@@ -9,13 +9,13 @@ import { BrowserModule } from '@angular/platform-browser';
 declare var google: any;
 
 @Component({
-  selector: 'app-gantt',
+  selector: 'app-rh',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './gantt.component.html',
-  styleUrls: ['./gantt.component.scss']
+  templateUrl: './rh.component.html',
+  styleUrls: ['./rh.component.scss']
 })
-export class GanttComponent {
+export class RHComponent {
 
   ngOnInit(): void {
     google.charts.load('current', { packages: ['gantt'] });
