@@ -28,3 +28,43 @@
     display: flex;
     flex-direction: column;
 }
+.objectif {
+  background-color: #f09309; /* Light red */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: #c62828; /* Dark red text color */
+  font-weight: bold;
+}
+
+/* Style for 'resultat' nodes */
+.resultat {
+  background-color: #bbdefb; /* Light blue */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: #1565c0; /* Dark blue text color */
+  font-weight: bold;
+}
+.mat-tree-node:hover, .mat-nested-tree-node:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.node {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style for the top part of the node */
+.top-node {
+  display: flex;
+  align-items: center;
+ // justify-content: space-between;
+}
+
+/* Style for the bottom part of the node (Descriptif) */
+.bottom-node {
+  padding-top: 1rem;
+  color: #333; /* Dark text color for the Descriptif */
+  font-size: 14px; /* Adjust font size as needed */
+  margin-left: 1rem;
+}
+
