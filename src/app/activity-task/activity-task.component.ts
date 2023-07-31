@@ -19,35 +19,36 @@ import {MatListModule} from '@angular/material/list';
   styleUrls: ['./activity-task.component.scss']
 })
 export class ActivityTaskComponent {
-
-
-treeControl = new NestedTreeControl<ProblemCauseConsequence>(node => node.Causes);
+ treeControl = new NestedTreeControl<ProblemCauseConsequence>(node => node.Causes);
   dataSource = new MatTreeNestedDataSource<ProblemCauseConsequence>();
-objOfcause : any = {}
-listCause :any = [];
-  constructor(private service : ProblemCauseConsequenceService ) {
+  objOfcause: any = {};
+  listCause: any = [];
+
+  constructor(private service: ProblemCauseConsequenceService) {
     this.dataSource.data = this.service.fetchData();
-    this.objOfcause=this.service.fetchData();
-   this.listCause = this.filterCause();
-  }
-  
-  filterCause() {
-    const lengthOfCause = this.objOfcause[0].Causes.length;
-     for(let i = 0 ; i<= lengthOfCause;i++){
-   //  this.listCause.push(this.objOfcause[0].Causes[i].Titre) ;
-   if(this.objOfcause[0].Causes[i].Type == 'Cause'){
-
-   return this.objOfcause[0].Causes;
-   }
-     }
-    
-
+    this.objOfcause = this.service.fetchData();
+    this.listCause = this.filterCause('Cause');
   }
 
- 
+  filterCause(type: string): ProblemCauseConsequence[] {
+    const result: ProblemCauseConsequence[] = [];
 
+    const traverseNodes = (node: ProblemCauseConsequence) => {
+      if (node.Type === type) {
+        result.push(node);
+      }
+      if (node.Causes && node.Causes.length > 0) {
+        node.Causes.forEach(traverseNodes);
+      }
+      if (node.SousProbleme && node.SousProbleme.length > 0) {
+        node.SousProbleme.forEach(traverseNodes);
+      }
+    };
 
+    this.objOfcause.forEach(traverseNodes);
 
+    return result;
+  }
 
 
 

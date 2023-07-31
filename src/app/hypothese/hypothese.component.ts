@@ -17,27 +17,43 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 })
 
 export class HypotheseComponent {
-  treeControl = new NestedTreeControl<ProblemCauseConsequence>(node => node.Causes);
-  dataSource = new MatTreeNestedDataSource<ProblemCauseConsequence>();
-objOfcause : any = {}
-listCause :any = [];
-  constructor(private service : ProblemCauseConsequenceService ) {
-    this.dataSource.data = this.service.fetchData();
-    this.objOfcause=this.service.fetchData();
-   this.listCause = this.filterCause();
-  }
-  
-filterCause(): ProblemCauseConsequence[] {
-  const causes = this.objOfcause[0].Causes;
-  const impacts: ProblemCauseConsequence[] = [];
+    objOfcause: any = {};
+  listImpact: any = [];
 
-  for (const cause of causes) {
-    if (cause.Impact && cause.Impact.length > 0) {
-      impacts.push(cause.Impact);
+  constructor(private service: ProblemCauseConsequenceService) {
+    this.objOfcause = this.service.fetchData();
+    this.listImpact = this.getAllImpacts(this.objOfcause);
+  }
+
+  getAllImpacts(data: ProblemCauseConsequence | ProblemCauseConsequence[]): ProblemCauseConsequence[] {
+    if (!Array.isArray(data)) {
+      data = [data];
     }
+
+    const impacts: ProblemCauseConsequence[] = [];
+
+    data.forEach((item: ProblemCauseConsequence) => {
+      if (item.Impact && item.Impact.length > 0) {
+        impacts.push(...item.Impact);
+      }
+
+      if (item.Causes && item.Causes.length > 0) {
+        impacts.push(...this.getAllImpacts(item.Causes));
+      }
+
+      if (item.SousProbleme && item.SousProbleme.length > 0) {
+        impacts.push(...this.getAllImpacts(item.SousProbleme));
+      }
+
+      if (item.Consequence && item.Consequence.Impact && item.Consequence.Impact.length > 0) {
+        impacts.push(...item.Consequence.Impact);
+      }
+    });
+
+    return impacts;
   }
 
-  return impacts;
-}
+
+
 
 }

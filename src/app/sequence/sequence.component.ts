@@ -17,26 +17,34 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 })
 export class SequenceComponent {
 
-treeControl = new NestedTreeControl<ProblemCauseConsequence>(node => node.Causes);
+  treeControl = new NestedTreeControl<ProblemCauseConsequence>(node => node.Causes);
   dataSource = new MatTreeNestedDataSource<ProblemCauseConsequence>();
-objOfcause : any = {}
-listCause :any = [];
-  constructor(private service : ProblemCauseConsequenceService ) {
+  objOfcause: any = {};
+  listConsequence: any = [];
+
+  constructor(private service: ProblemCauseConsequenceService) {
     this.dataSource.data = this.service.fetchData();
-    this.objOfcause=this.service.fetchData();
-   this.listCause = this.filterCause();
-  }
-  
- filterCause(): ProblemCauseConsequence[] {
-  const causes = this.objOfcause[0].Causes;
-  const consequences: ProblemCauseConsequence[] = [];
-
-  for (const cause of causes) {
-    if (cause.Consequence && cause.Consequence.Type === 'Consequence') {
-      consequences.push(cause.Consequence);
-    }
+    this.objOfcause = this.service.fetchData();
+    this.listConsequence = this.filterConsequence();
   }
 
-  return consequences;
-}
+  filterConsequence(): ProblemCauseConsequence[] {
+    const result: ProblemCauseConsequence[] = [];
+
+    const traverseNodes = (node: ProblemCauseConsequence) => {
+      if (node.Consequence) {
+        result.push(node.Consequence);
+      }
+      if (node.Causes && node.Causes.length > 0) {
+        node.Causes.forEach(traverseNodes);
+      }
+      if (node.SousProbleme && node.SousProbleme.length > 0) {
+        node.SousProbleme.forEach(traverseNodes);
+      }
+    };
+
+    this.objOfcause.forEach(traverseNodes);
+
+    return result;
+  }
 }
