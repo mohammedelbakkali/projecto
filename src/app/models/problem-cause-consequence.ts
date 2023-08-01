@@ -1,11 +1,12 @@
 export interface ProblemCauseConsequence {
-    Type:string | 'Solution' | 'Problem' | 'Cause';
+    Type:string | 'Solution' | 'Problem' | 'Cause' | 'Impact' | 'Consequence';
     Titre:string;
     Descriptif:string;
     Niveau:string;
     Indice: number;
     SolutionAssocie:ProblemCauseConsequence;
-    subProblemCauseConsequence : ProblemCauseConsequence[];
+    subProblem: ProblemCauseConsequence[];
+    subCause: ProblemCauseConsequence[];
     hypothese: string;
     Causes:ProblemCauseConsequence[];
     Consequence: ProblemCauseConsequence;

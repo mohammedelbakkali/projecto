@@ -2,131 +2,163 @@ import { Injectable } from '@angular/core';
 import { ProblemCauseConsequence } from '../models/problem-cause-consequence';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProblemCauseConsequenceService {
   private data: ProblemCauseConsequence[] = [
     {
-      Type: "Main Problem",
-      Titre: "Internet Connection Issue",
-      Descriptif: "No internet connection is available.",
-      Niveau: "Critical",
+      Type: 'Solution',
+      Titre: 'Solution 1',
+      Descriptif: 'Description of Solution 1',
+      Niveau: 'Level 1',
       Indice: 1,
-      SolutionAssocie: "Reboot the router",
-      DescriptifSolutionAssocie: "Unplug the router, wait for 30 seconds, and plug it back in.",
-      Causes: [
+      SolutionAssocie: null,
+      subProblem: [],
+      subCause: [],
+      hypothese: '',
+      Causes: [],
+      Consequence: null,
+      Impact: [],
+    },
+    {
+      Type: 'Problem',
+      Titre: 'Problem 1',
+      Descriptif: 'Description of Problem 1',
+      Niveau: 'Level 1',
+      Indice: 2,
+      SolutionAssocie: null,
+      subProblem: [
         {
-          Type: "Cause",
-          Titre: "Router Malfunction",
-          Descriptif: "The router hardware is faulty.",
-          Niveau: "Medium",
+          Type: 'Problem',
+          Titre: 'Problem of Problem 1',
+          Descriptif: 'Description of Problem of Problem 1',
+          Niveau: 'Level 2',
           Indice: 1,
-          SolutionAssocie: "Replace the router",
-          DescriptifSolutionAssocie: "Get a new router and set it up with the correct configurations.",
-          Causes: [],
-          SousProbleme: [],
-          Consequence: {
-            Type: "Consequence",
-            Titre: "No Connectivity",
-            Descriptif: "Devices won't be able to connect to the internet.",
-            Niveau: "High",
-            Indice: 2,
-            SolutionAssocie: "Contact Internet Service Provider",
-            DescriptifSolutionAssocie: "Contact your ISP to check for connectivity issues.",
-            Causes: [],
-            SousProbleme: [],
-            Consequence: null,
-            Impact: []
-          },
-          Impact: []
-        },
-        {
-          Type: "Cause",
-          Titre: "Incorrect Network Configuration",
-          Descriptif: "The network settings are misconfigured.",
-          Niveau: "Low",
-          Indice: 2,
-          SolutionAssocie: "Reset network settings",
-          DescriptifSolutionAssocie: "Reset network settings to default and reconfigure them.",
-          Causes: [],
-          SousProbleme: [],
-          Consequence: {
-            Type: "Consequence",
-            Titre: "Limited Connectivity",
-            Descriptif: "Some devices may have partial internet access.",
-            Niveau: "Medium",
-            Indice: 3,
-            SolutionAssocie: "Check IP settings",
-            DescriptifSolutionAssocie: "Verify IP settings and DHCP configurations.",
-            Causes: [],
-            SousProbleme: [],
-            Consequence: null,
-            Impact: []
-          },
-          Impact: []
-        }
-      ],
-      SousProbleme: [
-        {
-          Type: "Sub-Problem",
-          Titre: "Slow Internet Speed",
-          Descriptif: "Internet connection is available but very slow.",
-          Niveau: "Medium",
-          Indice: 1,
-          SolutionAssocie: "Check bandwidth usage",
-          DescriptifSolutionAssocie: "Identify bandwidth-hungry applications and limit their usage.",
-          Causes: [],
-          SousProbleme: [],
-          Consequence: {
-            Type: "Consequence",
-            Titre: "Frustration",
-            Descriptif: "Users experience frustration due to slow loading times.",
-            Niveau: "Low",
-            Indice: 2,
-            SolutionAssocie: "Upgrade Internet Plan",
-            DescriptifSolutionAssocie: "Upgrade to a higher bandwidth internet plan.",
-            Causes: [],
-            SousProbleme: [],
-            Consequence: null,
-            Impact: []
-          },
-          Impact: []
-        }
-      ],
-      Consequence: {
-        Type: "Consequence",
-        Titre: "Disrupted Work",
-        Descriptif: "Users cannot perform their online tasks.",
-        Niveau: "Critical",
-        Indice: 3,
-        SolutionAssocie: "Temporary mobile hotspot",
-        DescriptifSolutionAssocie: "Use a temporary mobile hotspot until the internet connection is restored.",
-        Causes: [],
-        SousProbleme: [],
-        Consequence: null,
-        Impact: []
-      },
-      Impact: [
-        {
-          Type: "Impact",
-          Titre: "Productivity Loss",
-          Descriptif: "Business productivity decreases due to internet unavailability.",
-          Niveau: "High",
-          Indice: 1,
-          SolutionAssocie: "Implement Redundant Internet Connection",
-          DescriptifSolutionAssocie: "Set up a backup internet connection to ensure continuous operations.",
-          Causes: [],
-          SousProbleme: [],
+          SolutionAssocie: null,
+          subProblem: [
+            {
+              Type: 'Problem', // This represents another level of Problems
+              Titre: 'Sub-Problem of Problem 1',
+              Descriptif: 'Description of Sub-Problem of Problem 1',
+              Niveau: 'Level 3',
+              Indice: 1,
+              SolutionAssocie: null,
+              subProblem: [],
+              subCause: [],
+              hypothese: '',
+              Causes: [],
+              Consequence: null,
+              Impact: [],
+            },
+          ],
+          subCause: [],
+          hypothese: '',
+          Causes: [
+            {
+              Type: 'Cause',
+              Titre: 'Sub-cause 1',
+              Descriptif: 'Description of Sub-cause 1',
+              Niveau: 'Level 2',
+              Indice: 1,
+              SolutionAssocie: null,
+              subProblem: [],
+              subCause: [],
+              hypothese: '',
+              Causes: [],
+              Consequence: null,
+              Impact: [],
+            },
+          ],
           Consequence: null,
-          Impact: []
-        }
-      ]
-    }
+          Impact: [
+            {
+              Type: 'Impact', // This represents the impact of the sub-cause
+              Titre: 'Impact of Sub-cause 1',
+              Descriptif: 'Description of Impact of Sub-cause 1',
+              Niveau: 'Level 4',
+              Indice: 1,
+              SolutionAssocie: null,
+              subProblem: [],
+              subCause: [],
+              hypothese: '',
+              Causes: [],
+              Consequence: null,
+              Impact: [],
+            },
+          ],
+        },
+      ],
+      subCause: [],
+      hypothese: '',
+      Causes: [],
+      Consequence: null,
+      Impact: [],
+    },
+    {
+      Type: 'Impact',
+      Titre: 'Impact 1',
+      Descriptif: 'Description of Impact 1',
+      Niveau: 'Level 1',
+      Indice: 3,
+      SolutionAssocie: null,
+      subProblem: [],
+      subCause: [
+        {
+          Type: 'Cause', // This represents another level of causes
+          Titre: 'Cause of Impact 1',
+          Descriptif: 'Description of Cause of Impact 1',
+          Niveau: 'Level 2',
+          Indice: 1,
+          SolutionAssocie: null,
+          subProblem: [
+            {
+              Type: 'Impact', // This represents the impact of the sub-cause
+              Titre: 'Impact of Cause of Impact 1',
+              Descriptif: 'Description of Impact of Cause of Impact 1',
+              Niveau: 'Level 3',
+              Indice: 1,
+              SolutionAssocie: null,
+              subProblem: [],
+              subCause: [],
+              hypothese: '',
+              Causes: [],
+              Consequence: null,
+              Impact: [],
+            },
+          ],
+          Causes: [
+            {
+              Type: 'Cause', // This represents another level of causes
+              Titre: 'Sub-cause of Problem 1',
+              Descriptif: 'Description of Sub-cause of Problem 1',
+              Niveau: 'Level 2',
+              Indice: 1,
+              SolutionAssocie: null,
+              subProblem: [],
+              subCause: [],
+              hypothese: '',
+              Causes: [],
+              Consequence: null,
+              Impact: [],
+            },
+          ],
+          hypothese: '',
+          subCause: [],
+          Consequence: null,
+          Impact: [],
+        },
+      ],
+      hypothese: '',
+      Causes: [],
+      Consequence: null,
+      Impact: [],
+    },
+    // Add more data as needed
   ];
-  
+
   // You can add more data as needed to make the array even more comprehensive.
-  
-  constructor() { }
+
+  constructor() {}
   fetchData(): any {
     return this.data;
   }
