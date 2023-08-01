@@ -12,7 +12,8 @@ import { ChartsOfprojectsComponent } from './dashboard/charts-ofprojects/charts-
 import { ProjectsComponent } from './dashboard/projects/projects.component';
 import { ForumComponent } from './forum/forum.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { ObjectifResultComponent } from './objectif-result/objectif-result.component';
+import { ObjectifResultComponent } from './area-objectifs/objectif-result/objectif-result.component';
+import { AreaObjectifsComponent } from './area-objectifs/area-objectifs.component';
 
 
 const routes: Routes = [
@@ -65,8 +66,8 @@ const routes: Routes = [
        path:'cal',
         component:CalendarComponent
       },{
-        path: 'objectif',
-        component:ObjectifResultComponent
+        path: 'areaObjectif',
+        component:AreaObjectifsComponent
       },
       {
         path:"**",

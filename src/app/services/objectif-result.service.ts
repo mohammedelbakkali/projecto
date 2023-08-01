@@ -240,4 +240,56 @@ export class ObjectifResultService {
     console.log(this.data);
     return this.data;
   }
+  fetchGlobalObjectifs(){
+    return [
+      {
+        ObjectifOuResultat: 'Objectif',
+        GlobalOuSpecifique: 'Global',
+        Titre: 'Global Objective 1',
+        Descriptif: 'Description of Global Objective 1',
+        Indice: 1,
+        ResultatAssocie: [
+          {
+            ObjectifOuResultat: 'Résultat',
+            GlobalOuSpecifique: 'Spécifique',
+            Titre: 'Specific Result 1',
+            Descriptif: 'Description of Specific Result 1',
+            Indice: 1,
+            ResultatAssocie: [],
+            ObjectifSpecifique: null,
+          },
+          {
+            ObjectifOuResultat: 'Résultat',
+            GlobalOuSpecifique: 'Spécifique',
+            Titre: 'Specific Result 2',
+            Descriptif: 'Description of Specific Result 2',
+            Indice: 2,
+            ResultatAssocie: [],
+            ObjectifSpecifique: null,
+          },
+        ],
+        ObjectifSpecifique: null,
+      },
+      {
+        ObjectifOuResultat: 'Objectif',
+        GlobalOuSpecifique: 'Global',
+        Titre: 'Global Objective 2',
+        Descriptif: 'Description of Global Objective 2',
+        Indice: 2,
+        ResultatAssocie: [
+          {
+            ObjectifOuResultat: 'Résultat',
+            GlobalOuSpecifique: 'Spécifique',
+            Titre: 'Specific Result 3',
+            Descriptif: 'Description of Specific Result 3',
+            Indice: 1,
+            ResultatAssocie: [],
+            ObjectifSpecifique: null,
+          },
+        ],
+        ObjectifSpecifique: null,
+      },
+    ];
+    
+  }
 }
