@@ -12,7 +12,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import {  ViewEncapsulation } from '@angular/core';
 import { CalendarComponent } from "../calendar/calendar.component";
-import { GanttComponent } from "../gantt/gantt.component";
+
 import {RatingComponent}  from "../rating/rating.component"
 import { TreeComponent } from '../tree/tree.component';
 import {NestedTreeControl} from '@angular/cdk/tree';
@@ -21,6 +21,9 @@ import {MatTreeModule, MatTreeNestedDataSource} from '@angular/material/tree';
 import { ActivityTaskComponent } from "../activity-task/activity-task.component";
 import { SequenceComponent } from '../sequence/sequence.component';
 import { HypotheseComponent } from '../hypothese/hypothese.component';
+import { GanttComponent } from '../gantt/gantt.component';
+import { ObjectifResultComponent } from '../objectif-result/objectif-result.component';
+
 
 export interface Projecto{
   titel_project : string ;
@@ -60,7 +63,7 @@ export interface Projecto{
         ]),
     ],
     encapsulation: ViewEncapsulation.None,
-    imports: [CommonModule,HypotheseComponent, MatTreeModule,SequenceComponent, RouterLink, MatTabsModule, MatExpansionModule, MatInputModule, MatIconModule, ReactiveFormsModule, MatRadioModule, MatSelectModule, MatButtonModule, CalendarComponent, GanttComponent, RatingComponent, TreeComponent, ActivityTaskComponent]
+    imports: [CommonModule, HypotheseComponent, MatTreeModule, SequenceComponent, RouterLink, MatTabsModule, MatExpansionModule, MatInputModule, MatIconModule, ReactiveFormsModule, MatRadioModule, MatSelectModule, MatButtonModule, CalendarComponent, GanttComponent, RatingComponent, TreeComponent, ActivityTaskComponent,ObjectifResultComponent]
 })
 export class ShowpageComponent implements OnInit, OnDestroy {
   panelOpenState = false;
