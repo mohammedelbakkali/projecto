@@ -3,7 +3,7 @@
   <ng-container *ngIf="child === ''; else orderedList">
     <!-- Render as a flat list when child is an empty string -->
     <ul >
-    <ng-container *matTreeNodeDef="let node">
+    <mat-tree-node *matTreeNodeDef="let node">
       <div class="node">
       <!-- In here is the top of the node title and details button -->
         <div class="top-node"> 
@@ -21,7 +21,7 @@
       
       </div>
       
-    </ng-container>
+    </mat-tree-node>
     </ul>
   </ng-container>
 
