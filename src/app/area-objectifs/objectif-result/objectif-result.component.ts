@@ -7,6 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { ObjectifResult } from '../../models/objectif-result';
 import { ObjectifResultService } from '../../services/objectif-result.service';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
+import { T } from '@fullcalendar/core/internal-common';
 @Component({
   selector: 'app-objectif-result',
   standalone: true,
@@ -21,8 +22,8 @@ toggleDescription(node : any) {
 }
   @Input() data : ObjectifResult[]= this.ObjectifResultService.fetchData();
   @Input() child: string = "ResultatAssocie";
-  treeControl = new NestedTreeControl<ObjectifResult>(node => node[this.child]);
-  dataSource = new MatTreeNestedDataSource<ObjectifResult>();
+  treeControl = new NestedTreeControl<any>(node => node[this.child]);
+  dataSource = new MatTreeNestedDataSource<any>();
 ngOnInit(): void {
 this.dataSource.data =this.data.map((node) => ({ ...node, toggled: false }));
   
