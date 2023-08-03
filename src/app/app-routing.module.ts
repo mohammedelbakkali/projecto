@@ -19,7 +19,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ConfirmationResetPasswordComponent } from './confirmation-reset-password/confirmation-reset-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 
-import { ObjectifResultComponent } from './objectif-result/objectif-result.component';
+  
+import { ObjectifResultComponent } from './area-objectifs/objectif-result/objectif-result.component';
+import { AreaObjectifsComponent } from './area-objectifs/area-objectifs.component';
 
 
 
@@ -73,8 +75,8 @@ const routes: Routes = [
        path:'cal',
         component:CalendarComponent
       },{
-        path: 'objectif',
-        component:ObjectifResultComponent
+        path: 'areaObjectif',
+        component:AreaObjectifsComponent
       },
 
       {

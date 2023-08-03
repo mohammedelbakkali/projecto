@@ -1,7 +1,33 @@
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree">
-  <!-- This is the tree node template for leaf nodes -->
-  <!-- There is inline padding applied to this node using styles.
-    This padding value depends on the mat-icon-button width. -->
+
+  <ng-container *ngIf="child === ''; else orderedList">
+    <!-- Render as a flat list when child is an empty string -->
+    <ul >
+    <mat-tree-node *matTreeNodeDef="let node">
+      <div class="node">
+      <!-- In here is the top of the node title and details button -->
+        <div class="top-node"> 
+          <li style="list-style-type:circle !important;"> 
+          {{ node.Titre }}
+          <button mat-button color="primary" (click)="toggleDescription(node)" style="margin-left: 15px">
+            Details
+          </button>
+          </li>
+        </div>
+  
+        <div *ngIf="node.toggled" class="bottom-node">
+          {{ node.Descriptif }}
+        </div>
+      
+      </div>
+      
+    </mat-tree-node>
+    </ul>
+  </ng-container>
+
+
+  <!--in here is a normal tree-->
+  <ng-template #orderedList>
   <mat-tree-node
     *matTreeNodeDef="let node"
     matTreeNodeToggle
@@ -10,7 +36,7 @@
       <!--in here is the top of the node title and details button-->
       <div class="top-node">
         {{ node.Titre
-        }}<i style="margin-left: 15px">{{ node.GlobalOuSpecifique }}</i>
+        }}
         <button mat-button color="primary" (click)="toggleDescription(node)">
           Details
         </button>
@@ -20,6 +46,7 @@
         {{ node.Descriptif }}
       </div>
     </div>
+  
   </mat-tree-node>
   <!-- This is the tree node template for expandable nodes -->
   <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
@@ -39,7 +66,7 @@
         <!--in here is the top of the node title and details button-->
         <div class="top-node">
           {{ node.Titre
-          }}<i style="margin-left: 15px">{{ node.GlobalOuSpecifique }}</i>
+          }}
           <button mat-button color="primary" (click)="toggleDescription(node)" style="margin-left: 15px">
             Details
           </button>
@@ -56,4 +83,5 @@
       <ng-container matTreeNodeOutlet></ng-container>
     </div>
   </mat-nested-tree-node>
+</ng-template>
 </mat-tree>
