@@ -38,8 +38,8 @@ export class SequenceComponent {
       if (node.Causes && node.Causes.length > 0) {
         node.Causes.forEach(traverseNodes);
       }
-      if (node.SousProbleme && node.SousProbleme.length > 0) {
-        node.SousProbleme.forEach(traverseNodes);
+      if (node.subProblem && node..length > 0) {
+        node.subProblem.forEach(traverseNodes);
       }
     };
 

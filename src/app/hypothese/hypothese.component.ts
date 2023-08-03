@@ -41,8 +41,8 @@ export class HypotheseComponent {
         impacts.push(...this.getAllImpacts(item.Causes));
       }
 
-      if (item.SousProbleme && item.SousProbleme.length > 0) {
-        impacts.push(...this.getAllImpacts(item.SousProbleme));
+      if (item.subProblem && item.subProblem.length > 0) {
+        impacts.push(...this.getAllImpacts(item.subProblem));
       }
 
       if (item.Consequence && item.Consequence.Impact && item.Consequence.Impact.length > 0) {
