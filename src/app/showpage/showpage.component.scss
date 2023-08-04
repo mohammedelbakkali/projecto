@@ -1,3 +1,9 @@
+/* styles.css or styles.scss */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+/* styles.scss */
+
+
+
 .cont-head{
     width: 100vw;
     height: 22rem;
@@ -23,9 +29,19 @@
   .proj-title h1 {
     font-size: 1.3rem!important;
   }
- 
   
-  .image-section {
+:host {
+  display: block;
+  /* Set a default background color when no tab is activated */
+  background-color: white;
+}
+
+:host([style]) {
+  /* Apply the background color when a tab is activated */
+  background-color: var(--backgroundColor, white);
+}
+
+.image-section {
     display: none;
     justify-content: flex-start;
     align-items: flex-start;

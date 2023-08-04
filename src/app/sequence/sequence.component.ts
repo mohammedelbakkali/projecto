@@ -16,35 +16,33 @@ import { NestedTreeControl } from '@angular/cdk/tree';
   styleUrls: ['./sequence.component.scss']
 })
 export class SequenceComponent {
-
-  treeControl = new NestedTreeControl<ProblemCauseConsequence>(node => node.Causes);
+  treeControl = new NestedTreeControl<ProblemCauseConsequence>(node => node.ElementAssocie);
   dataSource = new MatTreeNestedDataSource<ProblemCauseConsequence>();
   objOfcause: any = {};
-  listConsequence: any = [];
+  listProblems: any = [];
 
   constructor(private service: ProblemCauseConsequenceService) {
     this.dataSource.data = this.service.fetchData();
     this.objOfcause = this.service.fetchData();
-    this.listConsequence = this.filterConsequence();
+    this.listProblems = this.filterProblems(this.dataSource.data);
   }
 
-  filterConsequence(): ProblemCauseConsequence[] {
+  filterProblems(data: ProblemCauseConsequence[]): ProblemCauseConsequence[] {
     const result: ProblemCauseConsequence[] = [];
 
     const traverseNodes = (node: ProblemCauseConsequence) => {
-      if (node.Consequence) {
-        result.push(node.Consequence);
+      if (node.Type === 'Problem') {
+        result.push(node);
       }
-      if (node.Causes && node.Causes.length > 0) {
-        node.Causes.forEach(traverseNodes);
-      }
-      if (node.subProblem && node..length > 0) {
-        node.subProblem.forEach(traverseNodes);
+      if (node.ElementAssocie && node.ElementAssocie.length > 0) {
+        node.ElementAssocie.forEach(traverseNodes);
       }
     };
 
-    this.objOfcause.forEach(traverseNodes);
+    data.forEach(traverseNodes);
 
     return result;
   }
 }
+
+

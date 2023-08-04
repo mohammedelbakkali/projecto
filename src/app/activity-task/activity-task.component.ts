@@ -19,7 +19,7 @@ import {MatListModule} from '@angular/material/list';
   styleUrls: ['./activity-task.component.scss']
 })
 export class ActivityTaskComponent {
- treeControl = new NestedTreeControl<ProblemCauseConsequence>(node => node.Causes);
+  treeControl = new NestedTreeControl<ProblemCauseConsequence>(node => node.ElementAssocie);
   dataSource = new MatTreeNestedDataSource<ProblemCauseConsequence>();
   objOfcause: any = {};
   listCause: any = [];
@@ -27,32 +27,23 @@ export class ActivityTaskComponent {
   constructor(private service: ProblemCauseConsequenceService) {
     this.dataSource.data = this.service.fetchData();
     this.objOfcause = this.service.fetchData();
-    this.listCause = this.filterCause('Cause');
+    this.listCause = this.filterCause(this.dataSource.data, 'Cause');
   }
 
-  filterCause(type: string): ProblemCauseConsequence[] {
+  filterCause(data: ProblemCauseConsequence[], type: string): ProblemCauseConsequence[] {
     const result: ProblemCauseConsequence[] = [];
 
     const traverseNodes = (node: ProblemCauseConsequence) => {
       if (node.Type === type) {
         result.push(node);
       }
-      if (node.Causes && node.Causes.length > 0) {
-        node.Causes.forEach(traverseNodes);
-      }
-      if (node.subProblem && node.subProblem.length > 0) {
-        node.subProblem.forEach(traverseNodes);
+      if (node.ElementAssocie && node.ElementAssocie.length > 0) {
+        node.ElementAssocie.forEach(traverseNodes);
       }
     };
 
-    this.objOfcause.forEach(traverseNodes);
+    data.forEach(traverseNodes);
 
     return result;
   }
-
-
-
-
-
-
 }

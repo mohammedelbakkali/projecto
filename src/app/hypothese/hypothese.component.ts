@@ -17,43 +17,35 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 })
 
 export class HypotheseComponent {
-    objOfcause: any = {};
-  listImpact: any = [];
+ treeControl = new NestedTreeControl<ProblemCauseConsequence>(node => node.ElementAssocie);
+  dataSource = new MatTreeNestedDataSource<ProblemCauseConsequence>();
+  objOfcause: any = {};
+  listProblems: any = [];
+  listImpacts: any = [];
 
   constructor(private service: ProblemCauseConsequenceService) {
+    this.dataSource.data = this.service.fetchData();
     this.objOfcause = this.service.fetchData();
-    this.listImpact = this.getAllImpacts(this.objOfcause);
-  }
-
-  getAllImpacts(data: ProblemCauseConsequence | ProblemCauseConsequence[]): ProblemCauseConsequence[] {
-    if (!Array.isArray(data)) {
-      data = [data];
-    }
-
-    const impacts: ProblemCauseConsequence[] = [];
-
-    data.forEach((item: ProblemCauseConsequence) => {
-      if (item.Impact && item.Impact.length > 0) {
-        impacts.push(...item.Impact);
-      }
-
-      if (item.Causes && item.Causes.length > 0) {
-        impacts.push(...this.getAllImpacts(item.Causes));
-      }
-
-      if (item.subProblem && item.subProblem.length > 0) {
-        impacts.push(...this.getAllImpacts(item.subProblem));
-      }
-
-      if (item.Consequence && item.Consequence.Impact && item.Consequence.Impact.length > 0) {
-        impacts.push(...item.Consequence.Impact);
-      }
-    });
-
-    return impacts;
+    this.listImpacts = this.filterImpacts(this.dataSource.data);
   }
 
 
+  filterImpacts(data: ProblemCauseConsequence[]): ProblemCauseConsequence[] {
+    const result: ProblemCauseConsequence[] = [];
+
+    const traverseNodes = (node: ProblemCauseConsequence) => {
+      if (node.Type === 'Impact') {
+        result.push(node);
+      }
+      if (node.ElementAssocie && node.ElementAssocie.length > 0) {
+        node.ElementAssocie.forEach(traverseNodes);
+      }
+    };
+
+    data.forEach(traverseNodes);
+
+    return result;
+  }
 
 
 }

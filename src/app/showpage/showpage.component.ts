@@ -22,7 +22,7 @@ import { ActivityTaskComponent } from "../activity-task/activity-task.component"
 import { SequenceComponent } from '../sequence/sequence.component';
 import { HypotheseComponent } from '../hypothese/hypothese.component';
 import { GanttComponent } from '../gantt/gantt.component';
-import { ObjectifResultComponent } from '../objectif-result/objectif-result.component';
+import { ObjectifResultComponent } from '../area-objectifs/objectif-result/objectif-result.component';
 
 
 export interface Projecto{
@@ -76,12 +76,22 @@ export class ShowpageComponent implements OnInit, OnDestroy {
   imageState: 'visible' | 'hidden' = 'visible'; // Set the initial state to 'visible'
 
  //causes-
+   
+ backgroundColor: string;
 
-
-
-
-
-
+  onTabChange(event: any) {
+    // You can define different colors for each tab activation.
+    // For example, when the 'Arbre' tab is active, set the background color to red.
+    if (event.index === 0) {
+      this.backgroundColor = 'red';
+    } else if (event.index === 1) {
+      // When the 'Causes' tab is active, set the background color to green.
+      this.backgroundColor = 'green';
+    } else if (event.index === 2) {
+      // When the 'Sequence' tab is active, set the background color to blue.
+      this.backgroundColor = 'blue';
+    }
+  }
 
 
 
