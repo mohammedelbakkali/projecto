@@ -1,0 +1,28 @@
+
+      <ng-container *ngIf="isReadOnly; else Reactive">
+                <ng-container *ngTemplateOutlet="readOnly"> </ng-container>
+      </ng-container>
+
+
+<ng-template #Reactive  >
+    <ng-container *ngTemplateOutlet="item ; context: { eta:'ractive' }"> </ng-container>
+</ng-template>
+
+<ng-template #readOnly  >
+    <ng-container *ngTemplateOutlet="item ; context: { eta:'readOnly' }"> </ng-container>
+</ng-template>
+
+
+
+
+<ng-template #item let-eta='eta'>
+        <div class="rating-sec d-flex justify-content-start  align-content-start">
+            <div class="rating  {{eta}}  p-1">
+                <span class=" ">Rating :</span>
+                <ng-container *ngFor="let o of Array.from({length:starToShwo});index as i ">
+                    <input (checked)="currentRating =  (i+1) " name="rating" id="star{{i+1}}"  (click)=" eta == 'ractive' ? updateRating(i+1): 1+1 " type="radio" [value]="i+1">
+                    <label for="star{{i+1}}"></label>
+                </ng-container>
+            </div>
+        </div>
+</ng-template>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { CardComponent } from '../card/card.component';
@@ -7,19 +7,38 @@ import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import {MatIconModule} from '@angular/material/icon';
 import { CategoryOfmodelComponent } from '../category-ofmodel/category-ofmodel.component';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatSliderModule} from '@angular/material/slider';
 
 @Component({
   selector: 'filter-items',
   templateUrl: 'filter-items.html',
   styleUrls: ['./filter-items.scss'],
   standalone: true,
-  imports: [MdbAccordionModule,MdbRangeModule,MatIconModule,MatDialogModule],
+  imports: [MdbAccordionModule,MdbRangeModule,MatIconModule,MatDialogModule,MatButtonModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSliderModule],
 })
 export class FilterItems {
   cat ?: string|null
   selectedStars: number = 0;
   hoveredStar: number = 0;
   rangeValue: number = 0;
+  rangeMinValue: any = "300 $";
+  rangeMaxValue: any = "400 $";
+
+  
+  @ViewChild(MatAccordion) accordion: MatAccordion;
 
  
 
@@ -29,6 +48,14 @@ export class FilterItems {
 
   onRangeInput(event: any) {
     this.rangeValue = event.target.value;
+  }
+
+  onRangeMinInput(event: any) {
+    this.rangeMinValue = event.target.value + " $";
+  }
+
+  onRangeMaxInput(event: any) {
+    this.rangeMaxValue = event.target.value + " $";
   }
 
   onStarHovered(starNumber: number) {
@@ -65,7 +92,10 @@ export class CategoryPageComponent {
   cat ?: string|null
   constructor(private route: ActivatedRoute,public dialog: MatDialog) {}
   openDialog() {
-    this.dialog.open(FilterItems);
+    this.dialog.open(FilterItems,{
+      autoFocus: false,
+      maxHeight: '90vh'
+    });
   }
   ngOnInit(): void {
     this.cat = this.route.snapshot.paramMap.get('cat')

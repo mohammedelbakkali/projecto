@@ -27,35 +27,41 @@
     
     <div class="card col-md-4" [ngClass]="{'card-1': card_1, 'card':card,'card_2':card_2}"
       (window:scroll)="onScroll()">
-      <div class="card-image">
-        <img [@imageChange]="imageState" [src]="mainImageUrl" alt="Image">
+      <div class="card-image" >
+        <img [@imageChange]="imageState" [src]="mainImageUrl"  alt="Image" class="image-card">
       </div>
     
-      <div class="button d-flex justify-content-center py-3 align-content-center">
-        <button type="button" style="width: 70%; font-size: 1.1rem;" class="btn btn-primary">Use This Model</button>
+      <div class="button d-flex justify-content-center align-content-center p-0 m-0">
+        <button type="button" style="width: 70%; font-size: 1.1rem; height: 3.rem;" class="btn btn-primary p-1 m-0 ">Use This Model</button>
       </div>
     
-      <div class="card-cont">
-        <div class="creators my-4">
-          <span class="">Created By: {{proj.creator}}</span>
-        </div>
-<div class="rating-sec">
-  <div class="rating">
-    <input [checked]="selectedRating === '5'" name="rating" id="star5" type="radio" value="5"
-      (change)="updateRating($event.target)">
-    <label for="star5"></label>
-    <input [checked]="selectedRating === '4'" name="rating" id="star4" type="radio" value="4"
-      (change)="updateRating($event.target)">
-    <label for="star4"></label>
-    <input [checked]="selectedRating === '3'" name="rating" id="star3" type="radio" value="3"
-      (change)="updateRating($event.target)">
-    <label for="star3"></label>
-    <input [checked]="selectedRating === '2'" name="rating" id="star2" type="radio" value="2"
-      (change)="updateRating($event.target)">
-    <label for="star2"></label>
-    <input [checked]="selectedRating === '1'" name="rating" id="star1" type="radio" value="1"
-      (change)="updateRating($event.target)">
-    <label for="star1"></label>
+    <div class="card-cont  ">
+
+  <div class="creators  d-flex justify-content-start align-content-start mx-1 p-3" *ngFor="let person of proj.creator">
+  
+    <img class="creator-img" [src]="person.photo" alt="Creator Photo"><span class="mx-3">{{ person.nome }}</span>
+
+  </div>
+<div class="rating-sec d-flex justify-content-start  align-content-start">
+  <div class="rating p-1">
+ <app-rating [currentRating]='proj.rating' [isReadOnly]="true"></app-rating>
+ 
+  </div>
+</div>
+
+
+
+  <div class="views p-1">
+    <span class="stat">Views Number :</span><span class="stats">{{proj.views}}</span>
+  </div>
+  <div class="likes  p-1">
+    <span class="stat">Likes : </span> <span class="stats">{{proj.likes}}</span>
+  </div>
+  <div class="usage  p-1">
+    <span class="stat">Usage : </span> <span class="stats">{{proj.usage}}</span>
+  </div>
+  <div class="reviwes  p-1">
+      <span class="stat">Usage : </span> <span class="stats">{{proj.reviews_number}}</span>
   </div>
 </div>
       </div>
@@ -63,20 +69,17 @@
 
 
 
-
-    </div>
-
      
 </div>
 <div class="container">
 <div class="row">
   <div class="col-lg-7 mb-4 mt-4 ">
     <div class="titel">
-      <h1 class="context">What the project talk about</h1>
+      <h1 class="context">Objectives</h1>
     </div>
     <div class="list-context">
       <ul class="ul">
-        <li *ngFor="let item of proj.prjt_hdrs">{{item}}</li>
+        <app-objectif-result></app-objectif-result>
     
       </ul>
     </div>
@@ -114,6 +117,7 @@
 
 
 </div>
+
 
 <div class="container">
   <div class="row">
@@ -189,14 +193,72 @@
       </mat-accordion>
 
     </div>
+    <div class="Chronogramme my-4 col-md-7">
+      <h1>Chronogramme</h1>
+     
+        <div class="chronogram  " id="chronogram">
+          <app-gantt class="chronogram"></app-gantt>
+        </div>
+      
+    
+    </div>
+ 
+
   </div>
 </div>
-<div class="container Chronogramme">
-<h1>Chronogramme</h1>
-  <div class="row">
-    <div class="chronogram  col-md-6" id="chronogram">
-   <app-gantt></app-gantt>
-    </div>
-  </div>
 
+<div class="container arbres ">
+  <h1>Les arbres Problem/Solution</h1>
+
+  <div class="row">
+    <div class="col-md-7">
+      
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            arbre des Problems
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-tab-group  #tabGroup (selectedTabChange)="onTabChange($event)">
+          <mat-tab label="Arbre" >
+            <div class="arbre-prob orgChart m-0 p-0 ">
+              <app-tree [id_cont]="'org2'"  [type]="'problem'" ></app-tree>
+            </div>
+          </mat-tab>
+          <mat-tab label="Causes" >
+            <app-activity-task></app-activity-task>
+          </mat-tab>
+          <mat-tab label="Sequence" >
+            <app-sequence></app-sequence>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+      
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              arbre des Problems
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-tab-group>
+            <mat-tab label="Arbre"> 
+              <div class="arbre-solution  col-md-7">
+                <app-tree [id_cont]="'org1'"  [type]="'solution'"></app-tree>
+              </div>
+            </mat-tab>
+               <mat-tab label="Impact" class="Cause-sec">
+             <app-hypothese></app-hypothese>
+
+               </mat-tab>
+          </mat-tab-group>
+       
+        </mat-expansion-panel>
+      </mat-accordion>
+      
+    </div>
+    </div>
 </div>

@@ -24,7 +24,17 @@ import { ActiviteComponent } from './dashboard/gestions/activites/activite/activ
 
 import { ForumComponent } from './forum/forum.component';
 import { CalendarComponent } from './calendar/calendar.component';
+
 import { GanttComponent } from './gantt/gantt.component';
+import { TreeComponent } from './tree/tree.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ConfirmationResetPasswordComponent } from './confirmation-reset-password/confirmation-reset-password.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+
+         
+import { ObjectifResultComponent } from './area-objectifs/objectif-result/objectif-result.component';
+import { AreaObjectifsComponent } from './area-objectifs/area-objectifs.component';
+
 
 
 
@@ -95,11 +105,33 @@ const routes: Routes = [
       {
        path:'cal',
         component:CalendarComponent
+      },{
+        path: 'areaObjectif',
+        component:AreaObjectifsComponent
       },
+
       {
       path:'gant',
       component:GanttComponent
       },
+{
+       path:'tree',
+        component:TreeComponent      
+      },
+      {
+        path:'password-reset',
+         component:ForgotPasswordComponent
+       },
+
+       {
+        path:'confirmation-code',
+         component:ConfirmationResetPasswordComponent
+       },
+
+       {
+        path:'change-password',
+         component:ChangePasswordComponent
+       },
 
       {
         path:"dash/projects/:id",

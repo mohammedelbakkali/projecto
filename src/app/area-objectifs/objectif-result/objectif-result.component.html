@@ -1,0 +1,87 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree">
+
+  <ng-container *ngIf="child === ''; else orderedList">
+    <!-- Render as a flat list when child is an empty string -->
+    <ul >
+    <mat-tree-node *matTreeNodeDef="let node">
+      <div class="node">
+      <!-- In here is the top of the node title and details button -->
+        <div class="top-node"> 
+          <li style="list-style-type:circle !important;"> 
+          {{ node.Titre }}
+          <button mat-button color="primary" (click)="toggleDescription(node)" style="margin-left: 15px">
+            Details
+          </button>
+          </li>
+        </div>
+  
+        <div *ngIf="node.toggled" class="bottom-node">
+          {{ node.Descriptif }}
+        </div>
+      
+      </div>
+      
+    </mat-tree-node>
+    </ul>
+  </ng-container>
+
+
+  <!--in here is a normal tree-->
+  <ng-template #orderedList>
+  <mat-tree-node
+    *matTreeNodeDef="let node"
+    matTreeNodeToggle
+  >
+    <div class="node">
+      <!--in here is the top of the node title and details button-->
+      <div class="top-node">
+        {{ node.Titre
+        }}
+        <button mat-button color="primary" (click)="toggleDescription(node)">
+          Details
+        </button>
+      </div>
+
+      <div *ngIf="node.toggled" class="bottom-node">
+        {{ node.Descriptif }}
+      </div>
+    </div>
+  
+  </mat-tree-node>
+  <!-- This is the tree node template for expandable nodes -->
+  <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+    <div
+      class="mat-tree-node"
+    >
+      <button
+        mat-icon-button
+        matTreeNodeToggle
+        [attr.aria-label]="'Toggle ' + node.Titre"
+      >
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
+        </mat-icon>
+      </button>
+      <div class="node">
+        <!--in here is the top of the node title and details button-->
+        <div class="top-node">
+          {{ node.Titre
+          }}
+          <button mat-button color="primary" (click)="toggleDescription(node)" style="margin-left: 15px">
+            Details
+          </button>
+        </div>
+
+        <div *ngIf="node.toggled" class="bottom-node">
+          {{ node.Descriptif }}
+        </div>
+      </div>
+    </div>
+    <!-- There is inline padding applied to this div using styles.
+          This padding value depends on the mat-icon-button width.  -->
+    <div [class.tree-invisible]="!treeControl.isExpanded(node)" role="group">
+      <ng-container matTreeNodeOutlet></ng-container>
+    </div>
+  </mat-nested-tree-node>
+</ng-template>
+</mat-tree>

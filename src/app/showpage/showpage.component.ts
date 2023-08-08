@@ -12,14 +12,29 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import {  ViewEncapsulation } from '@angular/core';
 import { CalendarComponent } from "../calendar/calendar.component";
-import { GanttComponent } from "../gantt/gantt.component";
+
+import {RatingComponent}  from "../rating/rating.component"
+import { TreeComponent } from '../tree/tree.component';
+import {NestedTreeControl} from '@angular/cdk/tree';
+
+import {MatTreeModule, MatTreeNestedDataSource} from '@angular/material/tree';
+import { ActivityTaskComponent } from "../activity-task/activity-task.component";
+import { SequenceComponent } from '../sequence/sequence.component';
+import { HypotheseComponent } from '../hypothese/hypothese.component';
+import { GanttComponent } from '../gantt/gantt.component';
+import { ObjectifResultComponent } from '../area-objectifs/objectif-result/objectif-result.component';
 
 
 export interface Projecto{
   titel_project : string ;
   short_description : string;
   nbr_rate:number;
-  creator :string;
+  creator :[
+    {
+      photo : string,
+      nome: string
+    }
+  ];
   last_update : string;
   language :string;
   sub_titels : string [] ;    
@@ -27,10 +42,13 @@ export interface Projecto{
   prjt_hdrs: string [];
   description: string;
   ppl_targeted: string [] ;
-  rating : string;
+  rating : number;
+  views : number;
+  likes:number;
+  usage:number;
+  reviews_number : number;
+  
 }
-
-
 
 @Component({
     selector: 'app-showpage',
@@ -45,7 +63,7 @@ export interface Projecto{
         ]),
     ],
     encapsulation: ViewEncapsulation.None,
-    imports: [CommonModule, RouterLink, MatTabsModule, MatExpansionModule, MatInputModule, MatIconModule, ReactiveFormsModule, MatRadioModule, MatSelectModule, MatButtonModule, CalendarComponent, GanttComponent]
+    imports: [CommonModule, HypotheseComponent, MatTreeModule, SequenceComponent, RouterLink, MatTabsModule, MatExpansionModule, MatInputModule, MatIconModule, ReactiveFormsModule, MatRadioModule, MatSelectModule, MatButtonModule, CalendarComponent, GanttComponent, RatingComponent, TreeComponent, ActivityTaskComponent,ObjectifResultComponent]
 })
 export class ShowpageComponent implements OnInit, OnDestroy {
   panelOpenState = false;
@@ -56,6 +74,47 @@ export class ShowpageComponent implements OnInit, OnDestroy {
   interval: any;
   vide!: HTMLElement | null;
   imageState: 'visible' | 'hidden' = 'visible'; // Set the initial state to 'visible'
+
+ //causes-
+   
+ backgroundColor: string;
+
+  onTabChange(event: any) {
+    // You can define different colors for each tab activation.
+    // For example, when the 'Arbre' tab is active, set the background color to red.
+    if (event.index === 0) {
+      this.backgroundColor = 'red';
+    } else if (event.index === 1) {
+      // When the 'Causes' tab is active, set the background color to green.
+      this.backgroundColor = 'green';
+    } else if (event.index === 2) {
+      // When the 'Sequence' tab is active, set the background color to blue.
+      this.backgroundColor = 'blue';
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -117,7 +176,7 @@ export class ShowpageComponent implements OnInit, OnDestroy {
       this.card_1 = true ;
       this.card_2 = false;
     }
-    if (scrollPosition >= 1300) {
+    if (scrollPosition >= 2800) {
       this.card = false;
       this.card_1 = true ;
       this.card_2 = true
@@ -131,16 +190,6 @@ export class ShowpageComponent implements OnInit, OnDestroy {
 
   proj !: Projecto ;
 
-// ==   RATING ==
-
-selectedRating: string = '5'; // Default value, change it based on your requirement
-
-updateRating(target: EventTarget | null): void {
-  if (target instanceof HTMLInputElement) {
-    this.selectedRating = target.value;
-    console.log(this.selectedRating)
-  }
-}
 
 
 
@@ -171,7 +220,12 @@ updateRating(target: EventTarget | null): void {
       titel_project :"Machine Learning A-Z™: AI, Python & R + ChatGPT Bonus [2023]Machine Learning A-Z™: AI, Python & R + ChatGPT Bonus [2023]",
   short_description : "Learn to create Machine Learning Algorithms in Python and R from two Data Science experts. Code templates included.",
   nbr_rate :298.239 ,
-  creator : "zakariae, Mouhsin, Mouhamed, Chihab",
+  creator : [
+    {
+    photo: '../../assets/images/pftest.jpg',
+    nome: 'zakariae'
+  }
+  ],
   last_update :"7/23",
   language:"English",
   sub_titels : ['English ' , ' Arabic'],
@@ -182,8 +236,11 @@ updateRating(target: EventTarget | null): void {
 
   ppl_targeted :['Office workers, students, small/home business workers, and administrators would want to improve their productivity.','Aspiring software engineers who want to add skills to their programming toolbelt.','Computer users who have heard the "learn to code" message, but want practical reasons to learn programming.','Experienced Python software engineers can skip the first half of the course, but may find the later parts that cover various third-party modules helpful.',"While this course doesn't cover specific devops tools, this course would be useful for QA, devops, and admins who want to learn scripting in Python"],
 
-  rating : this.selectedRating
-
+  rating: 3,
+  views : 2999,
+  likes:7000,
+  usage : 3000,
+  reviews_number:7364
     }
   }
 

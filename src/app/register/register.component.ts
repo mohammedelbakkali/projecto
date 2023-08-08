@@ -28,9 +28,10 @@ export class FaqForm {
   templateUrl: 'faq-list.html',
   styleUrls: ['./register.component.scss'],
   standalone: true,
-  imports: [MdbAccordionModule],
+  imports: [MdbAccordionModule,MatExpansionModule],
 })
 export class FaqList {
+  panelOpenState = false;
   constructor() {}
 }
 @Component({
@@ -82,6 +83,13 @@ export class RegisterComponent implements OnInit  {
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  scrollToTarget() {
+    const targetElement = document.getElementById('scrollTarget');
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }
 
