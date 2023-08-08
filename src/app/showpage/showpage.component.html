@@ -223,7 +223,7 @@
         <mat-tab-group  #tabGroup (selectedTabChange)="onTabChange($event)">
           <mat-tab label="Arbre" >
             <div class="arbre-prob orgChart m-0 p-0 ">
-              <app-tree [id_cont]="'org2'"></app-tree>
+              <app-tree [id_cont]="'org2'"  [type]="'problem'" ></app-tree>
             </div>
           </mat-tab>
           <mat-tab label="Causes" >
@@ -247,7 +247,7 @@
           <mat-tab-group>
             <mat-tab label="Arbre"> 
               <div class="arbre-solution  col-md-7">
-                <app-tree [id_cont]="'org1'"></app-tree>
+                <app-tree [id_cont]="'org1'"  [type]="'solution'"></app-tree>
               </div>
             </mat-tab>
                <mat-tab label="Impact" class="Cause-sec">
