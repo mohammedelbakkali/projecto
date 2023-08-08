@@ -128,7 +128,7 @@ export class ColumnChartComponent {
         },
         title: {
           text: "Les taches",
-          floating: 0,
+          floating: false,
           offsetY: 320,
           align: "center",
           style: {
