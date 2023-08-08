@@ -1,59 +1,64 @@
 <div class="container-fluid ">
-  <header class="pb-3 mb-4 border-bottom">
+  <header class="pb-3 mb-4">
       <i class="bi bi-hourglass-split mx-3" style="font-size: 25px;"></i>
       <span class="fs-4">Gestion des tâches </span>
     
   </header>
 
-<div style="font-family: Verdana, Geneva, Tahoma, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;color: black;">
-  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" color="accent">
-<!-- //////////////////////////////////////////// -->
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <i class="bi bi-clipboard2 mx-3"></i>
-        Vision générale
-      </ng-template>
-    
-       
-      <div class="container-fluid "><div class="row">
-           <div class="col-md-6">
-            <app-timeline-chart></app-timeline-chart>
-           </div>
-          
-           <div class="col-md-6">
-            <app-column-chart></app-column-chart>
-           </div>
-      </div></div>
+
+
+<ul class="nav nav-tabs justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link " [ngClass]="{'active':tab1}" #tab  (click)="changeDisplayTotab1()" aria-current="page" routerLink="/dash/projects/5/gestion-activite/tasks">Tâches</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " [ngClass]="{'active':tab2}" routerLink="/dash/projects/5/gestion-activite/tasks/list-tasks" (click)="changeDisplayTotab2()">liste des tâches</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " [ngClass]="{'active':tab3}" routerLink="/dash/projects/5/gestion-activite/tasks" (click)="changeDisplayTotab3()">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"   routerLink="/tabs" tabindex="-1" aria-disabled="true" #tab4 name="tab4" (click)="changeDisplayTotab4($event)" >Disabled</a>
+  </li>
+
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+  </li>
+</ul>
 
 
 
-    </mat-tab>
-<!-- //////////////////////////////////////////// -->
-
-    
-    <mat-tab>
-    <ng-template mat-tab-label>
-      <i class="bi bi-clock-history mx-3"></i>
-      liste des tâches
-    </ng-template>
-
-    <app-list-task></app-list-task>
-
-</mat-tab>
+<div *ngIf="tab1">
+  <div class="container-fluid "><div class="row">
+    <div class="col-md-12 ">
+     <app-kanban></app-kanban>
+    </div>
+   
+  
 
 
-<mat-tab>
-  <ng-template mat-tab-label>
-    <i class="bi bi-clipboard2 mx-3"></i>
-    les tâches actuelles
-  </ng-template>
-  Content 1
-</mat-tab>
 
 
-    <mat-tab label="les tâches actuelles">Content 2</mat-tab>
-    <mat-tab label="Third">Content 3</mat-tab>
-  </mat-tab-group>
+     <!--=============================== -->
+    </div>
+</div></div>
 </div>
 
+
+
+<div *ngIf="tab2">
+  <router-outlet></router-outlet>
+  
+</div>
+
+
+<div *ngIf="tab3">
+  <app-calendar></app-calendar>
 </div>

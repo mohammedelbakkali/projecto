@@ -9,13 +9,14 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
 import { SideOfDashboardComponent } from "./side-of-dashboard/side-of-dashboard.component";
 import { HeaderOfDashboardComponent } from "./header-of-dashboard/header-of-dashboard.component";
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
     standalone: true,
-    imports: [RouterOutlet, MatTabsModule, CommonModule, CardComponent, MatIconModule, MatButtonModule, SideBarComponent, ChartsComponent, RouterLink, SideOfDashboardComponent, HeaderOfDashboardComponent]
+    imports: [MatMenuModule,MatIconModule,RouterOutlet, MatTabsModule, CommonModule, CardComponent, MatButtonModule, SideBarComponent, ChartsComponent, RouterLink, SideOfDashboardComponent, HeaderOfDashboardComponent]
 })
 export class DashboardComponent  implements AfterViewInit {
 

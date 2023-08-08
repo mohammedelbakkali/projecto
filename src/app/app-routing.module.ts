@@ -24,6 +24,11 @@ import { ActiviteComponent } from './dashboard/gestions/activites/activite/activ
 
 import { ForumComponent } from './forum/forum.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { ListTaskComponent } from './dashboard/gestions/activites/tasks/list-task/list-task.component';
+import { DetailsTaskComponent } from './dashboard/gestions/activites/tasks/details-task/details-task.component';
+import { TabsViewComponent } from './tabs-view/tabs-view.component';
+import { KanbanComponent } from './charts/kanban/kanban.component';
+import { KanbanDIagrammeComponent } from './kanban/kanban/kanban.component';
 
 
 
@@ -117,7 +122,18 @@ const routes: Routes = [
             component:RHComponent
          },{
            path:"tasks",
-           component:TasksComponent
+           component:TasksComponent,
+           children:[
+             {
+               path:"list-tasks",
+               component:ListTaskComponent,
+            
+             }, {
+              
+              path:":id",
+              component:DetailsTaskComponent
+          }
+           ]
          },{
            path:"financiere",
            component:FinanciereComponent
@@ -131,6 +147,11 @@ const routes: Routes = [
     ]
 
      },
+     {
+       path:"tabs",
+       component:KanbanDIagrammeComponent
+     },
+   
 
       {
         path:"**",

@@ -12,6 +12,18 @@ body{
 }
 
 $subli: #020202;
+.navbar_content {
+  display: flex;
+  align-items: center;
+  column-gap: 25px;
+  background-color: #000000;
+}
+
+.navbar_content i {
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--grey-color);
+}
 
 
 .sidebar{
@@ -29,7 +41,7 @@ $subli: #020202;
 
 //===============================Scrolle=========================================
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 /* Track */

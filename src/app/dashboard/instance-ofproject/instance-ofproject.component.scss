@@ -29,7 +29,7 @@ $subli: #020202;
 
 //===============================Scrolle=========================================
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 /* Track */
@@ -83,7 +83,7 @@ $subli: #020202;
 }
 .sidebar .logo-details .logo_name{
   font-size: 22px;
-  color: #000000;
+  color: #4e63d7;
   font-weight: 600;
   transition: 0.3s ease;
   transition-delay: 0.1s;
@@ -124,7 +124,7 @@ $subli: #020202;
   min-width: 78px;
   text-align: center;
   line-height: 50px;
-  color: #010101;
+  color: #4e63d7;
   font-size: 20px;
   cursor: pointer;
   transition: all 0.6s ease;
@@ -165,7 +165,7 @@ $subli: #020202;
 }
 
 .sidebar .nav-links li .sub-menu a{
-  color: #000000;
+  color: #f81717;
   font-size: 15px;
   padding: 7px 0;
   white-space: nowrap;
