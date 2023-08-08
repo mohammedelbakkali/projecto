@@ -1,0 +1,35 @@
+
+  <ul class="nav nav-tabs justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link " [ngClass]="{'active':tab1}" #tab  (click)="changeDisplayTotab1()" aria-current="page" routerLink="/tabs">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " [ngClass]="{'active':tab2}" routerLink="/tabs" (click)="changeDisplayTotab2()">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " [ngClass]="{'active':tab3}" routerLink="/tabs" (click)="changeDisplayTotab3()">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"   routerLink="/tabs" tabindex="-1" aria-disabled="true" #tab4 name="tab4" (click)="changeDisplayTotab4($event)" >Disabled</a>
+    </li>
+  </ul>
+
+
+
+  <div *ngIf="tab1">
+     contanet1
+  </div>
+
+
+
+  <div *ngIf="tab2">
+    contanet2
+  </div>
+
+
+  <div *ngIf="tab3">
+    contanet3
+  </div>
+
+
+  <!-- <div [ngClass]="{first: true, second: true, third: true}"></div> -->

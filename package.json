@@ -27,7 +27,7 @@
     "@fullcalendar/list": "^6.1.8",
     "@fullcalendar/timegrid": "^6.1.8",
     "@ng-bootstrap/ng-bootstrap": "^14.2.0",
-    "@popperjs/core": "^2.11.6",
+    "@popperjs/core": "^2.11.8",
     "angular-calendar": "^0.31.0",
     "angular-google-charts": "^2.2.3",
     "angular-code-input": "^1.6.0",
@@ -43,6 +43,7 @@
     "ng-apexcharts": "^1.8.0",
     "ngx-scrollspy": "^1.2.1",
     "rxjs": "~7.8.0",
+    "smart-webcomponents-angular": "^16.0.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },

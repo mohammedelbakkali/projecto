@@ -39,3 +39,66 @@ $projecto-theme: mat.define-light-theme((
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body > app-root > app-instance-ofproject > section > div > div > div > app-activites > app-tasks > div > div > app-calendar > div > div > full-calendar > div.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr > div:nth-child(n) > button{
+background-color: #1a73e8;
+border-color: #1a73e8;
+}
+
+
+body > app-root > app-instance-ofproject > section > div > div > div > app-activites > app-tasks > div > div > app-calendar > div > div > full-calendar > div.fc-view-harness.fc-view-harness-active > div > table > thead > tr > th > div > div > table > thead > tr > th.fc-col-header-cell.fc-day > div > a{
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+
+#fc-dom-50{
+   text-decoration: none;
+}
+
+
+
+body > app-root > app-instance-ofproject > section > div > div > div > app-activites > app-tasks > div > div > app-calendar > div > div > full-calendar > div.fc-view-harness.fc-view-harness-active > div > table > tbody > tr > td > div > div > div > table > tbody > tr:nth-child(n) > td.fc-day > div > div.fc-daygrid-day-top > a {
+  text-decoration: none;
+  color: black;
+}
+#fc-dom-34{
+  text-decoration: none;
+}
+#fc-dom-6{
+  text-decoration: none;
+
+}
+
+body > app-root > app-instance-ofproject > section > div > div > div > app-activites > app-tasks > div > div > app-calendar > div > div > full-calendar > div.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr > div:nth-child(n) > div > button.fc-next-button.fc-button.fc-button-primary{
+   background-color: #1a73e8;
+   border-color: #1a73e8;
+}
+body > app-root > app-instance-ofproject > section > div > div > div > app-activites > app-tasks > div > div > app-calendar > div > div > full-calendar > div.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr > div:nth-child(1) > div > button.fc-prev-button.fc-button.fc-button-primary{
+  background-color: #1a73e8;
+  border-color: #1a73e8;
+}
+
+
+body > app-root > app-instance-ofproject > section > div > div > div > app-activites > app-tasks > div > div > app-calendar > div > div > full-calendar > div.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr > div:nth-child(n) > h2{
+   font-size: 15px;
+   color: rgb(79, 79, 79);
+}
+
+body > app-root > app-instance-ofproject > section > div > div > div > app-activites > app-tasks > div > div > app-calendar > div > div > full-calendar > div.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr > div:nth-child(3) > div > button.fc-timeGridDay-button.fc-button.fc-button-primary{
+   background-color: #1a73e8;
+   
+   border-color: #1a73e8;
+}
+
+body > app-root > app-instance-ofproject > section > div > div > div > app-activites > app-tasks > div > div > app-calendar > div > div > full-calendar > div.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr > div:nth-child(3) > div > button.fc-timeGridWeek-button.fc-button.fc-button-primary{
+  background-color: #1a73e8;
+   
+  border-color: #1a73e8;
+}
+
+body > app-root > app-instance-ofproject > section > div > div > div > app-activites > app-tasks > div > div > app-calendar > div > div > full-calendar > div.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr > div:nth-child(3) > div > button.fc-listWeek-button.fc-button.fc-button-primary{
+  background-color: #1a73e8;
+   
+  border-color: #1a73e8;
+}

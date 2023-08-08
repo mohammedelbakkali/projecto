@@ -9,6 +9,8 @@ import { EmployeesComponent } from "../contentOfProject/employees/employees.comp
 import { TasksComponent } from "../gestions/activites/tasks/tasks.component";
 import { HeaderOfDashboardComponent } from "../header-of-dashboard/header-of-dashboard.component";
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
@@ -16,7 +18,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     standalone: true,
     templateUrl: './instance-ofproject.component.html',
     styleUrls: ['./instance-ofproject.component.scss'],
-    imports: [RouterOutlet,RouterLink,CommonModule, MatTabsModule, MatIconModule, ChartsComponent, ChartsOfprojectsComponent, InformationGeneralComponent, EmployeesComponent, TasksComponent, HeaderOfDashboardComponent]
+    imports: [MatMenuModule,RouterOutlet,RouterLink,CommonModule,MatButtonModule ,MatTabsModule, MatIconModule, ChartsComponent, ChartsOfprojectsComponent, InformationGeneralComponent, EmployeesComponent, TasksComponent, HeaderOfDashboardComponent]
 })
 export class InstanceOfprojectComponent implements AfterViewInit{
     constructor(private elementRef: ElementRef) {

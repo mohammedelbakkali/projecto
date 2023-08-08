@@ -1,0 +1,132 @@
+
+<div class="kanban-board">
+  <div class="container-fluid">
+       <div class="row">
+        <div class="kanban-column col-md-4" style="position: relative;" *ngFor="let column of columns; let columnIndex = index">
+
+
+
+
+          <small class="column-header">{{ column.name }}</small>
+          <!-- =============================== -->
+             <div style="position: absolute;top: 0;right: 0;">
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+               
+                  <button mat-menu-item (click)="openDialog()">
+                    Edit     
+                 </button>
+               
+                <button mat-menu-item disabled>
+                  <mat-icon>voicemail</mat-icon>
+                  <span>Check voice mail</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>notifications_off</mat-icon>
+                  <span>Disable alerts</span>
+                </button>
+              </mat-menu>
+             </div>
+          <!-- =============================== -->
+          <hr>
+          <div></div>
+          <div class="kanban-task" *ngFor="let task of column.tasks; let taskIndex = index" [style.background-color]="task.color">
+            <div class="task-content">{{ task.name }}</div>
+            <div class="task-buttons">
+      
+            
+              <!-- <div class="task-color">
+                <label for="task-color-{{ columnIndex }}-{{ taskIndex }}">Task Color:</label>
+                <input type="color" id="task-color-{{ columnIndex }}-{{ taskIndex }}" [(ngModel)]="task.color" (change)="setTaskColor(columnIndex, taskIndex, task.color)" />
+              </div> -->
+            
+
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+      
+              <mat-menu #menu="matMenu">
+                   
+               <button mat-menu-item (click)="openDialog()">
+                  <mat-icon>edit</mat-icon>      <span>Edit </span>    
+               </button>
+
+
+                <button mat-menu-item>
+                  <button (click)="moveTask(task, columnIndex, columnIndex - 1)" *ngIf="columnIndex > 0 " class="move-button"><i class="bi bi-arrow-left-circle-fill"></i></button>
+                </button>
+                <button mat-menu-item >
+                  <button (click)="moveTask(task, columnIndex, columnIndex + 1)" *ngIf="columnIndex < columns.length - 1" class="move-button">Move Right</button>
+                </button>
+      
+                <button mat-menu-item>
+                  <button (click)="deleteTask(columnIndex, taskIndex)" class="delete-button">Delete</button>
+                </button>
+
+      
+              </mat-menu>
+      
+            </div>
+          </div>
+
+
+         
+
+          <div style="position: absolute;bottom: 0;right: 0;font-size: 10px;margin: 5px;">
+             <button class="btn btn-outline-secondary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="displayAddInputFunction(columnIndex)"> Créer un ticket <i class="bi bi-plus-circle"></i>
+             </button>
+          </div>
+
+
+
+        
+          
+
+
+          
+
+        </div>
+
+
+       </div>
+  </div>
+  
+</div>
+
+
+
+<div style="background-color: rgb(237, 236, 236);width: 100%;height: 200px;">
+  <div *ngIf="displayAddInput">
+              <div class="container">
+                   <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-6">
+
+                        <h3>Ajouter un ticket en {{nameOfcolumn}}</h3>
+                      
+                        
+                         
+                        <div class="inputGroup"> 
+
+                          <input type="text" [(ngModel)]="newTaskText" placeholder="New Task" autocomplete="off">
+                          <label for="name">Name</label>
+
+                         
+
+                      </div>
+                      <label for="color" class="mx-3">Color :</label>
+                      <input  name="color" type="color"  [(ngModel)]="color" />
+
+                       <div>
+                        <button (click)="addTask()" class="add-button">Add</button>
+                       </div>
+                      </div>
+
+                      <div class="col-md-3"></div>
+                   </div>
+              </div>
+  </div>
+  
+</div>
