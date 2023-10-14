@@ -38,7 +38,11 @@ $projecto-theme: mat.define-light-theme((
 /* angular-cli file: src/styles.css */
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+  overflow: auto;
+}
+
+
 
 body > app-root > app-instance-ofproject > section > div > div > div > app-activites > app-tasks > div > div > app-calendar > div > div > full-calendar > div.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr > div:nth-child(n) > button{
 background-color: #1a73e8;

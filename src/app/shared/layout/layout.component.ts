@@ -12,5 +12,5 @@ import { RouterOutlet } from '@angular/router';
     imports: [CommonModule, HedaerComponent, FooterComponent, RouterOutlet]
 })
 export class LayoutComponent {
-
+  
 }

@@ -3,7 +3,9 @@
 
 <div class="sidebar close">
   <div class="logo-details">
+    
     <i class='bx bx-menu'></i>
+    
     
   </div>
 
@@ -11,7 +13,7 @@
 
   <ul class="nav-links">
     <li>
-      <a href="/dash/projects/5">
+      <a routerLink="/dash/projects/5">
         <i class='bx bx-grid-alt' ></i>
         <span class="link_name">Info general</span>
       </a>
@@ -140,71 +142,9 @@
 
 
 
-
-<section class="home-section home-section-container" >
+<section class="home-section home-section-container" style="height: 100%;" >
   <div class="home-content">
-    <nav class="navBarStyle" >
-     
-      <div class="navbar">
-        <i class='bx bx-menu'></i>
-        <div class="logo"><a href="#">Projecto</a></div>
-        <div class="nav-links">
-          <!-- <div class="sidebar-logo">
-            <span class="logo-name">CodingLab</span>
-            <i class='bx bx-x' ></i>
-          </div> -->
-          <!-- <ul class="links">
-            
-           
-           
-            <li>
-              <a href="#">JAVASCRIPT</a>
-              <i class='bx bxs-chevron-down js-arrow arrow '></i>
-              <ul class="js-sub-menu sub-menu">
-                <li><a href="#">Dynamic Clock</a></li>
-                <li><a href="#">Form Validation</a></li>
-                <li><a href="#">Card Slider</a></li>
-                <li><a href="#">Complete Website</a></li>
-              </ul>
-            </li>
-            <li><a href="#">ABOUT US</a></li>
-            <li><a href="#">CONTACT US</a></li>
-          </ul> -->
-        </div>
-        <!-- <div class="navbar_content">
-          <i class="bi bi-grid"></i>
-          <i class='bx bx-sun' id="darkLight"></i>
-          <i class='bx bx-bell' ></i>
-          <img src="images/profile.jpg" alt="" class="profile" />
-        </div> -->
 
-     
-
-        <button  mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-          <i class="bi bi-person-circle" style="width: 100%;" ></i>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>
-            <mat-icon>dialpad</mat-icon>
-            <span>Redial</span>
-          </button>
-          <button mat-menu-item disabled>
-            <mat-icon>voicemail</mat-icon>
-            <span>Check voice mail</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>notifications_off</mat-icon>
-            <span>Disable alerts</span>
-          </button>
-        </mat-menu>
-       
-
-      
-      </div>
-      
-      
-    
-  </nav>
 
 
 
@@ -212,20 +152,17 @@
     <div class="scrollable-content" style="width: 100%;">
       
 
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-  <symbol id="house-door-fill" viewBox="0 0 16 16">
-    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
-  </symbol>
-</svg>
 
 
 
+<div class="container-fluid " style="overflow: auto;">
 
-<div class="container-fluid mt-5">
 
-    
-  <router-outlet></router-outlet>
+    <!-- /////////////////Side bar content/////////////////// -->
+    <router-outlet></router-outlet>
+      <!-- /////////////////Side bar content/////////////////// -->
 
+ <div style="background-color: rgb(235, 235, 235);width: 100%;height: 100px;"></div>
 </div>
 
 

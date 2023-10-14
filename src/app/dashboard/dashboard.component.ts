@@ -1,67 +1,81 @@
-import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, Renderer2, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SideBarComponent } from '../shared/side-bar/side-bar.component';
 import { CardComponent } from "../card/card.component";
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ChartsComponent } from "../shared/charts/charts.component";
-import { RouterLink, RouterOutlet } from '@angular/router';
-import {MatTabsModule} from '@angular/material/tabs';
-import { SideOfDashboardComponent } from "./side-of-dashboard/side-of-dashboard.component";
-import { HeaderOfDashboardComponent } from "./header-of-dashboard/header-of-dashboard.component";
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
+import { MenuItem, HedaerComponent } from '../shared/hedaer/hedaer.component';
+import { BreadcrumbService } from '../services/breadcrumb.service';
 
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
     standalone: true,
-    imports: [MatMenuModule,MatIconModule,RouterOutlet, MatTabsModule, CommonModule, CardComponent, MatButtonModule, SideBarComponent, ChartsComponent, RouterLink, SideOfDashboardComponent, HeaderOfDashboardComponent]
+    imports: [MatMenuModule, MatIconModule, RouterOutlet, CommonModule, CardComponent, MatButtonModule, SideBarComponent, ChartsComponent, RouterLink , HedaerComponent]
 })
-export class DashboardComponent  implements AfterViewInit {
+export class DashboardComponent {
+  constructor(public breadcrumbService:BreadcrumbService, private router: Router ){}
 
-
-  obj:any[]=[
-    {
-      label:"test1",
-      icone:"icone for test1",
-      url:"http://"
-   },{
-    label:"test2",
-    icone:"icone for test2",
-    url:"http://"
- },{
-  label:"test2",
-  icone:"icone for test2",
-  url:"http://"
-}
-  ]
-
-  constructor(private elementRef: ElementRef) {
-    
-
+  @Input() menuContentHeader :MenuItem[];
+  tableOfBreadCrumbs:any;
   
+  ngOnInit(): void {
+    this.breadcrumbService.generateBreadcrumbs(this.router.routerState.root);
+    // this.tableOfBreadCrumbs=this.breadCrumbs.getBreadCrumbs();
+    this.menuContentHeader = [
+
+            {
+              label:"Dashboard",
+              link:"/dash"
+            },
+           {
+            label:"Browse Projects",
+            link:"/"
+           },{
+             label:"Mes projets",
+             link:"/dash/projects"
+           },
+           {
+            label:"Orders",
+            link:"/",
+         },
+
+         {
+           label:'Analytics',
+           link:"#",
+           subMenu:[
+              {label:"overview",link:"#"},
+              {label:"overview",link:"#"},
+           ]
+         },
+           
+           
+           {
+            label:"support",
+            link:"/",
+            subMenu: [
+               {
+                label:"Enterprise",
+                link:"/",
+               },
+               {
+                label:"Membership",
+                link:"/",
+               },
+               {
+                label:"Preferred Projecto Program",
+                link:"/",
+               }
+            ],
+           
+           }
+    ]
   }
 
 
-
-  ngAfterViewInit(): void {
-    const arrowElements = this.elementRef.nativeElement.querySelectorAll('.arrow');
-    
-    for (let i = 0; i < arrowElements.length; i++) {
-      arrowElements[i].addEventListener('click', (e:any) => {
-        const arrowParent = e.target.parentElement.parentElement;
-        arrowParent.classList.toggle('showMenu');
-      });
-    }
-    
-    const sidebarBtn = this.elementRef.nativeElement.querySelector('.bx-menu');
-    const sidebar = this.elementRef.nativeElement.querySelector('.sidebar');
-    
-    sidebar.classList.remove('close'); // Ensure that the sidebar does not have the 'close' class initially
-    sidebarBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('close');
-    });
-  }
 }
    

@@ -5,10 +5,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  font-weight: 500;
 
 }
 body{
   overflow: hidden;
+  
 }
 
 $subli: #020202;
@@ -16,15 +18,16 @@ $subli: #020202;
 
 .sidebar{
   position: fixed;
-  top: 0;
+  top: 72px;
   left: 0;
   height: 100%;
   width: 320px;
-  background: #ffffff;
+  background: #fff;
   z-index: 100;
-  transition: all 0.6s ease;
+  transition: all 0.7s ease;
   overflow-y: auto;
   overflow-x: hidden;
+  font-weight: 200;
 }
 
 //===============================Scrolle=========================================
@@ -39,17 +42,19 @@ $subli: #020202;
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #dcdcdc; 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #808080; 
+  background: #d3d3d3; 
 }
 
 
 .home-section {
   position: relative;
+  margin-top: 70px;
+  height: 100%;
   background: rgb(255, 255, 255);
   left: 320px;
   width: calc(100% - 320px);
@@ -143,7 +148,7 @@ $subli: #020202;
 }
 .sidebar .nav-links li a .link_name{
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 500;
   color: #000000;
   transition: all 0.4s ease;
 }
@@ -165,7 +170,7 @@ $subli: #020202;
 }
 
 .sidebar .nav-links li .sub-menu a{
-  color: #f81717;
+  color: #000000;
   font-size: 15px;
   padding: 7px 0;
   white-space: nowrap;
@@ -223,7 +228,7 @@ $subli: #020202;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #ffffff;
+  background: #fff;
   padding: 12px 0;
   transition: all 0.5s ease;
 }
@@ -266,21 +271,22 @@ $subli: #020202;
 }
 
 .scrollable-content {
-  height: calc(100vh - 90px); /* Adjust the height accordingly based on your layout */
+  height: calc(100% - 70px); /* Adjust the height accordingly based on your layout */
   overflow-y: auto; /* Add the overflow property to enable scrolling for the content inside */
+  background-color: #fff;
 }
 .home-content{
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  
-
+ 
 }
 
 
 .home-section-container {
   overflow: auto;
   /* Add any other styles specific to the home section container if needed */
+  
 }
 
 
@@ -325,31 +331,33 @@ $subli: #020202;
     width: calc(100% - 78px);
   }
 
-  .sidebar.close ~ .navBarStyle{
-    left: 78px;
-    width: calc(100% - 78px);
-  }
+  // .sidebar.close ~ .navBarStyle{
+  //   left: 78px;
+  //   width: calc(100% - 78px);
+  // }
 }
 
 
 
 
 .navBarStyle{
-  position: relative;
+  position: fixed;
   top: 0;
   right: 0;
-  width: calc(100% - 0px);
+
+  width: 100%;
+  // width: calc(100% - 0px);
   height: 100%;
   height: 70px;
-  background: #ffffff;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.2);
   z-index: 99;
 }
 
-.sidebar.close ~ .navBarStyle{
-  left: 78px;
-  width: calc(100% - 78px);
-}
+// .sidebar.close ~ .navBarStyle{
+//   left: 78px;
+//   width: calc(100% - 78px);
+// }
 
 .navBarStyle .navbar{
   height: 100%;
@@ -411,7 +419,7 @@ $subli: #020202;
   top: 70px;
   left: 0;
   line-height: 40px;
-  background: #3E8DA8;
+  background: #ffffff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 0 0 4px 4px;
   display: none;
@@ -426,7 +434,7 @@ $subli: #020202;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 .navbar .links li .sub-menu a{
-  color: #fff;
+  color: #000000;
   font-size: 15px;
   font-weight: 500;
 }
@@ -628,3 +636,111 @@ $subli: #020202;
   max-width: 100%;
 } 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card {
+  width: 260px;
+  height: 340px;
+  background: white;
+  padding: .4em;
+  border-radius: 6px;
+  margin-left:15px;
+  margin-top: 10px;
+
+}
+
+@media only screen and (max-width: 760px) {
+  .card {
+    width: 240px;
+    margin:auto;
+    height: 274px;
+    background: white;
+    padding: .4em;
+    border-radius: 6px;
+    margin-top: 10px;
+ 
+
+  }
+}
+
+
+@media only screen and (max-width: 456px) {
+  .card {
+    width: 80%;
+    margin:auto;
+    height: 274px;
+    background: white;
+    padding: .4em;
+    border-radius: 6px;
+    margin-top: 10px;
+ 
+
+  }
+}
+
+
+
+.card-image {
+  background-color: rgb(236, 236, 236);
+  width: 100%;
+  height: 60%;
+  border-radius: 6px 6px 0 0;
+}
+
+.card-image:hover {
+  transform: scale(0.98);
+}
+
+.category {
+  text-transform: uppercase;
+  font-size: 0.7em;
+  font-weight: 600;
+  color: rgb(63, 121, 230);
+  padding: 10px 7px 0;
+}
+
+.category:hover {
+  cursor: pointer;
+}
+
+.heading {
+  font-weight: 600;
+  color: rgb(88, 87, 87);
+  padding: 7px;
+}
+
+.heading:hover {
+  cursor: pointer;
+}
+
+.author {
+  color: gray;
+  font-weight: 400;
+  font-size: 11px;
+  padding-top: 20px;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.name:hover {
+  cursor: pointer;
+}
+

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
+import { BreadcrumbService } from 'src/app/services/breadcrumb.service';
 
 interface Project {
     titre:string;
@@ -18,7 +19,15 @@ interface Project {
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit {
+
+  constructor(private breadCrumbs:BreadcrumbService){}
+
+  ngOnInit(): void {
+    // this.breadCrumbs.removeLastBreadcrumb();
+    // this.breadCrumbs.addBreadcrumb("Mes projets","projects")
+  }
+
 
     
   obj:any[]=[

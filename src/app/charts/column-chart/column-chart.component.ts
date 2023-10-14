@@ -1,27 +1,29 @@
-import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from "@angular/common";
+import { Component, ViewChild } from "@angular/core";
 
 import {
+  ChartComponent,
   ApexAxisChartSeries,
   ApexChart,
-  ChartComponent,
-  ApexDataLabels,
-  ApexPlotOptions,
+  ApexFill,
   ApexYAxis,
+  ApexTooltip,
   ApexTitleSubtitle,
   ApexXAxis,
-  ApexFill,
   NgApexchartsModule
 } from "ng-apexcharts";
+
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
-  dataLabels: ApexDataLabels;
-  plotOptions: ApexPlotOptions;
-  yaxis: ApexYAxis;
   xaxis: ApexXAxis;
-  fill: ApexFill;
+  yaxis: ApexYAxis | ApexYAxis[];
   title: ApexTitleSubtitle;
+  labels: string[];
+  stroke: any; // ApexStroke;
+  dataLabels: any; // ApexDataLabels;
+  fill: ApexFill;
+  tooltip: ApexTooltip;
 };
 @Component({
   selector: 'app-column-chart',
@@ -38,103 +40,60 @@ export class ColumnChartComponent {
     this.chartOptions = {
       series: [
         {
-          name: "Inflation",
-          data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
+          name: "Website Blog",
+          type: "column",
+          data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
+        },
+        {
+          name: "Social Media",
+          type: "line",
+          data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
         }
-      ], chart: {
+      ],
+      chart: {
         height: 350,
-        type: "bar"
+        type: "line"
       },
-      plotOptions: {
-        bar: {
-          dataLabels: {
-            position: "top" // top, center, bottom
-          }
-        }
-      }, dataLabels: {
+      stroke: {
+        width: [0, 4]
+      },
+      title: {
+        text: "Traffic Sources"
+      },
+      dataLabels: {
         enabled: true,
-        formatter: function(val) {
-          return val + "%";
-        },
-        offsetY: -20,
-        style: {
-          fontSize: "12px",
-          colors: ["#304758"]
-        }
-      },      xaxis: {
-        categories: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec"
-        ],position: "top",
-        labels: {
-          offsetY: -18
-        },
-        axisBorder: {
-          show: false
-        },
-        axisTicks: {
-          show: false
-        },
-        crosshairs: {
-          fill: {
-            type: "gradient",
-            gradient: {
-              colorFrom: "#D8E3F0",
-              colorTo: "#BED1E6",
-              stops: [0, 100],
-              opacityFrom: 0.4, opacityTo: 0.5
-            }
+        enabledOnSeries: [1]
+      },
+      labels: [
+        "01 Jan 2001",
+        "02 Jan 2001",
+        "03 Jan 2001",
+        "04 Jan 2001",
+        "05 Jan 2001",
+        "06 Jan 2001",
+        "07 Jan 2001",
+        "08 Jan 2001",
+        "09 Jan 2001",
+        "10 Jan 2001",
+        "11 Jan 2001",
+        "12 Jan 2001"
+      ],
+      xaxis: {
+        type: "datetime"
+      },
+      yaxis: [
+        {
+          title: {
+            text: "Website Blog"
           }
         },
-        tooltip: {
-          enabled: true,
-          offsetY: -35
-        }
-      },
-      fill: {
-        type: "gradient",
-        gradient: {
-          shade: "light",
-          type: "horizontal",
-          shadeIntensity: 0.25,
-          gradientToColors: undefined,
-          inverseColors: true,
-          opacityFrom: 1, opacityTo: 1,
-          stops: [50, 0, 100, 100]
-        }
-      },
-      yaxis: {
-        axisBorder: {
-          show: false
-        },
-        axisTicks: {
-          show: false
-        },
-        labels: {
-          show: false,
-          formatter: function(val) {
-            return val + "%";
-          }}
-        },
-        title: {
-          text: "Les taches",
-          floating: false,
-          offsetY: 320,
-          align: "center",
-          style: {
-            color: "#444"
+        {
+          opposite: true,
+          title: {
+            text: "Social Media"
           }
         }
-      };
-    }
+      ]
+    };
+  }
 }

@@ -27,8 +27,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { ListTaskComponent } from './dashboard/gestions/activites/tasks/list-task/list-task.component';
 import { DetailsTaskComponent } from './dashboard/gestions/activites/tasks/details-task/details-task.component';
 import { TabsViewComponent } from './tabs-view/tabs-view.component';
-import { KanbanComponent } from './charts/kanban/kanban.component';
-import { KanbanDIagrammeComponent } from './kanban/kanban/kanban.component';
+import { KanbanComponent } from './kanban/kanban.component';
 
 import { GanttComponent } from './gantt/gantt.component';
 import { TreeComponent } from './tree/tree.component';
@@ -39,6 +38,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
          
 import { ObjectifResultComponent } from './area-objectifs/objectif-result/objectif-result.component';
 import { AreaObjectifsComponent } from './area-objectifs/area-objectifs.component';
+import { NavComponent } from './shared/nav/nav.component';
+import { DhComponent } from './dashboard/dh/dh.component';
+import { DragDropComponent } from './charts/drag-drop/drag-drop.component';
 
 
 
@@ -50,7 +52,8 @@ const routes: Routes = [
         children:[
            {
              path:"",
-             component:LandingPageComponent
+             component:LandingPageComponent,
+             data: { breadcrumb: 'Home' }
            }, {
             path:"show",
             component:ShowpageComponent
@@ -63,12 +66,16 @@ const routes: Routes = [
         loadChildren : ()=>import("./project/project.module").then((mod)=>mod.ProjectModule)
       },
       {
+        
         path:"dash",
+        
         component:DashboardComponent,
+        data: { breadcrumb: 'Dashboard' } ,
         children:[
           {
             path:"",
-            component:PageRecentOfdashComponent
+            component:DhComponent,
+           
           },
           {
           path:"charts",
@@ -76,9 +83,60 @@ const routes: Routes = [
         },{
           path:"projects",
           component:ProjectsComponent,
+          data: { breadcrumb: 'projects' } ,
           
         },
-
+        {
+          path:"projects/:id",
+          component:InstanceOfprojectComponent,
+          data: { breadcrumb: 'projects' },
+          children:[{
+           path:"",
+           component:InformationGeneralComponent,
+           data: { breadcrumb: 'Informations Générale' },
+           
+        },{
+           path:"gestion-activite",
+           component:ActivitesComponent,
+           data: { breadcrumb: 'Gestion Activite' },
+           children:[
+            {
+              path:"",
+              component:ActiviteComponent
+  
+            },
+            {
+              path:"rh",
+              component:RHComponent,
+              data: { breadcrumb: 'Gestion RH' },
+           },{
+             path:"tasks",
+             component:TasksComponent,
+             data: { breadcrumb: 'Gestion Task' },
+             children:[
+               {
+                 path:"list-tasks",
+                 component:ListTaskComponent,
+              
+               }, {
+                
+                path:":id",
+                component:DetailsTaskComponent
+            }
+             ]
+           },{
+             path:"financiere",
+             component:FinanciereComponent
+           },{
+             path:"risques",
+             component:RisquesComponent
+           }
+           ]
+        }
+      
+      ]
+  
+       },
         
        
       ]
@@ -103,8 +161,8 @@ const routes: Routes = [
       
       },{
 
-        path:'forum',
-        component:ForumComponent
+        path:'drag',
+        component:DragDropComponent
 
       },
       {
@@ -138,55 +196,14 @@ const routes: Routes = [
          component:ChangePasswordComponent
        },
 
-      {
-        path:"dash/projects/:id",
-        component:InstanceOfprojectComponent,
-        children:[{
-         path:"",
-         component:InformationGeneralComponent
-      },{
-         path:"gestion-activite",
-         component:ActivitesComponent,
-         children:[
-          {
-            path:"",
-            component:ActiviteComponent
-
-          },
-          {
-            path:"rh",
-            component:RHComponent
-         },{
-           path:"tasks",
-           component:TasksComponent,
-           children:[
-             {
-               path:"list-tasks",
-               component:ListTaskComponent,
-            
-             }, {
-              
-              path:":id",
-              component:DetailsTaskComponent
-          }
-           ]
-         },{
-           path:"financiere",
-           component:FinanciereComponent
-         },{
-           path:"risques",
-           component:RisquesComponent
-         }
-         ]
-      }
-    
-    ]
-
-     },
      {
        path:"tabs",
-       component:KanbanDIagrammeComponent
+       component:KanbanComponent
      },
+     {
+      path:"nav",
+      component:NavComponent
+    },
    
 
       {

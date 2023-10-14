@@ -1,0 +1,23 @@
+<div class="board">
+    <form (submit)="onFormSubmit()" id="todo-form">
+      <input type="text" placeholder="New TODO..." id="todo-input" />
+      <button type="submit">Add +</button>
+    </form>
+  
+    <div class="lanes">
+      <div class="swim-lane" #todoLane id="todo-lane">
+        <h3 class="heading">TODO</h3>
+        <p class="task" *ngFor="let task of tasks" draggable="true">{{ task }}</p>
+      </div>
+  
+      <div class="swim-lane" #doingLane id="doing-lane">
+        <h3 class="heading">Doing</h3>
+        <p class="task" *ngFor="let task of doingTasks" draggable="true">{{ task }}</p>
+      </div>
+  
+      <div class="swim-lane" #doneLane id="done-lane">
+        <h3 class="heading">Done</h3>
+        <p class="task" *ngFor="let task of doneTasks" draggable="true">{{ task }}</p>
+      </div>
+    </div>
+  </div>

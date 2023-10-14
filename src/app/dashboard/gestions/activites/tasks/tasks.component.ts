@@ -9,13 +9,14 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { CalendarComponent } from "../../../../calendar/calendar.component";
 import { ProtagonisteComponent } from "../../protagoniste/protagoniste.component";
 import { KanbanComponent } from "../../../../charts/kanban/kanban.component";
+import { DragDropComponent } from "../../../../charts/drag-drop/drag-drop.component";
 
 @Component({
     selector: 'app-tasks',
     standalone: true,
     templateUrl: './tasks.component.html',
     styleUrls: ['./tasks.component.scss'],
-    imports: [CommonModule, RouterLink, RouterOutlet, MatTabsModule, ListTaskComponent, ChartBarComponent, TimelineChartComponent, ColumnChartComponent, CalendarComponent, ProtagonisteComponent, KanbanComponent]
+    imports: [CommonModule, RouterLink, RouterOutlet, MatTabsModule, ListTaskComponent, ChartBarComponent, TimelineChartComponent, ColumnChartComponent, CalendarComponent, ProtagonisteComponent, KanbanComponent, DragDropComponent]
 })
 export class TasksComponent {
     tab1:boolean = true;

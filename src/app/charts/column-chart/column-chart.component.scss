@@ -1,13 +1,4 @@
 #chart {
-    width: 50%;
-    margin: 35px auto;
-  }
-  
-
-  @media screen and (max-width: 760px){
-    #chart {
-        width: 100%;
-        margin: 35px auto;
-      }
-  }
-  
+  max-width: 650px;
+  margin: 35px auto;
+}

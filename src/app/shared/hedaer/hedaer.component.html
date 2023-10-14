@@ -1,30 +1,58 @@
-<div class="container-fluid" style="box-shadow: 0px 0px 2px 2px rgb(201, 201, 201);">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3  border-bottom">
 
 
-      <div class="col-md-2 mb-2 mb-md-0">
-        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-            <img src="../../../assets/images/logo.gif" alt="" width="200">
-        </a>
+
+<nav [ngStyle]="{'position': display}">
+  <div class="navbar">
+     <!-- -----------------menu icone------------------ -->
+
+    <i class='bx bx-menu'></i>
+    <div class="logo"><a href="#">Projecto</a></div>
+     <!-- ----------------------------------- -->
+
+            <div class="nav-links">
+        <!-- -------------Logo side bar---------------------- -->
+      <div class="sidebar-logo">
+        <span class="logo-name">Projecto</span>
+        <i class='bx bx-x' ></i>
       </div>
+     <!-- ----------------------------------- -->
 
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" *ngIf="!isRegisterRoute() && !isLoginRoute() ">
-        <li><a href="#" class="nav-link px-2">Home</a></li>
-        <li><a href="#" class="nav-link px-2">Features</a></li>
-        <li><a href="#" class="nav-link px-2">Pricing</a></li>
-        <li><a href="#" class="nav-link px-2">FAQs</a></li>
-        <li><a href="#" class="nav-link px-2">Dashboard</a></li>
-        <li><a href="#" class="nav-link px-2">About</a></li>
-      </ul>
+     <ul class="links">
+          
+       <li *ngFor="let item of menuContent">
+          <a [routerLink]="[item.link]" >{{item.label}}</a>
+          <i class='bx bxs-chevron-down htmlcss-arrow arrow' *ngIf="item.subMenu"></i>
+          <ul class="htmlCss-sub-menu sub-menu" *ngIf="item.subMenu">
+            <li *ngFor="let subItem of item.subMenu" [ngClass]="subItem.subMenu ? 'more' : ''">
+              <a [routerLink]="[subItem.link]" *ngIf="!subItem.subMenu">{{subItem.label}}</a>
 
-      <div *ngIf="!isRegisterRoute() && !isLoginRoute() " class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-primary me-2">Login</button>
-        <button type="button" class="btn btn-primary">Sign-up</button>
-      </div>
-      <div *ngIf="isRegisterRoute()" class="col-md-3 text-end">
-       <p class="text-black h6">Already member ? <a href="#" routerLink="/log">Login</a></p>
-      </div>
-    </header>
+              <span *ngIf="subItem.subMenu">
+                <a [routerLink]="[subItem.link]">{{subItem.label}}</a><i class='bx bxs-chevron-right arrow more-arrow'></i>
+               </span>
+               <ul *ngIf="subItem.subMenu" class="more-sub-menu sub-menu" >
+                <li *ngFor="let subsubMenu of subItem.subMenu"><a [routerLink]="[subsubMenu.link]">{{subsubMenu.label}}</a></li>
+              </ul>
+
+            </li>
+
+          </ul> 
+       </li>
+
+
+     </ul>
+
+
+
+
+            </div>
+
+            <div class="search-box">
+              <i class='bx bx-search'></i>
+              <div class="input-box">
+                <input type="text" placeholder="Search...">
+              </div>
+            </div>
+
   </div>
 
-
+</nav>

@@ -45,4 +45,7 @@ export class InstanceOfprojectComponent implements AfterViewInit{
           sidebar.classList.toggle('close');
         });
       }
+
+
+      
 }

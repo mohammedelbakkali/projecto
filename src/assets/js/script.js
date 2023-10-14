@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 // search-box open close js code
 let navbar = document.querySelector(".navbar");
 let searchBox = document.querySelector(".search-box .bx-search");
@@ -22,7 +14,7 @@ searchBox.addEventListener("click", ()=>{
 
 // sidebar open close js code
 let navLinks = document.querySelector(".nav-links");
-let menuOpenBtn = document.querySelector(".navbar .bx-menu");
+let menuOpenBtn = document.querySelector(".navbar .bx-smile");
 let menuCloseBtn = document.querySelector(".nav-links .bx-x");
 menuOpenBtn.onclick = function() {
 navLinks.style.left = "0";
