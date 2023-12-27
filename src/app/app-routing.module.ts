@@ -27,7 +27,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { ListTaskComponent } from './dashboard/gestions/activites/tasks/list-task/list-task.component';
 import { DetailsTaskComponent } from './dashboard/gestions/activites/tasks/details-task/details-task.component';
 import { TabsViewComponent } from './tabs-view/tabs-view.component';
-import { KanbanComponent } from './kanban/kanban.component';
+import { KanbanComponent } from './charts/kanban/kanban.component';
 
 import { GanttComponent } from './gantt/gantt.component';
 import { TreeComponent } from './tree/tree.component';
@@ -200,6 +200,7 @@ const routes: Routes = [
        path:"tabs",
        component:KanbanComponent
      },
+
      {
       path:"nav",
       component:NavComponent
